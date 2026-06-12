@@ -54,7 +54,7 @@
 
   /* ---- hero ---- */
   header{position:relative;overflow:hidden;color:#fff;background:#0f172a}
-  .hero-bg{position:absolute;inset:0;background:url('banner-4.jpg') center/cover no-repeat;z-index:0}
+  .hero-bg{position:absolute;inset:0;background:url('banner-5.jpg') center/cover no-repeat;z-index:0}
   .hero-bg::after{content:"";position:absolute;inset:0;
     background:linear-gradient(120deg,rgba(15,23,42,.92) 0%,rgba(30,58,138,.82) 55%,rgba(30,64,175,.55) 100%)}
   .hero{padding:96px 0 88px;position:relative;z-index:1}
@@ -74,8 +74,9 @@
   @media(max-width:760px){.hero{padding:64px 0 56px}.btn-ghost{margin-left:0;margin-top:10px}}
 
   /* ---- marquee ---- */
-  .ticker{background:var(--primary);color:#fff;overflow:hidden;white-space:nowrap;border-top:3px solid var(--signal)}
-  .ticker-track{display:inline-block;padding:10px 0;font-family:var(--disp);font-weight:800;letter-spacing:.18em;font-size:.85rem;animation:tick 26s linear infinite}
+  .ticker{display:block;background:var(--primary);color:#fff;overflow:hidden;white-space:nowrap;border-top:3px solid var(--signal);text-decoration:none;cursor:pointer;transition:background .15s ease}
+  .ticker:hover{background:#1e40af}
+  .ticker-track{display:inline-block;padding:10px 0;font-family:var(--disp);font-weight:800;letter-spacing:.18em;font-size:.85rem;animation:tick 36s linear infinite}
   @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 
@@ -191,6 +192,7 @@
     </a>
     <div class="nav-links">
       <a href="#tentang">Tentang Kami</a>
+      <a href="berita.html">Berita</a>
       <a href="#pinjaman">Pinjaman</a>
       <a href="#takaful">Takaful</a>
       <a href="#manfaat">Manfaat</a>
@@ -210,12 +212,12 @@
   </div>
 </header>
 
-<div class="ticker" aria-hidden="true">
+<a class="ticker" href="berita.html" aria-label="Lihat semua berita KOMIDA">
   <div class="ticker-track">
-    DARI AHLI &nbsp;&#10095;&nbsp; UNTUK AHLI &nbsp;&#10095;&nbsp; DEMI KEMAJUAN &nbsp;&#10095;&nbsp; PATUH SYARIAH &nbsp;&#10095;&nbsp; DIAUDIT BEBAS &nbsp;&#10095;&nbsp;
-    DARI AHLI &nbsp;&#10095;&nbsp; UNTUK AHLI &nbsp;&#10095;&nbsp; DEMI KEMAJUAN &nbsp;&#10095;&nbsp; PATUH SYARIAH &nbsp;&#10095;&nbsp; DIAUDIT BEBAS &nbsp;&#10095;&nbsp;
+    BERITA TERKINI &nbsp;&#10095;&nbsp; MESYUARAT AGUNG TAHUNAN 2026 — PERINCIAN AKAN DIUMUMKAN &nbsp;&#10095;&nbsp; DIVIDEN 2025 DILULUSKAN &nbsp;&#10095;&nbsp; PROMOSI PINJAMAN PELAJARAN BAHARU &nbsp;&#10095;&nbsp;
+    BERITA TERKINI &nbsp;&#10095;&nbsp; MESYUARAT AGUNG TAHUNAN 2026 — PERINCIAN AKAN DIUMUMKAN &nbsp;&#10095;&nbsp; DIVIDEN 2025 DILULUSKAN &nbsp;&#10095;&nbsp; PROMOSI PINJAMAN PELAJARAN BAHARU &nbsp;&#10095;&nbsp;
   </div>
-</div>
+</a>
 
 <div class="stats">
   <div class="wrap">
