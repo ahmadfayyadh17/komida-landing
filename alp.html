@@ -7,88 +7,84 @@
 <meta name="description" content="Carta Organisasi Ahli Lembaga Pengarah KOMIDA — Koperasi MIDA Kuala Lumpur Berhad.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231e3a8a'/><path d='M20 18 L20 46 M20 32 L36 18 M20 32 L36 46' stroke='white' stroke-width='6' fill='none' stroke-linecap='square'/><path d='M44 22 L52 32 L44 42 Z' fill='%23dc2626'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0f172a; --ink2:#1e293b; --paper:#ffffff; --mist:#f1f5f9;
+    --bg:#f4f3ef; --paper:#ffffff; --ink:#101418; --ink2:#2a3138;
     --primary:#1e3a8a; --primary-soft:#dbeafe; --accent:#3b82f6; --signal:#dc2626;
-    --line:#e2e8f0; --muted:#64748b;
-    --disp:'Archivo',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif;
+    --line:#d9d7cf; --muted:#6b7280;
+    --disp:'Archivo',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:var(--body);color:var(--ink);background:var(--mist);line-height:1.65;font-size:16px;min-height:100vh}
+  body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px;min-height:100vh}
   img{max-width:100%;display:block}
   a{color:inherit}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
-  h1{font-family:var(--disp);line-height:1.1;letter-spacing:-.01em}
-  .chev{display:inline-block;width:.62em;height:.78em;background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+  h1{font-family:var(--disp);line-height:1.06;letter-spacing:-.02em}
+  .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"(";color:var(--muted)}
+  .kicker::after{content:")";color:var(--muted)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
   /* nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(244,243,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:80px;gap:24px}
   .brand{display:flex;align-items:center;text-decoration:none}
-  .logo-img{display:block;height:52px;width:auto}
-  .nav-links{display:flex;gap:24px;font-size:.86rem;font-weight:600}
-  .nav-links a{text-decoration:none;color:var(--ink2)}
-  .nav-links a:hover{color:var(--primary)}
-  .nav-cta{background:var(--primary);color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:999px;transition:background .15s ease}
-  .nav-cta:hover{background:var(--accent)}
-  /* ---- mobile nav (hamburger + side drawer) ---- */
+  .logo-img{display:block;height:48px;width:auto}
+  .nav-links{display:flex;gap:24px;font-family:var(--mono);font-size:.8rem}
+  .nav-links a{text-decoration:none;color:var(--ink2);position:relative;padding-bottom:3px}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--signal);transition:width .22s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{background:var(--ink);color:#fff;text-decoration:none;font-family:var(--mono);font-size:.78rem;font-weight:600;padding:11px 20px;border-radius:999px;transition:background .15s ease}
+  .nav-cta:hover{background:var(--primary)}
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;margin-right:-8px}
   .nav-toggle span{display:block;width:24px;height:2.5px;background:var(--ink);border-radius:2px;margin:5px 0;transition:transform .25s ease,opacity .2s ease}
   .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
   .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
   .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-  .nav-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.55);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60}
+  .nav-backdrop{position:fixed;inset:0;background:rgba(16,20,24,.55);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60}
   .nav-backdrop.open{opacity:1;pointer-events:auto}
-  .nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(82vw,340px);background:#fff;z-index:70;
-    transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(15,23,42,.12)}
+  .nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(82vw,340px);background:var(--bg);z-index:70;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(16,20,24,.14)}
   .nav-drawer.open{transform:translateX(0)}
   .nav-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)}
   .nav-drawer-head img{height:36px;width:auto}
   .nav-drawer-close{background:none;border:0;cursor:pointer;padding:8px;color:var(--ink);font-size:24px;line-height:1;border-radius:8px}
-  .nav-drawer-close:hover{background:var(--mist)}
   .nav-drawer-links{display:flex;flex-direction:column;padding:14px 0;flex:1}
-  .nav-drawer-links a{padding:14px 24px;font-family:var(--disp);font-weight:700;font-size:1.02rem;color:var(--ink);text-decoration:none;border-left:3px solid transparent;transition:background .15s ease,border-color .15s ease,color .15s ease}
-  .nav-drawer-links a:hover,.nav-drawer-links a.active{background:var(--mist);border-left-color:var(--primary);color:var(--primary)}
+  .nav-drawer-links a{padding:14px 24px;font-family:var(--disp);font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none;border-left:3px solid transparent}
+  .nav-drawer-links a:hover{background:#ecebe4;border-left-color:var(--signal);color:var(--primary)}
   .nav-drawer-cta{padding:18px 22px;border-top:1px solid var(--line)}
   .nav-drawer-cta a{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;padding:14px 18px;border-radius:999px;font-size:.94rem}
-  .nav-drawer-cta a:hover{background:#1ebe5d}
   .nav-drawer-cta svg{width:18px;height:18px}
-  @media(max-width:760px){
-    .nav-links{display:none}
-    .nav-cta{display:none}
-    .nav-toggle{display:block}
-  }
-  @media(min-width:761px){
-    .nav-drawer,.nav-backdrop{display:none}
-  }
+  @media(max-width:880px){.nav-links{display:none}.nav-cta{display:none}.nav-toggle{display:block}}
+  @media(min-width:881px){.nav-drawer,.nav-backdrop{display:none}}
 
   /* page header */
-  .page-head{background:linear-gradient(135deg,var(--ink) 0%,var(--primary) 100%);color:#fff;padding:48px 0 40px}
-  .page-head .kicker{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:#93c5fd;display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .page-head h1{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900}
-  .page-head p{max-width:600px;margin-top:10px;color:#cbd5e1;font-size:.98rem}
-  .back{display:inline-flex;align-items:center;gap:8px;color:#93c5fd;text-decoration:none;font-weight:600;font-size:.9rem;margin-bottom:18px}
-  .back:hover{color:#fff}
+  .page-head{padding:64px 0 48px;border-bottom:1px solid var(--ink)}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.8rem;margin-bottom:24px}
+  .back:hover{color:var(--ink)}
+  .page-head h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.96}
+  .page-head h1 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
+  .page-head p{max-width:60ch;margin-top:18px;color:var(--ink2);font-size:1.02rem}
 
-  /* chart frame */
-  main{padding:48px 0 88px}
-  .chart-frame{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 12px 40px rgba(15,23,42,.06);text-align:center}
-  .chart-frame img{margin:0 auto;border-radius:10px}
-  .caption{margin-top:20px;font-size:.86rem;color:var(--muted)}
-  .actions{margin-top:24px;text-align:center}
-  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;padding:13px 26px;border-radius:999px;transition:transform .15s ease,background .15s ease}
+  /* chart */
+  main{padding:48px 0 100px}
+  .chart-frame{background:var(--paper);border:1px solid var(--ink);border-radius:16px;padding:22px;text-align:center}
+  .chart-frame img{margin:0 auto;border-radius:8px}
+  .caption{margin-top:18px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+  .actions{margin-top:28px;text-align:center}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;padding:14px 26px;border-radius:999px;transition:transform .15s ease,background .15s ease,color .15s ease,border-color .15s ease}
   .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:var(--primary);color:#fff}
-  .btn-primary:hover{background:var(--accent)}
-  .btn-ghost{border:1.5px solid var(--line);color:var(--ink2);margin-left:10px}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:var(--primary)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);margin-left:10px}
   .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
   @media(max-width:560px){.btn-ghost{margin-left:0;margin-top:10px;display:inline-block}}
 
-  /* footer */
-  footer{background:var(--ink);color:#cbd5e1;padding:36px 0;text-align:center;font-size:.86rem}
+  footer{background:var(--ink);color:#aab3bd;padding:48px 0;text-align:center;font-family:var(--mono);font-size:.78rem}
   footer a{color:#93c5fd;text-decoration:none}
   footer a:hover{color:#fff}
   :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
@@ -96,13 +92,13 @@
 </head>
 <body>
 
-<nav>
+<nav class="top">
   <div class="wrap nav-in">
     <a class="brand" href="index.html" aria-label="KOMIDA">
       <img class="logo-img" src="komida-logo.png" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
     </a>
     <div class="nav-links">
-      <a href="index.html#tentang">Tentang Kami</a>
+      <a href="index.html#tentang">Tentang</a>
       <a href="berita.html">Berita</a>
       <a href="index.html#pinjaman">Pinjaman</a>
       <a href="index.html#takaful">Takaful</a>
@@ -140,46 +136,23 @@
   </div>
 </aside>
 
-<script>
-(function(){
-  var toggle=document.querySelector('.nav-toggle');
-  var drawer=document.getElementById('mobile-drawer');
-  var backdrop=document.querySelector('.nav-backdrop');
-  var closeBtn=document.querySelector('.nav-drawer-close');
-  var links=document.querySelectorAll('.nav-drawer-links a');
-  function setOpen(open){
-    drawer.classList.toggle('open',open);
-    backdrop.classList.toggle('open',open);
-    toggle.setAttribute('aria-expanded',open?'true':'false');
-    drawer.setAttribute('aria-hidden',open?'false':'true');
-    document.body.style.overflow=open?'hidden':'';
-  }
-  toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
-  backdrop.addEventListener('click',function(){setOpen(false);});
-  closeBtn.addEventListener('click',function(){setOpen(false);});
-  links.forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
-})();
-</script>
-
 <header class="page-head">
   <div class="wrap">
     <a class="back" href="index.html#tentang">&larr; Kembali ke Tentang Kami</a>
-    <div class="kicker"><span class="chev"></span> Tadbir Urus</div>
-    <h1>Ahli Lembaga Pengarah</h1>
+    <div class="kicker">Tadbir Urus</div>
+    <h1>Lembaga <span class="outline">Pengarah</span></h1>
     <p>Carta Organisasi ALP KOMIDA bagi sesi 2026/2027 — dipilih oleh anggota di Mesyuarat Agung Tahunan.</p>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <div class="chart-frame">
+    <div class="chart-frame reveal">
       <img src="carta-alp-komida.jpg" alt="Carta Organisasi Ahli Lembaga Pengarah KOMIDA 2026/2027">
-      <p class="caption">Carta Organisasi ALP KOMIDA &middot; Sesi 2026/2027</p>
+      <p class="caption">( Carta Organisasi ALP KOMIDA &middot; Sesi 2026/2027 )</p>
     </div>
-
-    <div class="actions">
-      <a class="btn btn-primary" href="carta-alp-komida.jpg" target="_blank" rel="noopener">Buka Imej Penuh</a>
+    <div class="actions reveal">
+      <a class="btn btn-dark" href="carta-alp-komida.jpg" target="_blank" rel="noopener">Buka Imej Penuh</a>
       <a class="btn btn-ghost" href="index.html#tentang">Kembali ke Tentang Kami</a>
     </div>
   </div>
@@ -190,6 +163,35 @@
     &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; <a href="index.html">Laman Utama</a> &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
   </div>
 </footer>
+
+<script>
+(function(){
+  var toggle=document.querySelector('.nav-toggle');
+  var drawer=document.getElementById('mobile-drawer');
+  var backdrop=document.querySelector('.nav-backdrop');
+  var closeBtn=document.querySelector('.nav-drawer-close');
+  function setOpen(open){
+    drawer.classList.toggle('open',open);
+    backdrop.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    drawer.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
+  backdrop.addEventListener('click',function(){setOpen(false);});
+  closeBtn.addEventListener('click',function(){setOpen(false);});
+  document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('in');});}
+})();
+</script>
 
 </body>
 </html>

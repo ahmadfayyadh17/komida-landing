@@ -7,104 +7,105 @@
 <meta name="description" content="Senarai borang rasmi KOMIDA — muat turun borang keanggotaan, pinjaman, takaful dan lain-lain.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231e3a8a'/><path d='M20 18 L20 46 M20 32 L36 18 M20 32 L36 46' stroke='white' stroke-width='6' fill='none' stroke-linecap='square'/><path d='M44 22 L52 32 L44 42 Z' fill='%23dc2626'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0f172a; --ink2:#1e293b; --paper:#ffffff; --mist:#f1f5f9;
+    --bg:#eef1f7; --bg-alt:#e2e8f3; --paper:#ffffff; --ink:#13203a; --ink2:#34405a;
     --primary:#1e3a8a; --primary-soft:#dbeafe; --accent:#3b82f6; --signal:#dc2626;
-    --line:#e2e8f0; --muted:#64748b;
-    --disp:'Archivo',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif;
+    --line:#cdd5e4; --muted:#5f6b82;
+    --disp:'Archivo',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:var(--body);color:var(--ink);background:var(--mist);line-height:1.65;font-size:16px;min-height:100vh}
-  img{max-width:100%}
+  body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px;min-height:100vh}
+  img{max-width:100%;display:block}
   a{color:inherit}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
-  h1,h2,h3{font-family:var(--disp);line-height:1.1;letter-spacing:-.01em}
-  .chev{display:inline-block;width:.62em;height:.78em;background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.06;letter-spacing:-.02em}
+  .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"(";color:var(--muted)}
+  .kicker::after{content:")";color:var(--muted)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
   /* nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(238,241,247,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:80px;gap:24px}
   .brand{display:flex;align-items:center;text-decoration:none}
-  .logo-img{display:block;height:52px;width:auto}
-  .nav-links{display:flex;gap:24px;font-size:.86rem;font-weight:600}
-  .nav-links a{text-decoration:none;color:var(--ink2)}
-  .nav-links a:hover,.nav-links a.active{color:var(--primary)}
-  .nav-cta{background:var(--primary);color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:999px;transition:background .15s ease}
-  .nav-cta:hover{background:var(--accent)}
-  /* ---- mobile nav (hamburger + side drawer) ---- */
+  .logo-img{display:block;height:48px;width:auto}
+  .nav-links{display:flex;gap:26px;font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:0}
+  .nav-links a{text-decoration:none;color:var(--ink2);position:relative;padding-bottom:3px}
+  /* dropdown */
+  .nav-dd{position:relative}
+  .nav-dd-btn{background:none;border:0;cursor:pointer;font-family:var(--disp);font-weight:700;font-size:1rem;color:var(--ink2);padding:0 0 3px;display:inline-flex;align-items:center;gap:5px;transition:color .15s ease}
+  .nav-dd-btn:hover{color:var(--ink)}
+  .nav-dd-caret{font-size:.7em;transition:transform .2s ease}
+  .nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}
+  .nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:200px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px rgba(16,20,24,.14);padding:8px;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:80}
+  .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav-dd-menu a{display:block;padding:9px 14px;border-radius:8px;font-family:var(--disp);font-weight:600;font-size:.92rem;color:var(--ink2);text-decoration:none}
+  .nav-dd-menu a::after{display:none}
+  .nav-dd-menu a:hover{background:#dde4f1;color:var(--primary)}
+  .nav-drawer-group{padding:16px 24px 4px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .nav-drawer-links a.nav-drawer-sub{padding-left:38px;font-size:.98rem;font-weight:600}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--signal);transition:width .22s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .nav-links a.active{color:var(--ink);font-weight:600}
+  .nav-cta{background:var(--ink);color:#fff;text-decoration:none;font-family:var(--mono);font-size:.78rem;font-weight:600;padding:11px 20px;border-radius:999px;transition:background .15s ease}
+  .nav-cta:hover{background:var(--primary)}
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;margin-right:-8px}
   .nav-toggle span{display:block;width:24px;height:2.5px;background:var(--ink);border-radius:2px;margin:5px 0;transition:transform .25s ease,opacity .2s ease}
   .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
   .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
   .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-  .nav-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.55);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60}
+  .nav-backdrop{position:fixed;inset:0;background:rgba(16,20,24,.55);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60}
   .nav-backdrop.open{opacity:1;pointer-events:auto}
-  .nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(82vw,340px);background:#fff;z-index:70;
-    transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(15,23,42,.12)}
+  .nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(82vw,340px);background:var(--bg);z-index:70;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(16,20,24,.14)}
   .nav-drawer.open{transform:translateX(0)}
   .nav-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)}
   .nav-drawer-head img{height:36px;width:auto}
   .nav-drawer-close{background:none;border:0;cursor:pointer;padding:8px;color:var(--ink);font-size:24px;line-height:1;border-radius:8px}
-  .nav-drawer-close:hover{background:var(--mist)}
   .nav-drawer-links{display:flex;flex-direction:column;padding:14px 0;flex:1}
-  .nav-drawer-links a{padding:14px 24px;font-family:var(--disp);font-weight:700;font-size:1.02rem;color:var(--ink);text-decoration:none;border-left:3px solid transparent;transition:background .15s ease,border-color .15s ease,color .15s ease}
-  .nav-drawer-links a:hover,.nav-drawer-links a.active{background:var(--mist);border-left-color:var(--primary);color:var(--primary)}
+  .nav-drawer-links a{padding:14px 24px;font-family:var(--disp);font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none;border-left:3px solid transparent}
+  .nav-drawer-links a:hover,.nav-drawer-links a.active{background:#dde4f1;border-left-color:var(--signal);color:var(--primary)}
   .nav-drawer-cta{padding:18px 22px;border-top:1px solid var(--line)}
   .nav-drawer-cta a{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;padding:14px 18px;border-radius:999px;font-size:.94rem}
-  .nav-drawer-cta a:hover{background:#1ebe5d}
   .nav-drawer-cta svg{width:18px;height:18px}
-  @media(max-width:760px){
-    .nav-links{display:none}
-    .nav-cta{display:none}
-    .nav-toggle{display:block}
-  }
-  @media(min-width:761px){
-    .nav-drawer,.nav-backdrop{display:none}
-  }
+  @media(max-width:880px){.nav-links{display:none}.nav-cta{display:none}.nav-toggle{display:block}}
+  @media(min-width:881px){.nav-drawer,.nav-backdrop{display:none}}
 
   /* page header */
-  .page-head{background:linear-gradient(135deg,var(--ink) 0%,var(--primary) 100%);color:#fff;padding:64px 0 56px;position:relative;overflow:hidden}
-  .page-head .kicker{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:#93c5fd;display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .page-head h1{font-size:clamp(2rem,5vw,3rem);font-weight:900}
-  .page-head p{max-width:600px;margin-top:14px;color:#cbd5e1;font-size:1.02rem}
+  .page-head{padding:72px 0 56px;border-bottom:1px solid var(--ink)}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.8rem;margin-bottom:24px}
+  .back:hover{color:var(--ink)}
+  .page-head h1{font-size:clamp(3rem,9vw,6.5rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.95}
+  .page-head h1 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
+  .page-head p{max-width:60ch;margin-top:22px;color:var(--ink2);font-size:1.04rem}
 
-  /* form list */
-  main{padding:56px 0 96px}
-  .form-list{display:flex;flex-direction:column;gap:14px}
-  .form-row{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 26px;
-    display:flex;align-items:center;gap:20px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
-  .form-row:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.06);border-color:var(--primary-soft)}
-  .form-row.coming{background:#fafbfc;opacity:.62}
-  .form-icon{flex:0 0 56px;width:56px;height:56px;border-radius:12px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center}
-  .form-row.coming .form-icon{background:#e8eaf0}
-  .form-icon svg{width:30px;height:30px;color:var(--primary)}
-  .form-row.coming .form-icon svg{color:var(--muted)}
-  .form-meta{flex:1;min-width:0}
-  .form-num{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);margin-bottom:4px}
-  .form-row.coming .form-num{color:var(--muted)}
-  .form-name{font-family:var(--disp);font-weight:800;font-size:1.12rem;color:var(--ink);line-height:1.3}
-  .form-desc{font-size:.86rem;color:var(--muted);margin-top:4px}
-  .form-cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;text-decoration:none;
-    padding:11px 20px;border-radius:999px;font-weight:700;font-size:.86rem;transition:background .15s ease}
-  .form-cta:hover{background:var(--accent)}
-  .form-cta svg{width:18px;height:18px}
-  .form-row.coming .form-cta{background:#cbd5e1;color:#64748b;cursor:not-allowed;pointer-events:none}
+  /* group heading */
+  .form-group-title{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin:46px 0 6px;font-weight:600}
 
-  @media(max-width:640px){
-    .form-row{flex-wrap:wrap;padding:20px;gap:14px}
-    .form-meta{flex:1 1 calc(100% - 70px)}
-    .form-cta{flex:1 1 100%;justify-content:center}
-  }
+  /* form list — editorial rows */
+  main{padding:48px 0 100px}
+  .form-list{border-top:1px solid var(--ink)}
+  .form-row{display:grid;grid-template-columns:90px 1fr auto;gap:26px;align-items:center;padding:32px 4px;border-bottom:1px solid var(--ink);transition:padding .25s ease,background .25s ease}
+  .form-row:hover{padding-left:18px;background:rgba(255,255,255,.6)}
+  .form-row.coming{opacity:.45}
+  .form-row.coming:hover{padding-left:4px;background:none}
+  @media(max-width:680px){.form-row{grid-template-columns:1fr;gap:12px}}
+  .form-num{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+  .form-name{font-family:var(--disp);font-weight:800;font-size:clamp(1.2rem,2.8vw,1.7rem);letter-spacing:-.015em}
+  .form-desc{font-size:.9rem;color:var(--muted);margin-top:6px;max-width:60ch}
+  .form-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;text-decoration:none;font-family:var(--mono);font-size:.78rem;font-weight:600;padding:12px 22px;border-radius:999px;transition:background .15s ease;white-space:nowrap}
+  .form-cta:hover{background:var(--primary)}
+  .form-cta svg{width:16px;height:16px}
+  .form-row.coming .form-cta{background:transparent;border:1.5px solid var(--line);color:var(--muted);cursor:not-allowed;pointer-events:none}
+  .help-note{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:30px}
+  .help-note a{color:var(--primary);font-weight:600}
 
-  /* back link */
-  .back{display:inline-flex;align-items:center;gap:8px;color:#93c5fd;text-decoration:none;font-weight:600;font-size:.9rem;margin-bottom:18px}
-  .back:hover{color:#fff}
-
-  /* footer */
-  footer{background:var(--ink);color:#cbd5e1;padding:36px 0;text-align:center;font-size:.86rem}
+  footer{background:var(--ink);color:#aab3bd;padding:48px 0;text-align:center;font-family:var(--mono);font-size:.78rem}
   footer a{color:#93c5fd;text-decoration:none}
   footer a:hover{color:#fff}
   :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
@@ -112,16 +113,25 @@
 </head>
 <body>
 
-<nav>
+<nav class="top">
   <div class="wrap nav-in">
     <a class="brand" href="index.html" aria-label="KOMIDA">
       <img class="logo-img" src="komida-logo.png" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
     </a>
     <div class="nav-links">
-      <a href="index.html#tentang">Tentang Kami</a>
+      <a href="index.html#tentang">Mengenai</a>
       <a href="berita.html">Berita</a>
-      <a href="index.html#pinjaman">Pinjaman</a>
-      <a href="index.html#takaful">Takaful</a>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" aria-expanded="false" aria-haspopup="true">Perkhidmatan <span class="nav-dd-caret" aria-hidden="true">&#9662;</span></button>
+        <div class="nav-dd-menu">
+          <a href="index.html#pinjaman">Pinjaman</a>
+          <a href="index.html#takaful">Takaful</a>
+          <a href="index.html#sjc">Skim Jimat Cermat (SJC)</a>
+          <a href="index.html#aktiviti-bazar">Bazar</a>
+          <a href="index.html#aktiviti-kafetaria">Kafetaria</a>
+          <a href="index.html#aktiviti-dobi">Dobi</a>
+        </div>
+      </div>
       <a href="index.html#manfaat">Manfaat</a>
       <a href="borang.html" class="active">Borang</a>
       <a href="index.html#faq">Soalan Lazim</a>
@@ -140,10 +150,15 @@
     <button class="nav-drawer-close" aria-label="Tutup menu">&times;</button>
   </div>
   <nav class="nav-drawer-links" aria-label="Menu utama">
-    <a href="index.html#tentang">Tentang Kami</a>
+    <a href="index.html#tentang">Mengenai Kami</a>
     <a href="berita.html">Berita</a>
-    <a href="index.html#pinjaman">Pinjaman</a>
-    <a href="index.html#takaful">Takaful</a>
+    <span class="nav-drawer-group">Perkhidmatan</span>
+    <a href="index.html#pinjaman" class="nav-drawer-sub">Pinjaman</a>
+    <a href="index.html#takaful" class="nav-drawer-sub">Takaful</a>
+    <a href="index.html#sjc" class="nav-drawer-sub">Skim Jimat Cermat (SJC)</a>
+    <a href="index.html#aktiviti-bazar" class="nav-drawer-sub">Bazar</a>
+    <a href="index.html#aktiviti-kafetaria" class="nav-drawer-sub">Kafetaria</a>
+    <a href="index.html#aktiviti-dobi" class="nav-drawer-sub">Dobi</a>
     <a href="index.html#manfaat">Manfaat</a>
     <a href="borang.html" class="active">Borang</a>
     <a href="index.html#faq">Soalan Lazim</a>
@@ -156,13 +171,163 @@
   </div>
 </aside>
 
+<header class="page-head">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Kembali ke Laman Utama</a>
+    <div class="kicker">Muat Turun Borang</div>
+    <h1>Borang <span class="outline">Rasmi</span></h1>
+    <p>Senarai borang rasmi KOMIDA untuk keanggotaan, pembiayaan, simpanan, takaful dan kebajikan. Klik butang muat turun untuk menyimpan salinan PDF.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="form-group-title">Keanggotaan</p>
+    <div class="form-list">
+      <div class="form-row reveal">
+        <span class="form-num">/ 01</span>
+        <div>
+          <div class="form-name">Borang Keanggotaan KOMIDA</div>
+          <p class="form-desc">Permohonan menjadi anggota baharu KOMIDA. Untuk kakitangan MIDA dalam perkhidmatan.</p>
+        </div>
+        <a class="form-cta" href="borang-keanggotaan-komida.pdf" download aria-label="Muat turun Borang Keanggotaan KOMIDA">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+    </div>
+
+    <p class="form-group-title">Pembiayaan</p>
+    <div class="form-list">
+      <div class="form-row reveal">
+        <span class="form-num">/ 02</span>
+        <div>
+          <div class="form-name">Borang Pinjaman Berjamin</div>
+          <p class="form-desc">Pembiayaan berjamin — dana lebih besar untuk keperluan utama. Memerlukan penjamin anggota.</p>
+        </div>
+        <a class="form-cta" href="borang-pinjaman-berjamin.pdf" download aria-label="Muat turun Borang Pinjaman Berjamin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+      <div class="form-row reveal">
+        <span class="form-num">/ 03</span>
+        <div>
+          <div class="form-name">Borang Pinjaman Segera</div>
+          <p class="form-desc">Pembiayaan segera untuk keperluan mendesak — kelulusan pantas, dokumen minimum.</p>
+        </div>
+        <a class="form-cta" href="borang-pinjaman-segera.pdf" download aria-label="Muat turun Borang Pinjaman Segera">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+      <div class="form-row reveal">
+        <span class="form-num">/ 04</span>
+        <div>
+          <div class="form-name">Borang Pinjaman Khas Pelajaran</div>
+          <p class="form-desc">Pembiayaan pendidikan untuk anggota dan tanggungan — yuran pengajian, peralatan dan asrama.</p>
+        </div>
+        <a class="form-cta" href="borang-pinjaman-pelajaran.pdf" download aria-label="Muat turun Borang Pinjaman Khas Pelajaran">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+    </div>
+
+    <p class="form-group-title">Simpanan &amp; Saham</p>
+    <div class="form-list">
+      <div class="form-row reveal">
+        <span class="form-num">/ 05</span>
+        <div>
+          <div class="form-name">Borang Tambah Saham</div>
+          <p class="form-desc">Permohonan menambah pegangan syer / modal saham anggota dalam KOMIDA.</p>
+        </div>
+        <a class="form-cta" href="borang-tambah-saham.pdf" download aria-label="Muat turun Borang Tambah Saham">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+      <div class="form-row reveal">
+        <span class="form-num">/ 06</span>
+        <div>
+          <div class="form-name">Borang Tambah / Kurang Skim Jimat Cermat</div>
+          <p class="form-desc">Permohonan menambah atau mengurangkan caruman bulanan Skim Jimat Cermat.</p>
+        </div>
+        <a class="form-cta" href="borang-tambah-kurang-jimat-cermat.pdf" download aria-label="Muat turun Borang Tambah / Kurang Skim Jimat Cermat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+      <div class="form-row reveal">
+        <span class="form-num">/ 07</span>
+        <div>
+          <div class="form-name">Borang Pengeluaran Caruman Skim Jimat Cermat &amp; Modal Saham</div>
+          <p class="form-desc">Permohonan pengeluaran caruman Skim Jimat Cermat dan modal saham anggota.</p>
+        </div>
+        <a class="form-cta" href="borang-pengeluaran-caruman.pdf" download aria-label="Muat turun Borang Pengeluaran Caruman Skim Jimat Cermat &amp; Modal Saham">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+    </div>
+
+    <p class="form-group-title">Takaful &amp; Kebajikan</p>
+    <div class="form-list">
+      <div class="form-row reveal">
+        <span class="form-num">/ 08</span>
+        <div>
+          <div class="form-name">Borang Skim Insurans</div>
+          <p class="form-desc">Permohonan skim insurans / takaful anggota — perlindungan nyawa dan kesihatan untuk anda dan keluarga.</p>
+        </div>
+        <a class="form-cta" href="borang-skim-insuran.pdf" download aria-label="Muat turun Borang Skim Insurans">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+      <div class="form-row reveal">
+        <span class="form-num">/ 09</span>
+        <div>
+          <div class="form-name">Borang Tabung Kebajikan KOMIDA</div>
+          <p class="form-desc">Borang berkaitan Tabung Kebajikan — khairat dan sumbangan kebajikan anggota.</p>
+        </div>
+        <a class="form-cta" href="borang-tabung-kebajikan.pdf" download aria-label="Muat turun Borang Tabung Kebajikan KOMIDA">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+    </div>
+
+    <p class="form-group-title">Aktiviti Koperasi</p>
+    <div class="form-list">
+      <div class="form-row reveal">
+        <span class="form-num">/ 10</span>
+        <div>
+          <div class="form-name">Borang Kuning — Bazar KOMIDA</div>
+          <p class="form-desc">Borang penyertaan / tempahan ruang Bazar KOMIDA.</p>
+        </div>
+        <a class="form-cta" href="borang-kuning-bazar.pdf" download aria-label="Muat turun Borang Kuning Bazar KOMIDA">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Muat Turun
+        </a>
+      </div>
+    </div>
+
+    <p class="help-note">( Hantar borang lengkap ke <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a> atau ke kaunter KOMIDA, Aras 11, Ibu Pejabat MIDA )</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; <a href="index.html">Laman Utama</a> &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
+  </div>
+</footer>
+
 <script>
 (function(){
   var toggle=document.querySelector('.nav-toggle');
   var drawer=document.getElementById('mobile-drawer');
   var backdrop=document.querySelector('.nav-backdrop');
   var closeBtn=document.querySelector('.nav-drawer-close');
-  var links=document.querySelectorAll('.nav-drawer-links a');
   function setOpen(open){
     drawer.classList.toggle('open',open);
     backdrop.classList.toggle('open',open);
@@ -173,84 +338,18 @@
   toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
   backdrop.addEventListener('click',function(){setOpen(false);});
   closeBtn.addEventListener('click',function(){setOpen(false);});
-  links.forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('in');});}
 })();
 </script>
-
-<header class="page-head">
-  <div class="wrap">
-    <a class="back" href="index.html">&larr; Kembali ke Laman Utama</a>
-    <div class="kicker"><span class="chev"></span> Muat Turun Borang</div>
-    <h1>Borang Rasmi KOMIDA</h1>
-    <p>Senarai borang rasmi untuk keanggotaan, pembiayaan, takaful dan lain-lain. Klik ikon muat turun untuk menyimpan salinan PDF.</p>
-  </div>
-</header>
-
-<main>
-  <div class="wrap">
-    <div class="form-list">
-
-      <div class="form-row">
-        <div class="form-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-        </div>
-        <div class="form-meta">
-          <div class="form-num">Borang 01</div>
-          <div class="form-name">Borang Keanggotaan KOMIDA</div>
-          <div class="form-desc">Borang permohonan menjadi anggota baharu KOMIDA. Untuk kakitangan MIDA dalam perkhidmatan.</div>
-        </div>
-        <a class="form-cta" href="borang-keanggotaan-komida.pdf" download aria-label="Muat turun Borang Keanggotaan KOMIDA">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Muat Turun
-        </a>
-      </div>
-
-      <div class="form-row coming">
-        <div class="form-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="form-meta">
-          <div class="form-num">Borang 02</div>
-          <div class="form-name">Borang Permohonan Pinjaman</div>
-          <div class="form-desc">Akan dimuat naik kelak.</div>
-        </div>
-        <a class="form-cta" aria-disabled="true">Akan Datang</a>
-      </div>
-
-      <div class="form-row coming">
-        <div class="form-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="form-meta">
-          <div class="form-num">Borang 03</div>
-          <div class="form-name">Borang Tuntutan Khairat / Manfaat</div>
-          <div class="form-desc">Akan dimuat naik kelak.</div>
-        </div>
-        <a class="form-cta" aria-disabled="true">Akan Datang</a>
-      </div>
-
-      <div class="form-row coming">
-        <div class="form-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="form-meta">
-          <div class="form-num">Borang 04</div>
-          <div class="form-name">Borang Takaful / Insurans Anggota</div>
-          <div class="form-desc">Akan dimuat naik kelak.</div>
-        </div>
-        <a class="form-cta" aria-disabled="true">Akan Datang</a>
-      </div>
-
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="wrap">
-    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; <a href="index.html">Laman Utama</a> &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
-  </div>
-</footer>
 
 </body>
 </html>
