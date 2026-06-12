@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KOMIDA — Koperasi MIDA Kuala Lumpur Berhad</title>
+<meta name="description" content="KOMIDA Milik Kita — pinjaman, takaful, khairat dan manfaat anggota untuk warga MIDA. Dari ahli, untuk ahli, demi kemajuan.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231e3a8a'/><path d='M20 18 L20 46 M20 32 L36 18 M20 32 L36 46' stroke='white' stroke-width='6' fill='none' stroke-linecap='square'/><path d='M44 22 L52 32 L44 42 Z' fill='%23dc2626'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Blue + grey palette */
+    --ink:#0f172a;          /* deep navy ink */
+    --ink2:#1e293b;         /* slate */
+    --paper:#ffffff;
+    --mist:#f1f5f9;         /* cool grey background */
+    --primary:#1e3a8a;      /* primary blue */
+    --primary-soft:#dbeafe; /* soft blue tint */
+    --accent:#3b82f6;       /* bright accent blue */
+    --signal:#dc2626;       /* signal red (kept from logo chevron) */
+    --line:#e2e8f0;         /* light grey divider */
+    --muted:#64748b;        /* mid grey text */
+    --disp:'Archivo',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:16px}
+  img{max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.08;letter-spacing:-.01em}
+
+  /* ---- chevron signature (logo "D" mark) ---- */
+  .chev{display:inline-block;width:.62em;height:.78em;background:var(--signal);
+    clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
+
+  /* ---- logo (inline SVG version of KOMIDA wordmark) ---- */
+  .logo-svg{display:block;height:38px;width:auto}
+  .logo-svg.lg{height:88px}
+  .logo-svg.footer{height:46px}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+  .brand{display:flex;align-items:center;text-decoration:none}
+  .nav-links{display:flex;gap:26px;font-size:.86rem;font-weight:600}
+  .nav-links a{text-decoration:none;color:var(--ink2)}
+  .nav-links a:hover{color:var(--primary)}
+  .nav-cta{background:var(--primary);color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:999px;transition:background .15s ease}
+  .nav-cta:hover{background:var(--accent)}
+  @media(max-width:760px){.nav-links{display:none}.logo-svg{height:32px}}
+
+  /* ---- hero ---- */
+  header{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#1e40af 100%);color:#fff;position:relative;overflow:hidden}
+  .hero{padding:84px 0 72px;position:relative;z-index:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:.32em;font-weight:600;color:#93c5fd;text-transform:uppercase;margin-bottom:18px}
+  .hero h1{font-size:clamp(2.6rem,7.5vw,5.2rem);font-weight:900;letter-spacing:.02em}
+  .hero h1 .d{color:var(--signal)}
+  .hero .sub{max-width:560px;margin:22px 0 34px;color:#cbd5e1;font-size:1.05rem}
+  .hero .logo-svg.lg{margin-bottom:24px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;padding:14px 28px;border-radius:999px;transition:transform .15s ease,background .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#60a5fa}
+  .btn-ghost{border:1.5px solid #475569;color:#fff;margin-left:12px}
+  .btn-ghost:hover{border-color:#93c5fd;color:#93c5fd}
+  .hero-mark{position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:min(38vw,420px);aspect-ratio:.78;
+    background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);opacity:.85}
+  .hero-mark.o2{right:14%;background:var(--accent);opacity:.22;width:min(30vw,320px)}
+  @media(max-width:760px){.hero{padding:64px 0 56px}.hero-mark{opacity:.2}.hero-mark.o2{display:none}.btn-ghost{margin-left:0;margin-top:10px}}
+
+  /* ---- marquee ---- */
+  .ticker{background:var(--primary);color:#fff;overflow:hidden;white-space:nowrap;border-top:3px solid var(--signal)}
+  .ticker-track{display:inline-block;padding:10px 0;font-family:var(--disp);font-weight:800;letter-spacing:.18em;font-size:.85rem;animation:tick 26s linear infinite}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+  /* ---- stats ---- */
+  .stats{border-bottom:1px solid var(--line);background:var(--paper)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+  .stat{background:var(--paper);padding:30px 22px;text-align:left}
+  .stat b{display:block;font-family:var(--disp);font-weight:900;font-size:1.9rem;color:var(--primary)}
+  .stat span{font-size:.8rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  @media(max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---- sections ---- */
+  section{padding:78px 0}
+  .sec-head{margin-bottom:42px;max-width:640px}
+  .sec-head .kicker{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .sec-head h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800}
+  .sec-head p{color:var(--muted);margin-top:12px}
+
+  /* timeline */
+  .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tl-item{border-top:3px solid var(--primary);padding-top:18px}
+  .tl-item:last-child{border-top-color:var(--signal)}
+  .tl-item .yr{font-family:var(--disp);font-weight:900;font-size:1.5rem;color:var(--ink)}
+  .tl-item h3{font-size:1rem;margin:6px 0 8px;color:var(--primary)}
+  .tl-item:last-child h3{color:var(--signal)}
+  .tl-item p{font-size:.9rem;color:var(--muted)}
+  @media(max-width:760px){.tl{grid-template-columns:1fr}}
+
+  /* loan cards */
+  .sec-alt{background:var(--mist)}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 26px;display:flex;flex-direction:column}
+  .card.feature{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .card .tag{align-self:flex-start;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--primary-soft);color:var(--primary);margin-bottom:16px}
+  .card.feature .tag{background:var(--signal);color:#fff}
+  .card h3{font-size:1.25rem;font-weight:800;margin-bottom:10px}
+  .card .lead{font-size:.92rem;color:var(--muted);margin-bottom:18px}
+  .card.feature .lead{color:#cbd5e1}
+  .card ul{list-style:none;font-size:.9rem;margin-bottom:20px}
+  .card li{padding:7px 0 7px 24px;position:relative;border-bottom:1px dashed var(--line)}
+  .card.feature li{border-bottom-color:#334155}
+  .card li:last-child{border-bottom:none}
+  .card li::before{content:"";position:absolute;left:2px;top:13px;width:.5em;height:.62em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
+  .card.feature li::before{background:var(--accent)}
+  .card .cta{margin-top:auto;font-weight:700;font-size:.88rem;color:var(--primary);text-decoration:none}
+  .card.feature .cta{color:#93c5fd}
+  .card .cta:hover{text-decoration:underline}
+  @media(max-width:860px){.cards3{grid-template-columns:1fr}}
+  .note{font-size:.8rem;color:var(--muted);margin-top:20px}
+  .note b{color:var(--signal)}
+
+  /* takaful split */
+  .split{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .split ul{list-style:none;margin-top:18px}
+  .split li{padding:10px 0 10px 28px;position:relative;border-bottom:1px solid var(--line);font-size:.95rem}
+  .split li::before{content:"";position:absolute;left:2px;top:17px;width:.55em;height:.68em;background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
+  .panel{background:linear-gradient(135deg,var(--ink) 0%,var(--primary) 100%);color:#fff;border-radius:16px;padding:36px 32px}
+  .panel h3{font-size:1.15rem;margin-bottom:14px;color:#93c5fd}
+  .panel p{font-size:.92rem;color:#cbd5e1;margin-bottom:14px}
+  .panel .btn{font-size:.85rem;padding:12px 22px}
+  @media(max-width:860px){.split{grid-template-columns:1fr}}
+
+  /* benefits grid */
+  .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ben{border:1px solid var(--line);border-radius:12px;padding:24px 22px;background:var(--paper)}
+  .ben:nth-child(2n){background:var(--primary-soft);border-color:#bfdbfe}
+  .ben h3{font-size:1rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
+  .ben p{font-size:.86rem;color:var(--muted)}
+  .ben .amt{display:inline-block;margin-top:10px;font-family:var(--disp);font-weight:800;color:var(--primary);font-size:.95rem}
+  @media(max-width:860px){.ben-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.ben-grid{grid-template-columns:1fr}}
+
+  /* join steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
+  .step{background:var(--paper);border-radius:14px;padding:28px 26px;border:1px solid var(--line)}
+  .step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--disp);font-weight:900;font-size:2rem;color:var(--primary);display:block;margin-bottom:10px}
+  .step h3{font-size:1.05rem;margin-bottom:8px}
+  .step p{font-size:.88rem;color:var(--muted)}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .join-cta{margin-top:36px;text-align:center}
+  .join-cta .btn-primary{font-size:1rem;padding:16px 36px}
+  .join-cta p{font-size:.84rem;color:var(--muted);margin-top:12px}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;font-weight:600;font-size:1rem;padding:18px 36px 18px 0;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"";position:absolute;right:6px;top:50%;width:.6em;height:.74em;background:var(--primary);
+    clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(-50%);transition:transform .2s}
+  details[open] summary::after{transform:translateY(-50%) rotate(90deg);background:var(--signal)}
+  details p{padding:0 0 20px;color:var(--muted);font-size:.93rem;max-width:760px}
+
+  /* footer */
+  footer{background:var(--ink);color:#cbd5e1;padding:64px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;margin-bottom:44px}
+  footer h3{color:#fff;font-size:1rem;margin-bottom:14px}
+  footer a{color:#cbd5e1;text-decoration:none;font-size:.9rem}
+  footer a:hover{color:#93c5fd}
+  footer li{list-style:none;padding:5px 0}
+  .foot-tag{font-style:italic;color:#93c5fd;margin-top:12px;font-size:.92rem}
+  .foot-base{border-top:1px solid #334155;padding-top:22px;font-size:.78rem;color:#64748b;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<!-- ============== Reusable inline KOMIDA logo SVG ============== -->
+<!-- Hidden master symbol used via <use> across the page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="komida-logo" viewBox="0 0 1400 420">
+      <!-- K -->
+      <g fill="currentColor">
+        <polygon points="40,30 140,30 140,390 40,390"/>
+        <polygon points="140,210 260,30 380,30 220,230 380,390 260,390 140,250"/>
+        <!-- O -->
+        <path d="M530 210 a160 180 0 1 1 0.001 0 z M530 110 a60 100 0 1 0 0.001 0 z" fill-rule="evenodd"/>
+        <!-- M -->
+        <polygon points="730,30 830,30 920,260 1010,30 1110,30 1110,390 1020,390 1020,180 940,390 900,390 820,180 820,390 730,390"/>
+        <!-- I -->
+        <polygon points="1140,30 1240,30 1240,390 1140,390"/>
+        <!-- D-base (grey) -->
+        <polygon points="1270,30 1290,30 1290,390 1270,390"/>
+      </g>
+      <!-- D chevron (right side of D) in red -->
+      <polygon points="1270,30 1290,30 1400,210 1290,390 1270,390 1380,210" fill="#dc2626"/>
+      <!-- underline -->
+      <rect x="40" y="410" width="1360" height="6" fill="#dc2626"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="KOMIDA - Koperasi MIDA Kuala Lumpur Berhad">
+      <svg class="logo-svg" viewBox="0 0 1400 420" style="color:#475569" aria-hidden="true">
+        <use href="#komida-logo"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#pinjaman">Pinjaman</a>
+      <a href="#takaful">Takaful</a>
+      <a href="#manfaat">Manfaat</a>
+      <a href="#faq">Soalan Lazim</a>
+    </div>
+    <a class="nav-cta" href="#sertai">Jadi Anggota</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero-mark"></div>
+  <div class="hero-mark o2"></div>
+  <div class="wrap hero">
+    <svg class="logo-svg lg" viewBox="0 0 1400 420" style="color:#ffffff" aria-label="KOMIDA logo">
+      <use href="#komida-logo"/>
+    </svg>
+    <div class="eyebrow">Koperasi MIDA Kuala Lumpur Berhad &middot; Sejak 1997</div>
+    <h1>MILIK KITA.</h1>
+    <p class="sub">Pinjaman patuh syariah, perlindungan takaful, khairat dan manfaat kebajikan — semuanya dibina oleh warga MIDA, untuk warga MIDA. Setiap keuntungan kembali kepada anggota.</p>
+    <a class="btn btn-primary" href="#sertai">Jadi Anggota</a><a class="btn btn-ghost" href="#manfaat">Semak Manfaat Anda</a>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    DARI AHLI &nbsp;&#10095;&nbsp; UNTUK AHLI &nbsp;&#10095;&nbsp; DEMI KEMAJUAN &nbsp;&#10095;&nbsp; PATUH SYARIAH &nbsp;&#10095;&nbsp; DIAUDIT BEBAS &nbsp;&#10095;&nbsp;
+    DARI AHLI &nbsp;&#10095;&nbsp; UNTUK AHLI &nbsp;&#10095;&nbsp; DEMI KEMAJUAN &nbsp;&#10095;&nbsp; PATUH SYARIAH &nbsp;&#10095;&nbsp; DIAUDIT BEBAS &nbsp;&#10095;&nbsp;
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>689</b><span>Anggota berdaftar</span></div>
+      <div class="stat"><b>1997</b><span>Tahun ditubuhkan</span></div>
+      <div class="stat"><b>100%</b><span>Patuh syariah</span></div>
+      <div class="stat"><b>SKM</b><span>Dikawal selia &amp; diaudit</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="tentang">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="chev"></span> Tentang Kami</div>
+      <h2>Hampir tiga dekad berkhidmat kepada warga MIDA</h2>
+      <p>KOMIDA didaftarkan di bawah Suruhanjaya Koperasi Malaysia (No. W-4-0280) dan diaudit oleh juruaudit luar bebas. Visi kami: menjadi koperasi pelaburan yang menjana kekayaan mampan dan kesejahteraan kewangan kepada anggota.</p>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="yr">1995</div>
+        <h3>Idea Penubuhan</h3>
+        <p>Dicetuskan oleh Pasukan Bertindak Pembangunan Manusia (HRD) MIDA selepas Hari Kualiti 1995.</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1997</div>
+        <h3>Pendaftaran Rasmi</h3>
+        <p>Koperasi MIDA Berhad didaftarkan pada 14 Jun 1997 di bawah Suruhanjaya Koperasi Malaysia (SKM).</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2008</div>
+        <h3>Penjenamaan Semula</h3>
+        <p>Melalui persetujuan AGM, nama ditukar kepada Koperasi MIDA Kuala Lumpur Berhad — KOMIDA yang anda kenali hari ini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pinjaman" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="chev"></span> Pembiayaan Anggota</div>
+      <h2>Pinjaman yang untungnya kembali kepada anda</h2>
+      <p>Semua pembiayaan KOMIDA adalah patuh syariah dengan bayaran balik melalui potongan gaji — tiada tarikh terlepas, tiada yuran tersembunyi.</p>
+    </div>
+    <div class="cards3">
+      <article class="card feature">
+        <span class="tag">Paling Popular</span>
+        <h3>Pinjaman Berjamin</h3>
+        <p class="lead">Dana lebih besar untuk keperluan utama — ubah suai rumah, perkahwinan, kecemasan keluarga.</p>
+        <ul>
+          <li>Jumlah sehingga RM[X] tertakluk kelayakan</li>
+          <li>Kadar keuntungan [X]% setahun</li>
+          <li>Tempoh bayaran sehingga [X] tahun</li>
+          <li>Memerlukan penjamin anggota</li>
+          <li>Potongan ansuran gaji automatik</li>
+        </ul>
+        <a class="cta" href="#sertai">Semak kelayakan &#10095;</a>
+      </article>
+      <article class="card">
+        <span class="tag">Kelulusan Pantas</span>
+        <h3>Pinjaman Segera</h3>
+        <p class="lead">Untuk keperluan mendesak yang tidak boleh menunggu hari gaji.</p>
+        <ul>
+          <li>Kelulusan dalam [X] hari bekerja</li>
+          <li>Jumlah sehingga RM[X]</li>
+          <li>Dokumen minimum</li>
+          <li>Tiada penjamin untuk jumlah kecil [sahkan]</li>
+          <li>Potongan ansuran gaji automatik</li>
+        </ul>
+        <a class="cta" href="#sertai">Mohon sekarang &#10095;</a>
+      </article>
+      <article class="card">
+        <span class="tag">Pendidikan</span>
+        <h3>Pinjaman Pelajaran</h3>
+        <p class="lead">Melabur dalam pendidikan anak anda — atau diri anda sendiri.</p>
+        <ul>
+          <li>Yuran pengajian, peralatan &amp; asrama</li>
+          <li>Kadar istimewa anggota</li>
+          <li>Tempoh fleksibel mengikut pengajian</li>
+          <li>Terbuka untuk anggota &amp; tanggungan</li>
+          <li>Potongan ansuran gaji automatik</li>
+        </ul>
+        <a class="cta" href="#sertai">Ketahui lanjut &#10095;</a>
+      </article>
+    </div>
+    <p class="note"><b>Nota:</b> angka bertanda [X] akan dikemas kini dari semasa ke semasa dan disahkan oleh Bendahari KOMIDA. Sebarang pembiayaan tertakluk kepada kelulusan dan Undang-Undang Kecil koperasi.</p>
+  </div>
+</section>
+
+<section id="takaful">
+  <div class="wrap split">
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="kicker"><span class="chev"></span> Insurans &amp; Takaful</div>
+        <h2>Perlindungan yang kekal bersama anda</h2>
+        <p>Perlindungan majikan tamat apabila anda bersara atau bertukar. Perlindungan persendirian melalui KOMIDA kekal bersama anda — dengan kadar kumpulan yang lebih rendah daripada pasaran.</p>
+      </div>
+      <ul>
+        <li><strong>Takaful / insurans persendirian</strong> — perlindungan nyawa &amp; kesihatan untuk anda dan keluarga.</li>
+        <li><strong>Skim berkelompok warga MIDA</strong> — kadar lebih kompetitif hasil kuasa beli kolektif anggota.</li>
+        <li><strong>Bayaran mudah</strong> — premium melalui kemudahan potongan ansuran KOMIDA.</li>
+        <li><strong>Lapisan kedua</strong> — anggota turut dilindungi khairat &amp; insentif sakit kritikal koperasi.</li>
+      </ul>
+    </div>
+    <aside class="panel">
+      <h3>Tidak pasti pelan mana sesuai?</h3>
+      <p>Hubungi urus setia KOMIDA untuk perbandingan pelan secara percuma — tiada paksaan, hanya nasihat ikhlas daripada koperasi anda sendiri.</p>
+      <a class="btn btn-primary" href="mailto:komida@mida.gov.my?subject=Pertanyaan%20Takaful%20KOMIDA">Tanya Tentang Takaful</a>
+    </aside>
+  </div>
+</section>
+
+<section id="manfaat" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="chev"></span> Manfaat Anggota</div>
+      <h2>Hak anda sebagai anggota — jangan biarkan tidak dituntut</h2>
+      <p>Yuran bulanan anda bukan sekadar simpanan. Ia membuka enam manfaat kebajikan untuk anda dan keluarga.</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben"><h3>Sumbangan Khairat Kematian</h3><p>Bagi kematian ibu, bapa, pasangan dan anak anggota.</p><span class="amt">RM[X]</span></div>
+      <div class="ben"><h3>Insentif Pelajar Cemerlang</h3><p>Pengiktirafan kecemerlangan akademik anak anggota.</p><span class="amt">RM[X]</span></div>
+      <div class="ben"><h3>Insentif Sakit Kritikal</h3><p>Bantuan kewangan bagi anggota yang disahkan menghidap penyakit kritikal.</p><span class="amt">RM[X]</span></div>
+      <div class="ben"><h3>Insentif Kemasukan Wad</h3><p>Sumbangan bagi anggota yang menerima rawatan di hospital.</p><span class="amt">RM[X]</span></div>
+      <div class="ben"><h3>Kemudahan Pembiayaan</h3><p>Akses kepada pinjaman pelajaran, segera dan jangka panjang.</p><span class="amt">3 produk</span></div>
+      <div class="ben"><h3>Potongan Ansuran Gaji</h3><p>Semua bayaran balik diurus automatik melalui potongan gaji bulanan.</p><span class="amt">Automatik</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="sertai">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="chev"></span> Cara Menyertai</div>
+      <h2>Jadi anggota dalam tiga langkah mudah</h2>
+      <p>Terbuka kepada semua kakitangan MIDA dalam perkhidmatan. Pesara MIDA kekal sebagai anggota.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Isi Borang Keahlian</h3>
+        <p>Muat turun borang di sini atau dapatkan salinan fizikal di kaunter KOMIDA, Aras 11, Ibu Pejabat MIDA.</p>
+      </div>
+      <div class="step">
+        <h3>Bayar Fi &amp; Syer Minimum</h3>
+        <p>Fi masuk RM[X] dan syer minimum RM[X]. Yuran bulanan seterusnya melalui potongan gaji [jumlah pilihan anda].</p>
+      </div>
+      <div class="step">
+        <h3>Mula Menikmati Manfaat</h3>
+        <p>Keanggotaan disahkan dalam [X] hari bekerja. Anda terus layak untuk pembiayaan, khairat dan semua manfaat anggota.</p>
+      </div>
+    </div>
+    <div class="join-cta">
+      <a class="btn btn-primary" href="mailto:komida@mida.gov.my?subject=Pendaftaran%20Minat%20Anggota%20Baharu&body=Nama%3A%0ABahagian%3A%0ANo.%20Telefon%3A">Daftar Minat Sekarang</a>
+      <p>Atau WhatsApp kami terus di +6019-379 8434 — kami balas dalam 1 hari bekerja.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="chev"></span> Soalan Lazim</div>
+      <h2>Soalan jujur, jawapan jujur</h2>
+    </div>
+    <details open>
+      <summary>Apakah KOMIDA dan siapa yang layak menyertai?</summary>
+      <p>KOMIDA ialah Koperasi MIDA Kuala Lumpur Berhad, ditubuhkan pada 1997 dan berdaftar dengan Suruhanjaya Koperasi Malaysia (W-4-0280). Keanggotaan terbuka kepada kakitangan MIDA; pesara MIDA kekal sebagai anggota.</p>
+    </details>
+    <details>
+      <summary>Berapakah dividen KOMIDA?</summary>
+      <p>Dividen terkini ialah 2% setahun, berdasarkan penyata kewangan yang diaudit oleh juruaudit luar bebas. Kami tidak menjanjikan kadar masa hadapan — dividen bergantung kepada prestasi sebenar koperasi dan diluluskan di Mesyuarat Agung. Nilai keanggotaan KOMIDA merangkumi lebih daripada dividen: khairat, insentif kebajikan, akses pembiayaan dan harga anggota.</p>
+    </details>
+    <details>
+      <summary>Adakah wang saya selamat?</summary>
+      <p>KOMIDA dikawal selia oleh SKM di bawah Akta Koperasi 1993, menggunakan perbankan patuh syariah (Bank Rakyat, Bank Islam, Maybank), sistem perakaunan berkomputer, dan diaudit setiap tahun oleh juruaudit luar bebas. Penyata kewangan dibentangkan kepada anggota di Mesyuarat Agung.</p>
+    </details>
+    <details>
+      <summary>Macam mana nak mohon pinjaman?</summary>
+      <p>Isi borang permohonan (di kaunter Aras 11 atau melalui pautan di halaman ini), sertakan dokumen sokongan, dan hantar kepada urus setia KOMIDA. Permohonan diproses mengikut giliran dan tertakluk kepada kelayakan serta Undang-Undang Kecil koperasi.</p>
+    </details>
+    <details>
+      <summary>Boleh saya keluarkan syer/simpanan saya?</summary>
+      <p>Boleh, tertakluk kepada Undang-Undang Kecil dan prosedur pengeluaran koperasi. Namun, kami menggalakkan anda berbincang dengan urus setia terlebih dahulu — keanggotaan berterusan mengekalkan kelayakan anda kepada khairat, insentif dan pembiayaan.</p>
+    </details>
+    <details>
+      <summary>Apa berlaku kepada keanggotaan saya selepas bersara?</summary>
+      <p>Anda kekal sebagai anggota KOMIDA selepas persaraan dan terus layak menerima manfaat mengikut Undang-Undang Kecil. Pada masa ini, 150 daripada 689 anggota kami ialah pesara MIDA.</p>
+    </details>
+    <details>
+      <summary>Ke mana keuntungan KOMIDA pergi?</summary>
+      <p>Keuntungan daripada aktiviti koperasi — pembiayaan, Cafe MIDA, bazar dan pelaburan patuh syariah — diagihkan semula kepada anggota melalui dividen dan manfaat kebajikan, selepas peruntukan rizab berkanun. Itulah prinsip koperasi: dari ahli, untuk ahli.</p>
+    </details>
+    <details>
+      <summary>Bagaimana saya boleh mengikuti perkembangan KOMIDA?</summary>
+      <p>Sertai saluran WhatsApp rasmi KOMIDA dan ikuti media sosial kami. Laporan ringkas kedudukan dana dikongsi secara berkala, dan semua anggota dijemput ke Mesyuarat Agung Tahunan.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <svg class="logo-svg footer" viewBox="0 0 1400 420" style="color:#ffffff" aria-label="KOMIDA">
+          <use href="#komida-logo"/>
+        </svg>
+        <p class="foot-tag">&ldquo;Dari Ahli, Untuk Ahli, Demi Kemajuan!&rdquo;</p>
+        <p style="font-size:.82rem;margin-top:14px">Koperasi MIDA Kuala Lumpur Berhad<br>No. Pendaftaran SKM: W-4-0280</p>
+      </div>
+      <div>
+        <h3>Hubungi Kami</h3>
+        <ul>
+          <li><a href="tel:+60322672542">+603-2267 2542</a></li>
+          <li><a href="https://wa.me/60193798434">WhatsApp: +6019-379 8434</a></li>
+          <li><a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a></li>
+          <li>KOMIDA KL, Aras 11, Ibu Pejabat MIDA, KL Sentral</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pautan Pantas</h3>
+        <ul>
+          <li><a href="#pinjaman">Produk Pembiayaan</a></li>
+          <li><a href="#takaful">Insurans &amp; Takaful</a></li>
+          <li><a href="#manfaat">Manfaat Anggota</a></li>
+          <li><a href="#sertai">Jadi Anggota</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; Koperasi MIDA Kuala Lumpur Berhad. Dikawal selia oleh Suruhanjaya Koperasi Malaysia.</span>
+      <span>#KOMIDAMilikKita</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
