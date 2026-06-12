@@ -35,11 +35,11 @@
   .chev{display:inline-block;width:.62em;height:.78em;background:var(--signal);
     clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
 
-  /* ---- logo (official PNG) ---- */
+  /* ---- logo (official PNG, transparent) ---- */
   .logo-img{display:block;height:52px;width:auto}
-  .logo-img.lg{height:140px;background:rgba(255,255,255,.96);padding:14px 22px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
-  .logo-img.footer{height:70px;background:rgba(255,255,255,.96);padding:10px 16px;border-radius:10px}
-  @media(max-width:760px){.logo-img{height:40px}.logo-img.lg{height:100px;padding:10px 16px}}
+  .logo-img.lg{height:130px;filter:brightness(0) invert(1) drop-shadow(0 4px 16px rgba(0,0,0,.4))}
+  .logo-img.footer{height:64px;filter:brightness(0) invert(1)}
+  @media(max-width:760px){.logo-img{height:40px}.logo-img.lg{height:96px}}
 
   /* ---- nav ---- */
   nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -53,23 +53,22 @@
   @media(max-width:760px){.nav-links{display:none}}
 
   /* ---- hero ---- */
-  header{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#1e40af 100%);color:#fff;position:relative;overflow:hidden}
-  .hero{padding:84px 0 72px;position:relative;z-index:1}
+  header{position:relative;overflow:hidden;color:#fff;background:#0f172a}
+  .hero-bg{position:absolute;inset:0;background:url('banner-1.png') center/cover no-repeat;z-index:0}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg,rgba(15,23,42,.92) 0%,rgba(30,58,138,.82) 55%,rgba(30,64,175,.55) 100%)}
+  .hero{padding:96px 0 88px;position:relative;z-index:1}
   .hero .eyebrow{font-size:.78rem;letter-spacing:.32em;font-weight:600;color:#93c5fd;text-transform:uppercase;margin-bottom:18px}
-  .hero h1{font-size:clamp(2.6rem,7.5vw,5.2rem);font-weight:900;letter-spacing:.02em}
+  .hero h1{font-size:clamp(2.6rem,7.5vw,5.2rem);font-weight:900;letter-spacing:.02em;text-shadow:0 4px 24px rgba(0,0,0,.4)}
   .hero h1 .d{color:var(--signal)}
-  .hero .sub{max-width:560px;margin:22px 0 34px;color:#cbd5e1;font-size:1.05rem}
-  .hero .logo-svg.lg{margin-bottom:24px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
+  .hero .sub{max-width:560px;margin:22px 0 34px;color:#e2e8f0;font-size:1.05rem;text-shadow:0 2px 8px rgba(0,0,0,.5)}
   .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;padding:14px 28px;border-radius:999px;transition:transform .15s ease,background .15s ease}
   .btn:hover{transform:translateY(-2px)}
   .btn-primary{background:var(--accent);color:#fff}
   .btn-primary:hover{background:#60a5fa}
-  .btn-ghost{border:1.5px solid #475569;color:#fff;margin-left:12px}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff;margin-left:12px;backdrop-filter:blur(4px)}
   .btn-ghost:hover{border-color:#93c5fd;color:#93c5fd}
-  .hero-mark{position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:min(38vw,420px);aspect-ratio:.78;
-    background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);opacity:.85}
-  .hero-mark.o2{right:14%;background:var(--accent);opacity:.22;width:min(30vw,320px)}
-  @media(max-width:760px){.hero{padding:64px 0 56px}.hero-mark{opacity:.2}.hero-mark.o2{display:none}.btn-ghost{margin-left:0;margin-top:10px}}
+  @media(max-width:760px){.hero{padding:64px 0 56px}.btn-ghost{margin-left:0;margin-top:10px}}
 
   /* ---- marquee ---- */
   .ticker{background:var(--primary);color:#fff;overflow:hidden;white-space:nowrap;border-top:3px solid var(--signal)}
@@ -198,8 +197,7 @@
 </nav>
 
 <header id="top">
-  <div class="hero-mark"></div>
-  <div class="hero-mark o2"></div>
+  <div class="hero-bg"></div>
   <div class="wrap hero">
     <img class="logo-img lg" src="komida-logo.png" alt="KOMIDA logo">
     <div class="eyebrow">Koperasi MIDA Kuala Lumpur Berhad &middot; Sejak 1997</div>
