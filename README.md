@@ -2,11 +2,19 @@
 
 Landing page rasmi untuk **Koperasi MIDA Kuala Lumpur Berhad (KOMIDA)**.
 
+**Live:**
+- Current: https://ahmadfayyadh17.github.io/komida-landing/
+- Planned (pending DNS): https://www.komida.my/
+
 ## Quick start
 
 This site is a single static HTML file — no build step required.
 
-- `index.html` — the full landing page (logo embedded as inline SVG, fonts loaded from Google Fonts CDN)
+- `index.html` — the full landing page
+- `komida-logo.png` — official KOMIDA wordmark (transparent PNG)
+- `banner-1.png` — hero background photo
+- `CNAME` — tells GitHub Pages to serve at `www.komida.my`
+- `DEPLOY-DNS.md` — DNS setup instructions for Exabytes
 
 To preview locally, just open `index.html` in any browser.
 
