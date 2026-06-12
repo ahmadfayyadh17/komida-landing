@@ -35,10 +35,11 @@
   .chev{display:inline-block;width:.62em;height:.78em;background:var(--signal);
     clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
 
-  /* ---- logo (inline SVG version of KOMIDA wordmark) ---- */
-  .logo-svg{display:block;height:48px;width:auto}
-  .logo-svg.lg{height:120px}
-  .logo-svg.footer{height:62px}
+  /* ---- logo (official PNG) ---- */
+  .logo-img{display:block;height:52px;width:auto}
+  .logo-img.lg{height:140px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
+  .logo-img.footer{height:70px;filter:brightness(0) invert(1)}
+  @media(max-width:760px){.logo-img{height:40px}.logo-img.lg{height:100px}}
 
   /* ---- nav ---- */
   nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -49,7 +50,7 @@
   .nav-links a:hover{color:var(--primary)}
   .nav-cta{background:var(--primary);color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:999px;transition:background .15s ease}
   .nav-cta:hover{background:var(--accent)}
-  @media(max-width:760px){.nav-links{display:none}.logo-svg{height:32px}}
+  @media(max-width:760px){.nav-links{display:none}}
 
   /* ---- hero ---- */
   header{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#1e40af 100%);color:#fff;position:relative;overflow:hidden}
@@ -180,35 +181,10 @@
 </head>
 <body>
 
-<!-- ============== Reusable inline KOMIDA logo SVG (text-based, font-rendered) ============== -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="komida-logo" viewBox="0 0 720 220">
-      <!-- Wordmark: KOMI + D (with chevron) + A -->
-      <g font-family="Archivo, system-ui, sans-serif" font-weight="900" font-size="148" letter-spacing="-2">
-        <text x="0" y="138" fill="currentColor">KOMI</text>
-        <!-- The D with red chevron overlay -->
-        <text x="430" y="138" fill="currentColor">D</text>
-        <!-- Red chevron sits over the right edge of the D, then the A continues -->
-        <polygon points="500,28 540,28 600,82 540,138 500,138 560,82" fill="#dc2626"/>
-        <text x="560" y="138" fill="currentColor">A</text>
-      </g>
-      <!-- Red underline -->
-      <rect x="0" y="150" width="720" height="5" fill="#dc2626"/>
-      <!-- Subtitle line -->
-      <text x="360" y="195" text-anchor="middle"
-        font-family="Archivo, system-ui, sans-serif" font-weight="600" font-size="28"
-        letter-spacing="2" fill="currentColor">KOPERASI MIDA KUALA LUMPUR BERHAD</text>
-    </symbol>
-  </defs>
-</svg>
-
 <nav>
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="KOMIDA - Koperasi MIDA Kuala Lumpur Berhad">
-      <svg class="logo-svg" viewBox="0 0 720 220" style="color:#475569" aria-hidden="true">
-        <use href="#komida-logo"/>
-      </svg>
+      <img class="logo-img" src="komida-logo.png" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
     </a>
     <div class="nav-links">
       <a href="#tentang">Tentang Kami</a>
@@ -225,9 +201,7 @@
   <div class="hero-mark"></div>
   <div class="hero-mark o2"></div>
   <div class="wrap hero">
-    <svg class="logo-svg lg" viewBox="0 0 720 220" style="color:#ffffff" aria-label="KOMIDA logo">
-      <use href="#komida-logo"/>
-    </svg>
+    <img class="logo-img lg" src="komida-logo.png" alt="KOMIDA logo" style="filter:brightness(0) invert(1) drop-shadow(0 4px 12px rgba(0,0,0,.25))">
     <div class="eyebrow">Koperasi MIDA Kuala Lumpur Berhad &middot; Sejak 1997</div>
     <h1>MILIK KITA.</h1>
     <p class="sub">Pinjaman patuh syariah, perlindungan takaful, khairat dan manfaat kebajikan — semuanya dibina oleh warga MIDA, untuk warga MIDA. Setiap keuntungan kembali kepada anggota.</p>
@@ -446,9 +420,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <svg class="logo-svg footer" viewBox="0 0 720 220" style="color:#ffffff" aria-label="KOMIDA">
-          <use href="#komida-logo"/>
-        </svg>
+        <img class="logo-img footer" src="komida-logo.png" alt="KOMIDA">
         <p class="foot-tag">&ldquo;Dari Ahli, Untuk Ahli, Demi Kemajuan!&rdquo;</p>
         <p style="font-size:.82rem;margin-top:14px">Koperasi MIDA Kuala Lumpur Berhad<br>No. Pendaftaran SKM: W-4-0280</p>
       </div>
