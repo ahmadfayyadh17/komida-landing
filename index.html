@@ -36,13 +36,13 @@
     clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
 
   /* ---- logo (inline SVG version of KOMIDA wordmark) ---- */
-  .logo-svg{display:block;height:38px;width:auto}
-  .logo-svg.lg{height:88px}
-  .logo-svg.footer{height:46px}
+  .logo-svg{display:block;height:48px;width:auto}
+  .logo-svg.lg{height:120px}
+  .logo-svg.footer{height:62px}
 
   /* ---- nav ---- */
   nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
   .brand{display:flex;align-items:center;text-decoration:none}
   .nav-links{display:flex;gap:26px;font-size:.86rem;font-weight:600}
   .nav-links a{text-decoration:none;color:var(--ink2)}
@@ -180,28 +180,25 @@
 </head>
 <body>
 
-<!-- ============== Reusable inline KOMIDA logo SVG ============== -->
-<!-- Hidden master symbol used via <use> across the page -->
+<!-- ============== Reusable inline KOMIDA logo SVG (text-based, font-rendered) ============== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="komida-logo" viewBox="0 0 1400 420">
-      <!-- K -->
-      <g fill="currentColor">
-        <polygon points="40,30 140,30 140,390 40,390"/>
-        <polygon points="140,210 260,30 380,30 220,230 380,390 260,390 140,250"/>
-        <!-- O -->
-        <path d="M530 210 a160 180 0 1 1 0.001 0 z M530 110 a60 100 0 1 0 0.001 0 z" fill-rule="evenodd"/>
-        <!-- M -->
-        <polygon points="730,30 830,30 920,260 1010,30 1110,30 1110,390 1020,390 1020,180 940,390 900,390 820,180 820,390 730,390"/>
-        <!-- I -->
-        <polygon points="1140,30 1240,30 1240,390 1140,390"/>
-        <!-- D-base (grey) -->
-        <polygon points="1270,30 1290,30 1290,390 1270,390"/>
+    <symbol id="komida-logo" viewBox="0 0 720 220">
+      <!-- Wordmark: KOMI + D (with chevron) + A -->
+      <g font-family="Archivo, system-ui, sans-serif" font-weight="900" font-size="148" letter-spacing="-2">
+        <text x="0" y="138" fill="currentColor">KOMI</text>
+        <!-- The D with red chevron overlay -->
+        <text x="430" y="138" fill="currentColor">D</text>
+        <!-- Red chevron sits over the right edge of the D, then the A continues -->
+        <polygon points="500,28 540,28 600,82 540,138 500,138 560,82" fill="#dc2626"/>
+        <text x="560" y="138" fill="currentColor">A</text>
       </g>
-      <!-- D chevron (right side of D) in red -->
-      <polygon points="1270,30 1290,30 1400,210 1290,390 1270,390 1380,210" fill="#dc2626"/>
-      <!-- underline -->
-      <rect x="40" y="410" width="1360" height="6" fill="#dc2626"/>
+      <!-- Red underline -->
+      <rect x="0" y="150" width="720" height="5" fill="#dc2626"/>
+      <!-- Subtitle line -->
+      <text x="360" y="195" text-anchor="middle"
+        font-family="Archivo, system-ui, sans-serif" font-weight="600" font-size="28"
+        letter-spacing="2" fill="currentColor">KOPERASI MIDA KUALA LUMPUR BERHAD</text>
     </symbol>
   </defs>
 </svg>
@@ -209,7 +206,7 @@
 <nav>
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="KOMIDA - Koperasi MIDA Kuala Lumpur Berhad">
-      <svg class="logo-svg" viewBox="0 0 1400 420" style="color:#475569" aria-hidden="true">
+      <svg class="logo-svg" viewBox="0 0 720 220" style="color:#475569" aria-hidden="true">
         <use href="#komida-logo"/>
       </svg>
     </a>
@@ -228,7 +225,7 @@
   <div class="hero-mark"></div>
   <div class="hero-mark o2"></div>
   <div class="wrap hero">
-    <svg class="logo-svg lg" viewBox="0 0 1400 420" style="color:#ffffff" aria-label="KOMIDA logo">
+    <svg class="logo-svg lg" viewBox="0 0 720 220" style="color:#ffffff" aria-label="KOMIDA logo">
       <use href="#komida-logo"/>
     </svg>
     <div class="eyebrow">Koperasi MIDA Kuala Lumpur Berhad &middot; Sejak 1997</div>
@@ -449,7 +446,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <svg class="logo-svg footer" viewBox="0 0 1400 420" style="color:#ffffff" aria-label="KOMIDA">
+        <svg class="logo-svg footer" viewBox="0 0 720 220" style="color:#ffffff" aria-label="KOMIDA">
           <use href="#komida-logo"/>
         </svg>
         <p class="foot-tag">&ldquo;Dari Ahli, Untuk Ahli, Demi Kemajuan!&rdquo;</p>
