@@ -1,91 +1,98 @@
-# Custom Domain Setup — `www.komida.my`
+# DNS & Deploy Setup — `komida.com.my`
 
-Step-by-step to point `komida.my` (registered via Exabytes) at this GitHub Pages site.
-
----
-
-## Status checklist
-
-- [x] GitHub repo `komida-landing` created
-- [x] GitHub Pages enabled (Source: main / root)
-- [x] Site live at `https://ahmadfayyadh17.github.io/komida-landing/`
-- [x] `CNAME` file committed (tells GitHub to expect `www.komida.my`)
-- [ ] Domain `komida.my` purchased via Exabytes
-- [ ] MYNIC verification (upload SKM cert when Exabytes asks)
-- [ ] DNS records added in Exabytes panel
-- [ ] Custom domain set in GitHub repo settings
-- [ ] HTTPS enabled
+How the live site is wired up: GitHub Pages serves the static files, Cloudflare handles DNS.
 
 ---
 
-## Step 1 — In the Exabytes Client Area (after purchase)
+## Current state
 
-1. Log in at https://billing.exabytes.my/
-2. Go to **Domains → My Domains**
-3. Click `komida.my` → **Manage DNS** (or "Nameservers / DNS Manager")
-4. **Add these records** (delete any existing default records first):
-
-| Type  | Host / Name | Value / Points to              | TTL  |
-|-------|-------------|--------------------------------|------|
-| A     | `@`         | `185.199.108.153`              | 3600 |
-| A     | `@`         | `185.199.109.153`              | 3600 |
-| A     | `@`         | `185.199.110.153`              | 3600 |
-| A     | `@`         | `185.199.111.153`              | 3600 |
-| CNAME | `www`       | `ahmadfayyadh17.github.io.`    | 3600 |
-
-> `@` means the apex domain (`komida.my` with no `www`).
-> The four A records load-balance across GitHub's Pages servers.
-> The trailing dot on the CNAME value is required by some panels — omit if Exabytes rejects it.
+- [x] GitHub repo `ahmadfayyadh17/komida-landing`
+- [x] GitHub Pages enabled (Source: `main` / root)
+- [x] `CNAME` file in repo contains `komida.com.my`
+- [x] Domain `komida.com.my` on Cloudflare (zone status: active)
+- [x] Cloudflare nameservers: `cullen.ns.cloudflare.com`, `pola.ns.cloudflare.com`
+- [x] GitHub Pages custom domain set to `komida.com.my` (DNS check successful)
+- [x] HTTPS enforced (Let's Encrypt cert auto-issued)
+- [x] Live: https://komida.com.my/
 
 ---
 
-## Step 2 — In GitHub repo settings
+## DNS records on Cloudflare
 
-1. Go to https://github.com/ahmadfayyadh17/komida-landing/settings/pages
-2. Under **Custom domain**, type: `www.komida.my`
-3. Click **Save**
-4. GitHub will check DNS — show "DNS check in progress" then "DNS check successful" (5 min – 24 hr)
-5. Once the check passes, the **Enforce HTTPS** checkbox unlocks — tick it. Free Let's Encrypt cert issues automatically (~10 min).
+DNS-only mode (grey cloud / `proxied: false`) — no CDN proxy in front of GitHub Pages.
+
+| Type  | Name              | Content                          | Proxied |
+|-------|-------------------|----------------------------------|---------|
+| A     | `komida.com.my`   | `185.199.108.153`                | DNS only |
+| A     | `komida.com.my`   | `185.199.109.153`                | DNS only |
+| A     | `komida.com.my`   | `185.199.110.153`                | DNS only |
+| A     | `komida.com.my`   | `185.199.111.153`                | DNS only |
+| CNAME | `www`             | `ahmadfayyadh17.github.io`       | DNS only |
+
+The four A records are the published GitHub Pages IPs (load-balanced).
+The CNAME redirects `www.komida.com.my` → the GitHub Pages canonical name.
+
+Email routing (MX + TXT records) is also on Cloudflare — leave those untouched.
 
 ---
 
-## Step 3 — Verify
+## How a deploy works
 
-Test from a fresh browser (no cache):
-- https://www.komida.my/ → should load your landing page
-- https://komida.my/ → should redirect to www.komida.my
-- Padlock in address bar = HTTPS working
+1. Push to `main` on the GitHub repo.
+2. GitHub Pages auto-builds within ~1 min.
+3. Cloudflare DNS already points at GitHub Pages, so the new version is live at `https://komida.com.my/` immediately after the build.
+
+No DNS, Cloudflare, or build pipeline changes needed for content updates — just push.
 
 ---
 
-## DNS propagation check
+## Verifying a deploy
 
-If it's not loading after 1 hour, check propagation status at:
-- https://dnschecker.org/#A/komida.my
-- https://dnschecker.org/#CNAME/www.komida.my
+- Visit https://komida.com.my/ — should load latest commit.
+- GitHub repo → **Settings → Pages** should show "Your site is live at https://komida.com.my/" with "Last deployed N minutes ago".
+- Hard-refresh (Ctrl+Shift+R) if you don't see the change — browser cache, not deploy lag.
 
-You want all green checkmarks pointing to GitHub's IPs (`185.199.108-111.153`).
+---
+
+## Optional: turn on Cloudflare CDN/DDoS proxy
+
+Currently set to DNS-only. If you want Cloudflare's CDN cache, bot protection, and DDoS shield in front:
+
+1. In Cloudflare DNS, flip each A record and the `www` CNAME from grey cloud → orange cloud (`proxied: true`).
+2. In Cloudflare **SSL/TLS → Overview**, set encryption mode to **Full** (NOT "Full (strict)" — GitHub Pages cert won't satisfy strict).
+3. Wait ~5 min, test https://komida.com.my/.
+
+Trade-offs to know first:
+- Cache rules need tuning, or content updates may take longer to appear (use Cloudflare "Purge Everything" after a deploy until rules are right).
+- GitHub Pages still does its own HTTPS — you end up double-encrypted, which is fine but wastes a bit of CPU.
+- Page Rules / Caching settings live on Cloudflare, not in this repo.
+
+Not urgent — current direct-to-GitHub setup is working fine.
 
 ---
 
 ## Troubleshooting
 
-**"DNS check failed" in GitHub Pages**
-→ DNS hasn't propagated yet. Wait 30 min and click "Re-check".
+**Site returns 404 at `komida.com.my`**
+→ Check `CNAME` file in repo root contains exactly `komida.com.my` (no trailing newline issues, no `www.`).
+→ Check GitHub repo → Settings → Pages → Custom domain shows `komida.com.my` with green "DNS check successful".
 
-**Site loads at `www.komida.my` but apex `komida.my` doesn't work**
-→ A records on `@` missing or wrong. Re-check in Exabytes.
+**`www.komida.com.my` doesn't redirect to apex**
+→ Verify the `www` CNAME on Cloudflare points to `ahmadfayyadh17.github.io` (not the custom domain).
 
-**Mixed content warning / no HTTPS**
-→ Wait — Let's Encrypt cert issuance can take up to 24 hr after the DNS check passes.
+**HTTPS warning / mixed content**
+→ Check "Enforce HTTPS" is ticked under GitHub Pages settings.
+→ Cert auto-renews via Let's Encrypt; can take up to 24 hr after a DNS change.
 
-**Want to switch primary domain to apex (`komida.my` not `www.komida.my`)**
-→ Change `CNAME` file in repo to `komida.my` and update GitHub Pages custom domain field. Note: apex domains can't use CNAME so you must rely on A records.
+**Latest push not showing**
+→ Check Actions tab on the repo — `pages build and deployment` workflow should be green.
+→ Hard-refresh browser; check in incognito.
 
 ---
 
 ## Reference
 
-- GitHub Pages docs on custom domains: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
-- MYNIC `.my` registrant rules: https://www.mynic.my/
-- GitHub Pages IP addresses (don't change often): https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain
+- GitHub Pages custom domain docs: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
+- GitHub Pages IPs: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain
+- Cloudflare zone: https://dash.cloudflare.com/
+- MYNIC (`.my` registrant rules): https://www.mynic.my/
