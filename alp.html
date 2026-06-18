@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahli Lembaga Pengarah KOMIDA 2026/2027</title>
-<meta name="description" content="Carta Organisasi Ahli Lembaga Pengarah KOMIDA — Koperasi MIDA Kuala Lumpur Berhad.">
+<title>Ahli Lembaga Pengarah (ALP) — KOMIDA</title>
+<meta name="description" content="Ahli Lembaga Pengarah Koperasi MIDA Kuala Lumpur Berhad (KOMIDA) 2026/2027 — carta organisasi dan tadbir urus koperasi.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231e3a8a'/><path d='M20 18 L20 46 M20 32 L36 18 M20 32 L36 46' stroke='white' stroke-width='6' fill='none' stroke-linecap='square'/><path d='M44 22 L52 32 L44 42 Z' fill='%23dc2626'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,19 +20,16 @@
   body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px;min-height:100vh}
   img{max-width:100%;display:block}
   a{color:inherit}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
-  h1{font-family:var(--disp);line-height:1.06;letter-spacing:-.02em}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.06;letter-spacing:-.02em}
+  .chev{display:inline-block;width:.62em;height:.78em;background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%);transform:translateY(.06em)}
   .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
-  .kicker::before{content:"(";color:var(--muted)}
-  .kicker::after{content:")";color:var(--muted)}
+  .kicker::before{content:"("; color:var(--muted)}
+  .kicker::after{content:")"; color:var(--muted)}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.6,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-  /* =========================================================
-     NAV — expandable tabs (icon-only pill -> icon+label on select)
-     Subpage variant: sticky (not fixed), always on-light, no scroll-spy
-  ========================================================= */
   nav.top{position:sticky;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
   nav.top.on-light{background:rgba(238,241,247,.4);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(205,213,228,.5)}
   nav.top.on-dark{background:rgba(11,18,32,.35);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.08)}
@@ -51,7 +48,6 @@
   .etab.active .etab-label{max-width:140px;opacity:1;margin-left:1px}
   .etab-sep{width:1px;height:22px;background:var(--line);margin:0 4px;flex:0 0 auto}
 
-  /* etab with dropdown (Aktiviti: Bazar / Projek) */
   .etab-dd{position:relative}
   .etab-dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:200px;
     background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px rgba(16,20,24,.16);padding:8px;
@@ -99,43 +95,30 @@
   @media(max-width:880px){.etabs{display:none}.nav-cta{display:none}.nav-toggle{display:block}}
   @media(min-width:881px){.nav-drawer,.nav-backdrop{display:none}}
 
-  /* page header */
-  .page-head{padding:64px 0 48px;border-bottom:1px solid var(--ink)}
+  .page-head{padding:72px 0 56px;border-bottom:1px solid var(--ink)}
   .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.8rem;margin-bottom:24px}
   .back:hover{color:var(--ink)}
-  .page-head h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.96}
+  .page-head h1{font-size:clamp(3rem,9vw,6.5rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.95}
   .page-head h1 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
-  .page-head p{max-width:60ch;margin-top:18px;color:var(--ink2);font-size:1.02rem}
+  .page-head p{max-width:60ch;margin-top:22px;color:var(--ink2);font-size:1.04rem}
 
-  /* stat strip */
-  .gov-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
-  .gov-stat{padding:26px 28px;border-left:1px solid var(--line)}
-  .gov-stat:first-child{border-left:none}
-  @media(max-width:700px){.gov-stats{grid-template-columns:1fr}.gov-stat{border-left:none;border-top:1px solid var(--line)}.gov-stat:first-child{border-top:none}}
-  .gov-stat b{display:block;font-family:var(--disp);font-weight:900;font-size:clamp(1.7rem,3vw,2.3rem);color:var(--primary);letter-spacing:-.02em;margin-bottom:6px}
-  .gov-stat span{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
+  main{padding:56px 0 100px}
 
-  /* chart */
-  main{padding:48px 0 100px}
-  .chart-card{background:var(--paper);border:1px solid var(--ink);border-radius:16px;overflow:hidden;margin-top:48px}
-  .chart-card-head{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--bg-alt)}
-  .chart-card-head span{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-  .chart-card-head .dots{display:flex;gap:6px}
-  .chart-card-head .dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
-  .chart-frame{padding:22px;text-align:center}
-  .chart-frame img{margin:0 auto;border-radius:8px;cursor:zoom-in}
-  .caption{margin-top:18px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
-  .gov-note{display:flex;gap:16px;align-items:flex-start;background:var(--bg-alt);border-radius:12px;padding:20px 22px;margin-top:28px}
-  .gov-note .gn-mark{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:.86rem}
-  .gov-note p{font-size:.9rem;color:var(--ink2);line-height:1.6;margin:0}
-  .actions{margin-top:28px;text-align:center}
-  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;padding:14px 26px;border-radius:999px;transition:transform .15s ease,background .15s ease,color .15s ease,border-color .15s ease}
+  .chart-frame{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:24px}
+  .chart-frame img{border-radius:10px;width:100%}
+  .chart-frame figcaption{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:center;margin-top:16px}
+
+  .section-tag{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:10px;display:block}
+  .article-body{max-width:70ch;margin:0 auto;font-size:1.04rem;line-height:1.78;color:var(--ink2);text-align:center}
+  .article-body h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--ink);margin:0 0 20px}
+
+  .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;padding-top:36px;border-top:1px solid var(--line);justify-content:center}
+  .btn{display:inline-block;text-decoration:none;font-family:var(--mono);font-size:.82rem;font-weight:600;padding:13px 26px;border-radius:999px;transition:background .15s ease,color .15s ease,transform .15s ease;letter-spacing:.04em}
   .btn:hover{transform:translateY(-2px)}
   .btn-dark{background:var(--ink);color:#fff}
   .btn-dark:hover{background:var(--primary)}
-  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);margin-left:10px}
-  .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
-  @media(max-width:560px){.btn-ghost{margin-left:0;margin-top:10px;display:inline-block}}
+  .btn-ghost{background:none;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
 
   footer{background:var(--ink);color:#aab3bd;padding:48px 0;text-align:center;font-family:var(--mono);font-size:.78rem}
   footer a{color:#93c5fd;text-decoration:none}
@@ -151,4 +134,163 @@
       <img class="logo-img" src="komida-logo-3.png" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
     </a>
     <div class="etabs" role="tablist" aria-label="Navigasi utama">
-      <button class="etab" da
+      <button class="etab" data-href="index.html#top" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>
+        <span class="etab-label">Utama</span>
+      </button>
+      <button class="etab active" data-href="index.html#tentang" role="tab" aria-selected="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span class="etab-label">Mengenai Kami</span>
+      </button>
+      <button class="etab" data-href="pinjaman.html" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 14h4"/></svg>
+        <span class="etab-label">Pinjaman</span>
+      </button>
+      <button class="etab" data-href="takaful.html" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z"/></svg>
+        <span class="etab-label">Takaful</span>
+      </button>
+      <button class="etab" data-href="sjc.html" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 7l9-4 9 4M8 12v4M12 12v4M16 12v4"/></svg>
+        <span class="etab-label">SJC</span>
+      </button>
+      <div class="etab-dd">
+        <button class="etab" data-href="bazar.html" role="tab" aria-selected="false" aria-haspopup="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 10.5a2 2 0 0 1-2 1.5H6.5a2 2 0 0 1-2-1.5L3 9Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
+          <span class="etab-label">Aktiviti</span>
+        </button>
+        <div class="etab-dd-menu" role="menu" aria-label="Aktiviti">
+          <button class="etab-dd-item" type="button" data-href="bazar.html" role="menuitem">Bazar</button>
+          <button class="etab-dd-item" type="button" disabled aria-disabled="true">Projek <span class="soon">Akan Datang</span></button>
+        </div>
+      </div>
+      <button class="etab" data-href="index.html#manfaat" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg>
+        <span class="etab-label">Manfaat</span>
+      </button>
+      <button class="etab" data-href="borang.html" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+        <span class="etab-label">Borang</span>
+      </button>
+      <span class="etab-sep" aria-hidden="true"></span>
+      <button class="etab" data-href="index.html#faq" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.6 2.4c-.9.5-1.1.9-1.1 1.9M12 17h.01"/></svg>
+        <span class="etab-label">Soalan Lazim</span>
+      </button>
+    </div>
+    <a class="nav-cta" href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Hubungi Kami</a>
+    <button class="nav-toggle" aria-label="Buka menu" aria-controls="mobile-drawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-backdrop" aria-hidden="true"></div>
+<aside class="nav-drawer" id="mobile-drawer" aria-hidden="true" aria-label="Menu navigasi">
+  <div class="nav-drawer-head">
+    <img src="komida-logo-3.png" alt="KOMIDA">
+    <button class="nav-drawer-close" aria-label="Tutup menu">&times;</button>
+  </div>
+  <nav class="nav-drawer-links" aria-label="Menu utama">
+    <a href="index.html#top">Utama</a>
+    <a href="index.html#tentang" class="active">Mengenai Kami</a>
+    <span class="nav-drawer-group">Perkhidmatan</span>
+    <a href="pinjaman.html" class="nav-drawer-sub">Pinjaman</a>
+    <a href="takaful.html" class="nav-drawer-sub">Insurans &amp; Takaful</a>
+    <a href="sjc.html" class="nav-drawer-sub">Skim Jimat Cermat (SJC)</a>
+    <span class="nav-drawer-group">Aktiviti</span>
+    <a href="bazar.html" class="nav-drawer-sub">Bazar</a>
+    <span class="nav-drawer-sub" style="opacity:.45;cursor:default;pointer-events:none">Projek (akan datang)</span>
+    <a href="index.html#manfaat">Manfaat</a>
+    <a href="borang.html">Borang</a>
+    <a href="index.html#faq">Soalan Lazim</a>
+  </nav>
+  <div class="nav-drawer-cta">
+    <a href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Hubungi Kami
+    </a>
+  </div>
+</aside>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back" href="index.html#tentang">&larr; Kembali ke Mengenai Kami</a>
+    <div class="kicker">Tadbir Urus</div>
+    <h1>Lembaga <span class="outline">Pengarah</span></h1>
+    <p>Ahli Lembaga Pengarah (ALP) KOMIDA dipilih semasa Mesyuarat Agung Tahunan dan diberi mandat untuk mentadbir urus koperasi bagi tempoh perkhidmatan 2026/2027.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="reveal chart-frame">
+      <img src="carta-alp-komida.jpg" alt="Carta Ahli Lembaga Pengarah KOMIDA 2026/2027">
+      <figcaption>Carta Ahli Lembaga Pengarah KOMIDA 2026/2027</figcaption>
+    </div>
+
+    <div class="reveal article-body">
+      <span class="section-tag">Tadbir Urus Koperasi</span>
+      <h2>Dipilih oleh anggota, untuk anggota.</h2>
+      <p>Ahli Lembaga Pengarah KOMIDA dipilih melalui proses pemilihan semasa Mesyuarat Agung Tahunan, mewakili suara anggota dalam menentukan dasar dan arah tuju koperasi. Lembaga Pengarah bertanggungjawab memastikan KOMIDA ditadbir urus dengan telus, mengikut Akta Koperasi 1993 dan Undang-Undang Kecil koperasi, demi kepentingan semua anggota.</p>
+    </div>
+
+    <div class="actions reveal">
+      <a class="btn btn-dark" href="carta-alp-komida.jpg" target="_blank" rel="noopener">Buka Imej Penuh</a>
+      <a class="btn btn-ghost" href="index.html#tentang">Kembali ke Mengenai Kami</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; <a href="index.html">Laman Utama</a> &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle=document.querySelector('.nav-toggle');
+  var drawer=document.getElementById('mobile-drawer');
+  var backdrop=document.querySelector('.nav-backdrop');
+  var closeBtn=document.querySelector('.nav-drawer-close');
+  function setOpen(open){
+    drawer.classList.toggle('open',open);
+    backdrop.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    drawer.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
+  backdrop.addEventListener('click',function(){setOpen(false);});
+  closeBtn.addEventListener('click',function(){setOpen(false);});
+  document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  document.querySelectorAll('.etab[data-href]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var href=btn.getAttribute('data-href');
+      if(href)window.location.href=href;
+    });
+  });
+  document.querySelectorAll('.etab-dd-item[data-href]').forEach(function(item){
+    item.addEventListener('click',function(){
+      var href=item.getAttribute('data-href');
+      if(href)window.location.href=href;
+    });
+  });
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('in');});}
+})();
+</script>
+
+</body>
+</html>

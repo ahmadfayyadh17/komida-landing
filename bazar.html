@@ -30,10 +30,6 @@
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-  /* =========================================================
-     NAV — expandable tabs (icon-only pill -> icon+label on select)
-     Subpage variant: sticky (not fixed), always on-light, no scroll-spy
-  ========================================================= */
   nav.top{position:sticky;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
   nav.top.on-light{background:rgba(238,241,247,.4);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(205,213,228,.5)}
   nav.top.on-dark{background:rgba(11,18,32,.35);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.08)}
@@ -52,7 +48,6 @@
   .etab.active .etab-label{max-width:140px;opacity:1;margin-left:1px}
   .etab-sep{width:1px;height:22px;background:var(--line);margin:0 4px;flex:0 0 auto}
 
-  /* etab with dropdown (Aktiviti: Bazar / Projek) */
   .etab-dd{position:relative}
   .etab-dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:200px;
     background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px rgba(16,20,24,.16);padding:8px;
@@ -186,4 +181,147 @@
       </button>
       <span class="etab-sep" aria-hidden="true"></span>
       <button class="etab" data-href="index.html#faq" role="tab" aria-selected="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.6 2.4c-.9.5-1.1.9-1.1 1.9M12 17h.01"/><
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.6 2.4c-.9.5-1.1.9-1.1 1.9M12 17h.01"/></svg>
+        <span class="etab-label">Soalan Lazim</span>
+      </button>
+    </div>
+    <a class="nav-cta" href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Hubungi Kami</a>
+    <button class="nav-toggle" aria-label="Buka menu" aria-controls="mobile-drawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-backdrop" aria-hidden="true"></div>
+<aside class="nav-drawer" id="mobile-drawer" aria-hidden="true" aria-label="Menu navigasi">
+  <div class="nav-drawer-head">
+    <img src="komida-logo-3.png" alt="KOMIDA">
+    <button class="nav-drawer-close" aria-label="Tutup menu">&times;</button>
+  </div>
+  <nav class="nav-drawer-links" aria-label="Menu utama">
+    <a href="index.html#top">Utama</a>
+    <a href="index.html#tentang">Mengenai Kami</a>
+    <span class="nav-drawer-group">Perkhidmatan</span>
+    <a href="pinjaman.html" class="nav-drawer-sub">Pinjaman</a>
+    <a href="takaful.html" class="nav-drawer-sub">Insurans &amp; Takaful</a>
+    <a href="sjc.html" class="nav-drawer-sub">Skim Jimat Cermat (SJC)</a>
+    <span class="nav-drawer-group">Aktiviti</span>
+    <a href="bazar.html" class="nav-drawer-sub active">Bazar</a>
+    <span class="nav-drawer-sub" style="opacity:.45;cursor:default;pointer-events:none">Projek (akan datang)</span>
+    <a href="index.html#manfaat">Manfaat</a>
+    <a href="borang.html">Borang</a>
+    <a href="index.html#faq">Soalan Lazim</a>
+  </nav>
+  <div class="nav-drawer-cta">
+    <a href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Hubungi Kami
+    </a>
+  </div>
+</aside>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back" href="index.html#bazar">&larr; Kembali ke Laman Utama</a>
+    <div class="kicker">Aktiviti Koperasi</div>
+    <h1>Bazar <span class="outline">KOMIDA</span></h1>
+    <p>Platform perniagaan dan keusahawanan yang menjana pendapatan untuk dipulangkan kembali kepada anggota — dari ahli, untuk ahli.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="article-body reveal">
+      <p>Bazar KOMIDA merupakan salah satu platform utama koperasi untuk menyokong perniagaan dan keusahawanan dalam kalangan anggota. Melalui bazar, anggota yang berniaga diberi ruang untuk memasarkan produk dan perkhidmatan mereka secara terus kepada komuniti MIDA dan orang ramai, sekaligus menjana pendapatan sampingan dan mengukuhkan ekonomi anggota koperasi.</p>
+
+      <h2>Platform Perniagaan dan Keusahawanan</h2>
+      <p>KOMIDA menyediakan platform berterusan untuk menggalakkan budaya keusahawanan dalam kalangan anggota. Bazar bukan sekadar tempat berniaga, tetapi juga medan untuk anggota membina jenama, memperluas rangkaian pelanggan dan mengasah kemahiran perniagaan tanpa perlu menanggung kos sewa premis yang tinggi.</p>
+
+      <h2>Bazar Mingguan KOMIDA</h2>
+      <p>Bazar Mingguan diadakan secara tetap setiap minggu di sekitar kawasan pejabat MIDA, membolehkan anggota berniaga secara konsisten dan membina pelanggan tetap dalam kalangan kakitangan dan pengunjung.</p>
+
+      <h2>Manfaat Utama Bazar Mingguan</h2>
+      <ul>
+        <li><strong>Peluang pendapatan tambahan</strong> — anggota dapat menjana pendapatan sampingan secara konsisten setiap minggu tanpa meninggalkan tugas hakiki.</li>
+        <li><strong>Kos operasi minimum</strong> — lokasi bazar disediakan oleh koperasi, mengurangkan beban kos sewa dan logistik kepada peniaga anggota.</li>
+        <li><strong>Pendedahan pelanggan tetap</strong> — kehadiran mingguan membolehkan peniaga membina hubungan dan kesetiaan pelanggan dalam kalangan komuniti MIDA.</li>
+        <li><strong>Sokongan komuniti koperasi</strong> — anggota saling menyokong sesama peniaga, mewujudkan ekosistem perniagaan kecil yang sihat dan mampan dalam koperasi.</li>
+      </ul>
+
+      <h2>Bazar Tahunan KOMIDA</h2>
+      <p>Selain bazar mingguan, KOMIDA turut menganjurkan beberapa bazar bertema sepanjang tahun untuk meraikan musim perayaan dan acara khusus, memberi ruang lebih besar kepada anggota untuk memperluas jualan pada waktu permintaan tinggi.</p>
+
+      <h3>Bazar Raya</h3>
+      <p>Diadakan sempena musim perayaan Hari Raya, Bazar Raya KOMIDA menawarkan ruang khusus untuk anggota menjual juadah raya, pakaian, kuih-muih dan pelbagai keperluan perayaan kepada komuniti MIDA.</p>
+
+      <h3>Hari Batik</h3>
+      <p>Sempena sambutan Hari Batik, KOMIDA mengadakan bazar bertema yang memberi laluan kepada anggota untuk memasarkan produk batik, pakaian tradisional dan aksesori berkaitan.</p>
+
+      <h3>Bazar Kembali ke Sekolah</h3>
+      <p>Bersempena musim persekolahan baharu, Bazar Kembali ke Sekolah menyediakan platform untuk anggota menjual keperluan sekolah seperti alat tulis, beg sekolah dan pakaian seragam kepada keluarga anggota dan kakitangan MIDA.</p>
+
+      <h2>Siapa Yang Boleh Menyertai</h2>
+      <p>Bazar KOMIDA terbuka kepada semua anggota koperasi yang berminat untuk berniaga, tanpa mengira jenis produk atau perkhidmatan yang ditawarkan, tertakluk kepada syarat dan garis panduan yang ditetapkan oleh pihak koperasi bagi memastikan kelancaran dan keselesaan semua pihak yang terlibat.</p>
+
+      <h2>Kesimpulan</h2>
+      <p>Bazar KOMIDA bukan sekadar aktiviti jualan semasa, tetapi satu inisiatif strategik koperasi untuk memperkasakan anggota melalui keusahawanan. Dengan platform yang konsisten sepanjang tahun — daripada bazar mingguan hinggalah bazar bertema perayaan — KOMIDA terus komited membantu anggota menjana pendapatan tambahan sambil mengukuhkan ikatan komuniti dalam kalangan ahli koperasi.</p>
+    </div>
+
+    <div class="actions reveal">
+      <a class="btn btn-dark" href="borang-kuning-bazar.pdf" target="_blank" rel="noopener">Borang Kuning Bazar</a>
+      <a class="btn btn-ghost" href="index.html#bazar">Kembali ke Laman Utama</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; <a href="index.html">Laman Utama</a> &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle=document.querySelector('.nav-toggle');
+  var drawer=document.getElementById('mobile-drawer');
+  var backdrop=document.querySelector('.nav-backdrop');
+  var closeBtn=document.querySelector('.nav-drawer-close');
+  function setOpen(open){
+    drawer.classList.toggle('open',open);
+    backdrop.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    drawer.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
+  backdrop.addEventListener('click',function(){setOpen(false);});
+  closeBtn.addEventListener('click',function(){setOpen(false);});
+  document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  document.querySelectorAll('.etab[data-href]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var href=btn.getAttribute('data-href');
+      if(href)window.location.href=href;
+    });
+  });
+  document.querySelectorAll('.etab-dd-item[data-href]').forEach(function(item){
+    item.addEventListener('click',function(){
+      var href=item.getAttribute('data-href');
+      if(href)window.location.href=href;
+    });
+  });
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('in');});}
+})();
+</script>
+
+</body>
+</html>

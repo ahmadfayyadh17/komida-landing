@@ -30,10 +30,6 @@
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-  /* =========================================================
-     NAV — expandable tabs (icon-only pill -> icon+label on select)
-     Subpage variant: sticky (not fixed), always on-light, no scroll-spy
-  ========================================================= */
   nav.top{position:sticky;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
   nav.top.on-light{background:rgba(238,241,247,.4);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(205,213,228,.5)}
   nav.top.on-dark{background:rgba(11,18,32,.35);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.08)}
@@ -52,7 +48,6 @@
   .etab.active .etab-label{max-width:140px;opacity:1;margin-left:1px}
   .etab-sep{width:1px;height:22px;background:var(--line);margin:0 4px;flex:0 0 auto}
 
-  /* etab with dropdown (Aktiviti: Bazar / Projek) */
   .etab-dd{position:relative}
   .etab-dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:200px;
     background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px rgba(16,20,24,.16);padding:8px;
@@ -100,7 +95,6 @@
   @media(max-width:880px){.etabs{display:none}.nav-cta{display:none}.nav-toggle{display:block}}
   @media(min-width:881px){.nav-drawer,.nav-backdrop{display:none}}
 
-  /* page header */
   .page-head{padding:72px 0 56px;border-bottom:1px solid var(--ink)}
   .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.8rem;margin-bottom:24px}
   .back:hover{color:var(--ink)}
@@ -108,10 +102,8 @@
   .page-head h1 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
   .page-head p{max-width:60ch;margin-top:22px;color:var(--ink2);font-size:1.04rem}
 
-  /* article body */
   main{padding:56px 0 100px}
 
-  /* intro split */
   .intro-split{display:grid;grid-template-columns:1.3fr .9fr;gap:48px;align-items:start;margin-bottom:56px}
   @media(max-width:880px){.intro-split{grid-template-columns:1fr}}
   .intro-split p{font-size:1.04rem;line-height:1.78;color:var(--ink2);margin-bottom:18px}
@@ -126,7 +118,6 @@
   .article-body{max-width:none;margin:0;font-size:1.04rem;line-height:1.78;color:var(--ink2)}
   .article-body h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--ink);margin:0 0 32px;max-width:20ch}
 
-  /* benefit cards (replaces plain numbered prose) */
   .benefit-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:64px}
   @media(max-width:760px){.benefit-cards{grid-template-columns:1fr}}
   .benefit-card{background:var(--paper);padding:30px 28px}
@@ -137,7 +128,6 @@
   .benefit-card li::before{content:"";position:absolute;left:0;top:.6em;width:11px;height:2px;background:var(--signal)}
   .benefit-card li:last-child{margin-bottom:0}
 
-  /* withdrawal tiers */
   .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);margin-bottom:64px}
   @media(max-width:880px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
   .tier{padding:26px 22px;border-bottom:1px solid var(--line);border-left:1px solid var(--line)}
@@ -147,7 +137,6 @@
   .tier:last-child .tier-pct{color:var(--signal)}
   .tier p{font-size:.84rem;color:var(--muted);line-height:1.5}
 
-  /* checklist */
   .check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
   @media(max-width:760px){.check-grid{grid-template-columns:1fr}}
   .check-item{display:flex;gap:14px;align-items:flex-start;background:var(--bg-alt);border-radius:12px;padding:18px 20px}
@@ -162,7 +151,6 @@
   .btn-ghost{background:none;color:var(--ink);border:1.5px solid var(--ink)}
   .btn-ghost:hover{background:var(--ink);color:#fff}
 
-  /* footer */
   footer{background:var(--ink);color:#aab3bd;padding:48px 0;text-align:center;font-family:var(--mono);font-size:.78rem}
   footer a{color:#93c5fd;text-decoration:none}
   footer a:hover{color:#fff}
@@ -229,4 +217,191 @@
 </nav>
 
 <div class="nav-backdrop" aria-hidden="true"></div>
-<aside class="nav-drawer" id="mobile-drawer" aria-hidden="true" aria-labe
+<aside class="nav-drawer" id="mobile-drawer" aria-hidden="true" aria-label="Menu navigasi">
+  <div class="nav-drawer-head">
+    <img src="komida-logo-3.png" alt="KOMIDA">
+    <button class="nav-drawer-close" aria-label="Tutup menu">&times;</button>
+  </div>
+  <nav class="nav-drawer-links" aria-label="Menu utama">
+    <a href="index.html#top">Utama</a>
+    <a href="index.html#tentang">Mengenai Kami</a>
+    <span class="nav-drawer-group">Perkhidmatan</span>
+    <a href="pinjaman.html" class="nav-drawer-sub">Pinjaman</a>
+    <a href="takaful.html" class="nav-drawer-sub">Insurans &amp; Takaful</a>
+    <a href="sjc.html" class="nav-drawer-sub active">Skim Jimat Cermat (SJC)</a>
+    <span class="nav-drawer-group">Aktiviti</span>
+    <a href="bazar.html" class="nav-drawer-sub">Bazar</a>
+    <span class="nav-drawer-sub" style="opacity:.45;cursor:default;pointer-events:none">Projek (akan datang)</span>
+    <a href="index.html#manfaat">Manfaat</a>
+    <a href="borang.html">Borang</a>
+    <a href="index.html#faq">Soalan Lazim</a>
+  </nav>
+  <div class="nav-drawer-cta">
+    <a href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Hubungi Kami
+    </a>
+  </div>
+</aside>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Kembali ke Laman Utama</a>
+    <div class="kicker">Perkhidmatan KOMIDA</div>
+    <h1>Skim Jimat <span class="outline">Cermat</span></h1>
+    <p>Kemudahan menabung secara berdisiplin melalui potongan gaji bulanan — membina amalan jimat cermat yang konsisten untuk warga MIDA.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="intro-split reveal">
+      <div>
+        <p>Perancangan kewangan yang baik bermula dengan amalan menabung secara berterusan. Menyedari kepentingan ini, KOMIDA mewujudkan Skim Jimat Cermat (SJC) sebagai satu kemudahan kepada anggota untuk mengamalkan budaya berjimat cermat dan membina simpanan secara sistematik melalui potongan gaji bulanan.</p>
+        <p>Melalui skim ini, sejumlah caruman yang dipersetujui oleh anggota akan dipotong secara automatik daripada gaji bulanan dan disimpan ke dalam akaun simpanan anggota — membina tabungan secara konsisten tanpa perlu membuat simpanan secara manual setiap bulan.</p>
+      </div>
+      <div class="intro-stat-card">
+        <div class="isc-label">Ringkasan Skim</div>
+        <div class="intro-stat-row"><span>Kaedah Caruman</span><b>Potongan Gaji</b></div>
+        <div class="intro-stat-row"><span>Kekerapan</span><b>Bulanan</b></div>
+        <div class="intro-stat-row"><span>Kadar Caruman</span><b>Fleksibel</b></div>
+        <div class="intro-stat-row"><span>Pengeluaran Maksimum</span><b>100%</b></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:64px">
+      <span class="section-tag">Mengapa Sertai</span>
+      <h2>Manfaat Utama Skim</h2>
+      <div class="benefit-cards">
+        <div class="benefit-card">
+          <span class="bc-num">01</span>
+          <h3>Potongan Automatik yang Mudah dan Sistematik</h3>
+          <ul>
+            <li>Caruman ditolak terus daripada gaji bulanan melalui sistem potongan gaji.</li>
+            <li>Anggota tidak perlu mengingati tarikh pembayaran atau membuat transaksi secara manual.</li>
+            <li>Membantu memastikan amalan menabung dapat diteruskan secara berterusan dan teratur.</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <span class="bc-num">02</span>
+          <h3>Membentuk Disiplin Kewangan</h3>
+          <ul>
+            <li>Menggalakkan budaya berjimat cermat dan perancangan kewangan yang lebih baik.</li>
+            <li>Membantu anggota mengumpul dana untuk keperluan masa hadapan, kecemasan atau matlamat kewangan peribadi.</li>
+            <li>Simpanan berkembang secara beransur-ansur melalui caruman bulanan yang konsisten.</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <span class="bc-num">03</span>
+          <h3>Kadar Caruman yang Fleksibel</h3>
+          <ul>
+            <li>Anggota bebas menentukan jumlah caruman bulanan mengikut kemampuan kewangan masing-masing.</li>
+            <li>Kadar caruman boleh disemak semula dari semasa ke semasa mengikut keperluan dan komitmen kewangan anggota.</li>
+            <li>Sesuai untuk anggota di pelbagai peringkat pendapatan.</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <span class="bc-num">04</span>
+          <h3>Kemudahan Mengurus Simpanan</h3>
+          <ul>
+            <li>Anggota boleh memohon untuk menambah atau mengurangkan jumlah caruman bulanan melalui borang yang disediakan oleh KOMIDA.</li>
+            <li>Perubahan kadar caruman akan dilaksanakan melalui sistem potongan gaji setelah diluluskan dan diproses.</li>
+            <li>Memberi fleksibiliti kepada anggota untuk menyesuaikan simpanan mengikut keadaan kewangan semasa.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:64px">
+      <span class="section-tag">Akses Simpanan</span>
+      <h2>Kemudahan Pengeluaran Simpanan</h2>
+      <p style="max-width:70ch;margin-bottom:28px">Sebagai salah satu kelebihan skim ini, anggota diberikan akses kepada simpanan mereka tertakluk kepada Undang-Undang Kecil dan peraturan koperasi yang berkuat kuasa. Berdasarkan borang permohonan pengeluaran, anggota boleh memohon untuk:</p>
+      <div class="tier-grid">
+        <div class="tier"><span class="tier-pct">50%</span><p>Pengeluaran sebahagian daripada jumlah simpanan Skim Jimat Cermat.</p></div>
+        <div class="tier"><span class="tier-pct">70%</span><p>Pengeluaran sehingga 70% daripada jumlah simpanan Skim Jimat Cermat.</p></div>
+        <div class="tier"><span class="tier-pct">100%</span><p>Pengeluaran penuh simpanan Skim Jimat Cermat bagi anggota yang telah bersara.</p></div>
+        <div class="tier"><span class="tier-pct">Syer</span><p>Permohonan pengeluaran sebahagian Modal Syer, tertakluk kepada syarat yang ditetapkan.</p></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:64px">
+      <span class="section-tag">Keanjalan</span>
+      <h2>Fleksibiliti Mengikut Keperluan Anggota</h2>
+      <p style="max-width:70ch;margin-bottom:28px">Skim Jimat Cermat direka untuk memberi keseimbangan antara disiplin menabung dan kemudahan akses kepada simpanan. Anggota boleh:</p>
+      <div class="check-grid">
+        <div class="check-item"><span class="mark">&#10003;</span><p>Menambah kadar caruman apabila kedudukan kewangan mengizinkan.</p></div>
+        <div class="check-item"><span class="mark">&#10003;</span><p>Mengurangkan kadar caruman sekiranya mempunyai komitmen kewangan tambahan.</p></div>
+        <div class="check-item"><span class="mark">&#10003;</span><p>Memohon pengeluaran simpanan apabila diperlukan tertakluk kepada syarat dan kelulusan yang ditetapkan.</p></div>
+        <div class="check-item"><span class="mark">&#10003;</span><p>Terus membina tabungan jangka panjang tanpa menjejaskan fleksibiliti kewangan.</p></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <span class="section-tag">Kesesuaian</span>
+      <h2>Siapa Yang Sesuai Menyertai Skim Ini?</h2>
+      <div class="check-grid">
+        <div class="check-item"><span class="mark">&#9733;</span><p>Anggota yang ingin membina tabungan secara konsisten melalui potongan gaji.</p></div>
+        <div class="check-item"><span class="mark">&#9733;</span><p>Anggota yang ingin mengamalkan disiplin kewangan tanpa perlu mengurus simpanan secara manual setiap bulan.</p></div>
+        <div class="check-item"><span class="mark">&#9733;</span><p>Anggota yang sedang merancang dana kecemasan, pendidikan, persaraan atau matlamat kewangan jangka panjang.</p></div>
+        <div class="check-item"><span class="mark">&#9733;</span><p>Anggota yang mahukan kemudahan mengakses sebahagian simpanan apabila diperlukan.</p></div>
+      </div>
+    </div>
+
+    <div class="actions reveal">
+      <a class="btn btn-dark" href="borang.html">Mohon</a>
+      <a class="btn btn-ghost" href="index.html">Kembali ke Laman Utama</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; <a href="index.html">Laman Utama</a> &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle=document.querySelector('.nav-toggle');
+  var drawer=document.getElementById('mobile-drawer');
+  var backdrop=document.querySelector('.nav-backdrop');
+  var closeBtn=document.querySelector('.nav-drawer-close');
+  function setOpen(open){
+    drawer.classList.toggle('open',open);
+    backdrop.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    drawer.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
+  backdrop.addEventListener('click',function(){setOpen(false);});
+  closeBtn.addEventListener('click',function(){setOpen(false);});
+  document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  document.querySelectorAll('.etab[data-href]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var href=btn.getAttribute('data-href');
+      if(href)window.location.href=href;
+    });
+  });
+  document.querySelectorAll('.etab-dd-item[data-href]').forEach(function(item){
+    item.addEventListener('click',function(){
+      var href=item.getAttribute('data-href');
+      if(href)window.location.href=href;
+    });
+  });
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('in');});}
+})();
+</script>
+
+</body>
+</html>

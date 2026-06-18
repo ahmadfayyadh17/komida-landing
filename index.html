@@ -675,4 +675,184 @@
         </details>
         <details style="border-bottom:1px solid rgba(255,255,255,.2)">
           <summary style="color:#fff">Adakah wang saya selamat?</summary>
-          <p style="color:rgba(255,255,255,.7)">KOMIDA dikawal selia oleh SKM di bawah Akta Koperasi 1993, menggunakan perbankan patuh syariah (Bank Rakyat, Bank Islam, Maybank), sistem perakaunan berkomputer, dan diaudit setiap tahun oleh juruaudit lu
+          <p style="color:rgba(255,255,255,.7)">KOMIDA dikawal selia oleh SKM di bawah Akta Koperasi 1993, menggunakan perbankan patuh syariah (Bank Rakyat, Bank Islam, Maybank), sistem perakaunan berkomputer, dan diaudit setiap tahun oleh juruaudit luar (juruaudit bertauliah luaran) selaras dengan keperluan Akta Koperasi.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+          <summary style="color:#fff">Bagaimana saya boleh memohon pinjaman?</summary>
+          <p style="color:rgba(255,255,255,.7)">Anggota boleh memilih antara Pinjaman Berjamin, Segera atau Kecemasan mengikut keperluan, dan memuat turun borang permohonan berkaitan di bahagian Borang. Semua permohonan tertakluk kepada had kelayakan gaji bersih.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+          <summary style="color:#fff">Apakah perlindungan Takaful yang ditawarkan?</summary>
+          <p style="color:rgba(255,255,255,.7)">KOMIDA menawarkan perlindungan Takaful Kemalangan Diri dan Takaful Kebajikan Anggota, direka untuk melengkapkan manfaat kebajikan sedia ada tanpa menggantikan keperluan insurans peribadi anggota.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+          <summary style="color:#fff">Bagaimana saya mendapatkan borang KOMIDA?</summary>
+          <p style="color:rgba(255,255,255,.7)">Semua borang rasmi — keanggotaan, pinjaman, simpanan, takaful dan aktiviti — boleh dimuat turun terus di bahagian Borang pada laman ini, atau diperoleh di pejabat KOMIDA.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; W-4-0280 &middot; <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a> &middot; <a href="https://wa.me/60193798434" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Mobile drawer */
+  var toggle=document.querySelector('.nav-toggle');
+  var drawer=document.getElementById('mobile-drawer');
+  var backdrop=document.querySelector('.nav-backdrop');
+  var closeBtn=document.querySelector('.nav-drawer-close');
+  function setOpen(open){
+    drawer.classList.toggle('open',open);
+    backdrop.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    drawer.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setOpen(!drawer.classList.contains('open'));});
+  backdrop.addEventListener('click',function(){setOpen(false);});
+  closeBtn.addEventListener('click',function(){setOpen(false);});
+  document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  /* Etab navigation: in-page anchors vs external pages */
+  document.querySelectorAll('.etab[data-href]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var href=btn.getAttribute('data-href');
+      if(!href)return;
+      if(href.charAt(0)==='#'){
+        var target=document.querySelector(href);
+        if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+      }else{
+        window.location.href=href;
+      }
+    });
+  });
+  document.querySelectorAll('.etab-dd-item[data-href]').forEach(function(item){
+    item.addEventListener('click',function(){
+      var href=item.getAttribute('data-href');
+      if(!href)return;
+      if(href.charAt(0)==='#'){
+        var target=document.querySelector(href);
+        if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+      }else{
+        window.location.href=href;
+      }
+    });
+  });
+
+  /* Logo click -> scroll to top hero */
+  var brand=document.querySelector('.brand');
+  if(brand){
+    brand.addEventListener('click',function(e){
+      var href=brand.getAttribute('href');
+      if(href==='#top'){
+        e.preventDefault();
+        var hero=document.getElementById('top');
+        if(hero)hero.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  }
+
+  /* Nav background swap on scroll (light vs dark sections) */
+  var navEl=document.querySelector('nav.top');
+  var darkSections=document.querySelectorAll('.sec-dark');
+  function updateNavTheme(){
+    var navHeight=navEl.offsetHeight;
+    var isDark=false;
+    darkSections.forEach(function(sec){
+      var rect=sec.getBoundingClientRect();
+      if(rect.top<=navHeight && rect.bottom>=navHeight)isDark=true;
+    });
+    navEl.classList.toggle('on-dark',isDark);
+    navEl.classList.toggle('on-light',!isDark);
+  }
+  window.addEventListener('scroll',updateNavTheme,{passive:true});
+  updateNavTheme();
+
+  /* Reveal-on-scroll */
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('in');});}
+
+  /* Stat counters */
+  var counters=document.querySelectorAll('.count');
+  function animateCounter(el){
+    var target=parseInt(el.getAttribute('data-target'),10)||0;
+    var suffix=el.getAttribute('data-suffix')||'';
+    var dur=1200,start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var progress=Math.min((ts-start)/dur,1);
+      var val=Math.floor(progress*target);
+      el.textContent=val+suffix;
+      if(progress<1)requestAnimationFrame(step);
+      else el.textContent=target+suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  if(counters.length){
+    if('IntersectionObserver' in window){
+      var cio=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){animateCounter(en.target);cio.unobserve(en.target);}});
+      },{threshold:.4});
+      counters.forEach(function(c){cio.observe(c);});
+    }else{
+      counters.forEach(function(c){c.textContent=(c.getAttribute('data-target')||'0')+(c.getAttribute('data-suffix')||'');});
+    }
+  }
+
+  /* Glowy waves canvas background for hero */
+  var canvas=document.getElementById('wavesCanvas');
+  if(canvas && canvas.getContext){
+    var ctx=canvas.getContext('2d');
+    var heroEl=document.getElementById('top');
+    var w,h,t=0;
+    function resize(){
+      w=canvas.width=heroEl.offsetWidth;
+      h=canvas.height=heroEl.offsetHeight;
+    }
+    window.addEventListener('resize',resize);
+    resize();
+    var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function drawWaves(){
+      ctx.clearRect(0,0,w,h);
+      var lines=[
+        {amp:24,freq:.012,speed:.018,y:h*.62,color:'rgba(59,130,246,.18)'},
+        {amp:34,freq:.009,speed:.012,y:h*.72,color:'rgba(59,130,246,.12)'},
+        {amp:18,freq:.016,speed:.024,y:h*.82,color:'rgba(147,197,253,.10)'}
+      ];
+      lines.forEach(function(line){
+        ctx.beginPath();
+        ctx.moveTo(0,line.y);
+        for(var x=0;x<=w;x+=8){
+          var y=line.y+Math.sin(x*line.freq+t*line.speed)*line.amp;
+          ctx.lineTo(x,y);
+        }
+        ctx.lineTo(w,h);
+        ctx.lineTo(0,h);
+        ctx.closePath();
+        ctx.fillStyle=line.color;
+        ctx.fill();
+      });
+      t+=1;
+      if(!reduceMotion)requestAnimationFrame(drawWaves);
+    }
+    drawWaves();
+  }
+})();
+</script>
+
+</body>
+</html>
