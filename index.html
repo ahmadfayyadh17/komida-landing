@@ -769,22 +769,27 @@
   /* Native window.scrollTo({behavior:'smooth'}) can silently fail to animate
      at all when called while sticky-positioned ancestors are mid-layout
      (observed: 0px movement after 1.7s from several scroll depths on this
-     page). A hand-rolled rAF tween sidesteps the native smooth-scroll
-     implementation entirely, so it can't get stuck the same way. */
+     page). A requestAnimationFrame-based tween was tried next, but rAF is
+     throttled/suspended entirely by the browser whenever the tab/window is
+     not the visible, focused compositor surface (document.visibilityState
+     turns 'hidden') -- confirmed live: rAF callbacks simply never fired,
+     so that tween silently never advanced past frame 1 even though the
+     click handler and setActiveEtab ran correctly. setTimeout is not
+     subject to that same suspension, so drive the tween with it instead --
+     this works regardless of tab/window visibility state. */
   function animateScrollTo(destY,duration){
     var startY=window.scrollY||window.pageYOffset;
     var delta=destY-startY;
     if(Math.abs(delta)<1){window.scrollTo(0,destY);return;}
-    var startTime=null;
+    var startTime=Date.now();
     function easeInOutQuad(t){return t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
-    function step(ts){
-      if(startTime===null)startTime=ts;
-      var elapsed=ts-startTime;
+    function step(){
+      var elapsed=Date.now()-startTime;
       var t=Math.min(elapsed/duration,1);
       window.scrollTo(0,startY+delta*easeInOutQuad(t));
-      if(t<1)requestAnimationFrame(step);
+      if(t<1)setTimeout(step,16);
     }
-    requestAnimationFrame(step);
+    step();
   }
   function scrollToSection(target){
     if(!target)return;
