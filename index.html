@@ -173,7 +173,7 @@
   @keyframes fade-up-logo{to{opacity:.82;transform:none}}
   .hero-headline{font-family:var(--disp);font-weight:800;letter-spacing:-.022em;line-height:1.12;
     font-size:clamp(2.52rem,6.24vw,4.32rem);color:#fff;max-width:26ch;margin-bottom:22px;
-    background:linear-gradient(100deg,#5b8def 0%,#dc2626 35%,#f472b6 65%,#fff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    background:linear-gradient(100deg,#1e3a8a 0%,#3b82f6 30%,#93c5fd 60%,#fff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
     opacity:0;transform:translateY(24px);animation:fade-up-logo .8s ease forwards;animation-delay:.05s}
   .hero-headline .hero-blue{background:linear-gradient(100deg,#bcd4ff,#5b8def);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
   .hero-headline-2l{max-width:23ch;font-size:clamp(2.1rem,5.4vw,3.7rem)}
@@ -456,7 +456,7 @@
     <div class="glow glow-3"></div>
     <div class="wrap" style="display:flex;align-items:center;justify-content:center;min-height:100%">
       <div class="hero-content">
-        <h1 class="hero-headline hero-headline-2l">Membina <span class="hero-blue">kestabilan kewangan</span> bersama anggota</h1>
+        <h1 class="hero-headline hero-headline-2l">Membina <span class="hero-blue">kestabilan kewangan</span> bersama anda</h1>
         <p class="hero-lede">KOMIDA menyediakan pembiayaan patuh syariah, simpanan berdisiplin, takaful dan manfaat kebajikan untuk warga MIDA — direka untuk bergerak seiring keperluan anggota dari hari pertama menyertai hingga persaraan.</p>
         <div class="stats">
           <div class="stat"><b class="count" data-target="650" data-suffix="+">0</b><span>Anggota Aktif</span></div>
@@ -632,7 +632,6 @@
           </ul>
           <div class="panel-cta">
             <a class="btn btn-dark" href="bazar.html">Lebih Lanjut</a>
-            <span class="mono-note">( Dari ahli, untuk ahli )</span>
           </div>
         </div>
       </div>
@@ -694,7 +693,10 @@
 
 <section class="social-band">
   <div class="wrap">
-    <h2>Hubungi <span class="outline">Kami</span></h2>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <h2 style="margin:0">Hubungi <span class="outline">Kami</span></h2>
+      <img src="komida-logo-3.png" alt="KOMIDA" style="height:64px;width:auto;margin-left:auto">
+    </div>
     <p class="social-lede">Ada soalan tentang pinjaman, SJC atau takaful? Hubungi kami terus atau ikuti media sosial KOMIDA untuk kemas kini terkini.</p>
     <div style="margin-top:18px">
       <a href="mailto:komida@mida.gov.my" style="color:var(--ink2);text-decoration:none">komida@mida.gov.my</a>
@@ -752,6 +754,16 @@
       b.setAttribute('aria-selected',isMatch?'true':'false');
     });
   }
+  /* Reliable scroll for sticky-stack sections: scrollIntoView can silently
+     no-op on position:sticky elements once they're "stuck" (their rect.top
+     reads 0 from a prior scroll position), so compute the true document
+     offset from the live bounding rect + current scrollY instead. */
+  function scrollToSection(target){
+    if(!target)return;
+    var rect=target.getBoundingClientRect();
+    var destY=rect.top+window.pageYOffset;
+    window.scrollTo({top:destY,behavior:'smooth'});
+  }
   allEtabs.forEach(function(btn){
     btn.addEventListener('click',function(){
       var href=btn.getAttribute('data-href');
@@ -760,7 +772,7 @@
         var target=document.querySelector(href);
         if(target){
           setActiveEtab(href);
-          target.scrollIntoView({behavior:'smooth',block:'start'});
+          scrollToSection(target);
         }
       }else{
         window.location.href=href;
@@ -775,7 +787,7 @@
         var target=document.querySelector(href);
         if(target){
           setActiveEtab(href);
-          target.scrollIntoView({behavior:'smooth',block:'start'});
+          scrollToSection(target);
         }
       }else{
         window.location.href=href;
@@ -806,7 +818,10 @@
       if(href==='#top'){
         e.preventDefault();
         var hero=document.getElementById('top');
-        if(hero)hero.scrollIntoView({behavior:'smooth',block:'start'});
+        if(hero){
+          setActiveEtab('#top');
+          scrollToSection(hero);
+        }
       }
     });
   }
