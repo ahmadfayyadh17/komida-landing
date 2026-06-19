@@ -766,6 +766,26 @@
      exactly one viewport tall, the true scroll target is simply its index
      in the stack times the viewport height. This is the only measurement
      that stays correct regardless of current scroll position. */
+  /* Native window.scrollTo({behavior:'smooth'}) can silently fail to animate
+     at all when called while sticky-positioned ancestors are mid-layout
+     (observed: 0px movement after 1.7s from several scroll depths on this
+     page). A hand-rolled rAF tween sidesteps the native smooth-scroll
+     implementation entirely, so it can't get stuck the same way. */
+  function animateScrollTo(destY,duration){
+    var startY=window.scrollY||window.pageYOffset;
+    var delta=destY-startY;
+    if(Math.abs(delta)<1){window.scrollTo(0,destY);return;}
+    var startTime=null;
+    function easeInOutQuad(t){return t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+    function step(ts){
+      if(startTime===null)startTime=ts;
+      var elapsed=ts-startTime;
+      var t=Math.min(elapsed/duration,1);
+      window.scrollTo(0,startY+delta*easeInOutQuad(t));
+      if(t<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
   function scrollToSection(target){
     if(!target)return;
     var idx=spySections.indexOf(target);
@@ -776,7 +796,7 @@
       var rect=target.getBoundingClientRect();
       destY=rect.top+window.pageYOffset;
     }
-    window.scrollTo({top:destY,behavior:'smooth'});
+    animateScrollTo(destY,500);
   }
   allEtabs.forEach(function(btn){
     btn.addEventListener('click',function(){
