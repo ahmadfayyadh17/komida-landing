@@ -754,14 +754,28 @@
       b.setAttribute('aria-selected',isMatch?'true':'false');
     });
   }
-  /* Reliable scroll for sticky-stack sections: scrollIntoView can silently
-     no-op on position:sticky elements once they're "stuck" (their rect.top
-     reads 0 from a prior scroll position), so compute the true document
-     offset from the live bounding rect + current scrollY instead. */
+  /* Scroll-spy: keep active tab synced with section in view while scrolling */
+  var spySections=Array.prototype.slice.call(document.querySelectorAll('main .stack-section[id]'));
+
+  /* Reliable scroll for sticky-stack sections: every .stack-section is
+     position:sticky + height:100vh, stacked as equal-height siblings in
+     flow. Once a sticky section has been scrolled past (or is the current
+     "stuck" one), its getBoundingClientRect().top always reads ~0 -- it
+     never reflects true document position -- so scrollIntoView/rect-based
+     math silently no-ops or lands on the wrong spot. Since every section is
+     exactly one viewport tall, the true scroll target is simply its index
+     in the stack times the viewport height. This is the only measurement
+     that stays correct regardless of current scroll position. */
   function scrollToSection(target){
     if(!target)return;
-    var rect=target.getBoundingClientRect();
-    var destY=rect.top+window.pageYOffset;
+    var idx=spySections.indexOf(target);
+    var destY;
+    if(idx!==-1){
+      destY=idx*window.innerHeight;
+    }else{
+      var rect=target.getBoundingClientRect();
+      destY=rect.top+window.pageYOffset;
+    }
     window.scrollTo({top:destY,behavior:'smooth'});
   }
   allEtabs.forEach(function(btn){
@@ -795,8 +809,6 @@
     });
   });
 
-  /* Scroll-spy: keep active tab synced with section in view while scrolling */
-  var spySections=Array.prototype.slice.call(document.querySelectorAll('main .stack-section[id]'));
   var spyMap={'top':'#top','tentang':'#tentang','pinjaman':'#pinjaman','takaful':'#takaful','sjc':'#sjc','bazar':'#bazar','manfaat':'#manfaat','faq':'#faq'};
   function updateActiveFromScroll(){
     var navHeight=navEl?navEl.offsetHeight:0;
