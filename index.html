@@ -91,7 +91,7 @@
   nav.top.on-dark .etab-sep{background:rgba(255,255,255,.25)}
   nav.top.on-dark .nav-toggle span{background:#fff}
 
-  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-family:var(--disp);font-size:.86rem;font-weight:700;padding:11px 20px;border-radius:999px;transition:background .15s ease}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-family:var(--disp);font-size:.69rem;font-weight:700;padding:11px 20px;border-radius:999px;transition:background .15s ease}
   .nav-cta:hover{background:#1ebe5d}
   .nav-cta svg{width:16px;height:16px;flex:0 0 auto}
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;margin-right:-8px}
@@ -173,7 +173,7 @@
   @keyframes fade-up-logo{to{opacity:.82;transform:none}}
   .hero-headline{font-family:var(--disp);font-weight:800;letter-spacing:-.022em;line-height:1.12;
     font-size:clamp(2.52rem,6.24vw,4.32rem);color:#fff;max-width:26ch;margin-bottom:22px;
-    background:linear-gradient(100deg,#fff 10%,#9ec3ff 55%,#5b8def 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    background:linear-gradient(100deg,#5b8def 0%,#dc2626 35%,#f472b6 65%,#fff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
     opacity:0;transform:translateY(24px);animation:fade-up-logo .8s ease forwards;animation-delay:.05s}
   .hero-headline .hero-blue{background:linear-gradient(100deg,#bcd4ff,#5b8def);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
   .hero-headline-2l{max-width:23ch;font-size:clamp(2.1rem,5.4vw,3.7rem)}
@@ -218,8 +218,8 @@
   .akt-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px}
 
   /* tentang split (image ~40% width) */
-  .split40{display:grid;grid-template-columns:.95fr 1.4fr;gap:32px;align-items:center;margin-top:22px;text-align:left}
-  @media(max-width:880px){.split40{grid-template-columns:1fr}}
+  .split40{display:grid;grid-template-columns:.95fr 1.4fr;gap:32px;align-items:center;margin-top:22px;text-align:left}.split40-rev{grid-template-columns:1.4fr .95fr}
+  @media(max-width:880px){.split40{grid-template-columns:1fr}.split40-rev{grid-template-columns:1fr}}
 
   /* header + description side-by-side (Mengenai Kami, Pinjaman) */
   .head-split{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end;text-align:left}
@@ -339,7 +339,7 @@
 
   /* contact / social band (final, non-stacked, scrolls normally) */
   .social-band{background:var(--bg);text-align:left;padding:120px 0 110px;position:relative;z-index:20}
-  .social-band h2{font-size:clamp(2.6rem,8vw,6rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.96}
+  .social-band h2{font-size:clamp(2.08rem,6.4vw,4.8rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.96}
   .social-band h2 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
   .social-lede{color:var(--ink2);font-size:1.06rem;max-width:60ch;margin-top:26px}
   .social-links{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap}
@@ -349,6 +349,7 @@
   .social-btn.fb{background:#1877f2}
   .social-btn.ig{background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)}
   .social-btn.tt{background:#010101}
+  .social-btn.wa{background:#25D366}
 
   /* footer — simple style */
   footer{background:var(--ink);color:#aab3bd;padding:48px 0;text-align:center;font-family:var(--mono);font-size:.78rem;position:relative;z-index:20}
@@ -473,9 +474,14 @@
     <div class="grid-fade"></div>
     <div class="wrap">
       <div class="kicker reveal">Mengenai Kami</div>
-      <div class="head-split reveal">
-        <h2 class="display" style="margin-bottom:0;max-width:none">Tiga dekad bersama MIDA.</h2>
-        <p class="lede" style="margin-top:0">KOMIDA didaftarkan di bawah Suruhanjaya Koperasi Malaysia (No. W-4-0280) dan diaudit oleh juruaudit luar bebas. Visi kami: menjadi koperasi pelaburan yang menjana kekayaan mampan dan kesejahteraan kewangan kepada anggota.</p>
+      <div class="split40 split40-rev reveal" style="align-items:end">
+        <div>
+          <h2 class="display" style="margin-bottom:0;max-width:none">Tiga dekad bersama MIDA.</h2>
+          <p class="lede" style="margin-top:14px">KOMIDA didaftarkan di bawah Suruhanjaya Koperasi Malaysia (No. W-4-0280) dan diaudit oleh juruaudit luar bebas. Visi kami: menjadi koperasi pelaburan yang menjana kekayaan mampan dan kesejahteraan kewangan kepada anggota.</p>
+        </div>
+        <figure class="split40-img">
+          <img src="photo-2.jpg" alt="Anggota KOMIDA">
+        </figure>
       </div>
       <div class="tl-dark tl-dark-wide reveal">
         <div class="tl-item"><div class="yr">1995</div><div><h3>Idea Penubuhan</h3><p>Dicetuskan oleh Pasukan Bertindak Pembangunan Manusia (HRD) MIDA selepas Hari Kualiti 1995.</p></div></div>
@@ -510,7 +516,6 @@
               <li>Terbuka untuk anggota &amp; tanggungan</li>
               <li>Kadar caj perkhidmatan adalah 2%</li>
             </ul>
-            <a class="cta" href="borang.html">Ketahui lanjut &#10095;</a>
           </div>
 
           <div class="lc-card">
@@ -522,7 +527,6 @@
               <li>Tempoh bayaran balik tidak melebihi 84 bulan</li>
               <li>Memerlukan penjamin anggota</li>
             </ul>
-            <a class="cta" href="borang.html">Semak kelayakan &#10095;</a>
           </div>
 
           <div class="lc-card">
@@ -534,7 +538,6 @@
               <li>Tiada penjamin untuk jumlah kecil</li>
               <li>Kadar caj perkhidmatan sebanyak 4%</li>
             </ul>
-            <a class="cta" href="borang.html">Mohon sekarang &#10095;</a>
           </div>
 
           <div class="lc-card">
@@ -545,7 +548,6 @@
               <li>Bagi membantu ahli dalam situasi kecemasan — perlu disertakan bukti nyata seperti sijil kematian, sakit atau apa-apa bencana diri yang memerlukan sokongan kewangan segera</li>
               <li>Tiada caj perkhidmatan</li>
             </ul>
-            <a class="cta" href="borang.html">Ketahui lanjut &#10095;</a>
           </div>
         </div>
 
@@ -599,8 +601,8 @@
         <div style="color:rgba(255,255,255,.85)">
           <ul style="list-style:none;margin-top:0">
             <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid rgba(255,255,255,.2);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Potongan automatik</strong> — caruman ditolak terus daripada gaji setiap bulan, tanpa perlu diingati.</li>
-            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid rgba(255,255,255,.2);font-size:.92rem"><span style="position:absolute;left:0;top:17px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Simpanan berdisiplin</strong> — membina amalan jimat cermat secara konsisten dari semasa ke semasa.</li>
-            <li style="padding:11px 0 11px 26px;position:relative;font-size:.92rem"><span style="position:absolute;left:0;top:17px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Jumlah fleksibel</strong> — anggota memilih kadar caruman bulanan mengikut kemampuan.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid rgba(255,255,255,.2);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Simpanan berdisiplin</strong> — membina amalan jimat cermat secara konsisten dari semasa ke semasa.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Jumlah fleksibel</strong> — anggota memilih kadar caruman bulanan mengikut kemampuan.</li>
           </ul>
           <div class="panel-cta">
             <a class="btn btn-light" href="sjc.html">Lebih Lanjut</a>
@@ -695,10 +697,12 @@
     <h2>Hubungi <span class="outline">Kami</span></h2>
     <p class="social-lede">Ada soalan tentang pinjaman, SJC atau takaful? Hubungi kami terus atau ikuti media sosial KOMIDA untuk kemas kini terkini.</p>
     <div style="margin-top:18px">
-      <a href="mailto:komida@mida.gov.my" style="color:var(--ink2);text-decoration:none">komida@mida.gov.my</a> &middot;
-      <a href="https://wa.me/60193798434" target="_blank" rel="noopener" style="color:var(--ink2);text-decoration:none">WhatsApp</a>
+      <a href="mailto:komida@mida.gov.my" style="color:var(--ink2);text-decoration:none">komida@mida.gov.my</a>
     </div>
     <div class="social-links">
+      <a class="social-btn wa" href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener" aria-label="WhatsApp KOMIDA">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
       <a class="social-btn tt" href="https://www.tiktok.com/@komida?_r=1&_t=ZS-97KViDwK5w1" target="_blank" rel="noopener" aria-label="TikTok KOMIDA">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48Z"/></svg>
       </a>
@@ -858,43 +862,87 @@
     }
   }
 
-  /* Glowy waves canvas background for hero */
+  /* Glowing beams canvas background for hero */
   var canvas=document.getElementById('wavesCanvas');
   if(canvas && canvas.getContext){
     var ctx=canvas.getContext('2d');
     var heroEl=document.getElementById('top');
-    var w,h,t=0;
+    var w,h,beams=[];
+    var MINIMUM_BEAMS=20;
+    var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function createBeam(width,height){
+      var angle=-35+Math.random()*10;
+      return {
+        x:Math.random()*width*1.5-width*0.25,
+        y:Math.random()*height*1.5-height*0.25,
+        width:30+Math.random()*60,
+        length:height*2.5,
+        angle:angle,
+        speed:0.6+Math.random()*1.2,
+        opacity:0.12+Math.random()*0.16,
+        hue:190+Math.random()*70,
+        pulse:Math.random()*Math.PI*2,
+        pulseSpeed:0.02+Math.random()*0.03
+      };
+    }
+    function resetBeam(beam,index,totalBeams){
+      var column=index%3;
+      var spacing=w/3;
+      beam.y=h+100;
+      beam.x=column*spacing+spacing/2+(Math.random()-0.5)*spacing*0.5;
+      beam.width=100+Math.random()*100;
+      beam.speed=0.5+Math.random()*0.4;
+      beam.hue=190+(index*70)/totalBeams;
+      beam.opacity=0.2+Math.random()*0.1;
+      return beam;
+    }
     function resize(){
-      w=canvas.width=heroEl.offsetWidth;
-      h=canvas.height=heroEl.offsetHeight;
+      var dpr=window.devicePixelRatio||1;
+      w=heroEl.offsetWidth;
+      h=heroEl.offsetHeight;
+      canvas.width=w*dpr;
+      canvas.height=h*dpr;
+      canvas.style.width=w+'px';
+      canvas.style.height=h+'px';
+      ctx.setTransform(1,0,0,1,0,0);
+      ctx.scale(dpr,dpr);
+      var totalBeams=Math.floor(MINIMUM_BEAMS*1.5);
+      beams=[];
+      for(var i=0;i<totalBeams;i++)beams.push(createBeam(w,h));
     }
     window.addEventListener('resize',resize);
     resize();
-    var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function drawWaves(){
-      ctx.clearRect(0,0,w,h);
-      var lines=[
-        {amp:24,freq:.012,speed:.018,y:h*.62,color:'rgba(59,130,246,.18)'},
-        {amp:34,freq:.009,speed:.012,y:h*.72,color:'rgba(59,130,246,.12)'},
-        {amp:18,freq:.016,speed:.024,y:h*.82,color:'rgba(147,197,253,.10)'}
-      ];
-      lines.forEach(function(line){
-        ctx.beginPath();
-        ctx.moveTo(0,line.y);
-        for(var x=0;x<=w;x+=8){
-          var y=line.y+Math.sin(x*line.freq+t*line.speed)*line.amp;
-          ctx.lineTo(x,y);
-        }
-        ctx.lineTo(w,h);
-        ctx.lineTo(0,h);
-        ctx.closePath();
-        ctx.fillStyle=line.color;
-        ctx.fill();
-      });
-      t+=1;
-      if(!reduceMotion)requestAnimationFrame(drawWaves);
+
+    function drawBeam(beam){
+      ctx.save();
+      ctx.translate(beam.x,beam.y);
+      ctx.rotate(beam.angle*Math.PI/180);
+      var pulsingOpacity=beam.opacity*(0.8+Math.sin(beam.pulse)*0.2);
+      var gradient=ctx.createLinearGradient(0,0,0,beam.length);
+      gradient.addColorStop(0,'hsla('+beam.hue+',85%,65%,0)');
+      gradient.addColorStop(0.1,'hsla('+beam.hue+',85%,65%,'+(pulsingOpacity*0.5)+')');
+      gradient.addColorStop(0.4,'hsla('+beam.hue+',85%,65%,'+pulsingOpacity+')');
+      gradient.addColorStop(0.6,'hsla('+beam.hue+',85%,65%,'+pulsingOpacity+')');
+      gradient.addColorStop(0.9,'hsla('+beam.hue+',85%,65%,'+(pulsingOpacity*0.5)+')');
+      gradient.addColorStop(1,'hsla('+beam.hue+',85%,65%,0)');
+      ctx.fillStyle=gradient;
+      ctx.fillRect(-beam.width/2,0,beam.width,beam.length);
+      ctx.restore();
     }
-    drawWaves();
+    function animate(){
+      ctx.clearRect(0,0,w,h);
+      ctx.filter='blur(35px)';
+      var totalBeams=beams.length;
+      beams.forEach(function(beam,index){
+        beam.y-=beam.speed;
+        beam.pulse+=beam.pulseSpeed;
+        if(beam.y+beam.length<-100)resetBeam(beam,index,totalBeams);
+        drawBeam(beam);
+      });
+      if(!reduceMotion)requestAnimationFrame(animate);
+    }
+    animate();
   }
 })();
 </script>
