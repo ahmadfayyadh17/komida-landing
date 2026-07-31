@@ -38,7 +38,7 @@
     --mono:'IBM Plex Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:auto}
+  html{scroll-behavior:smooth}
   body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px;overflow-x:hidden}
   img{max-width:100%;display:block}
   a{color:inherit}
@@ -133,63 +133,105 @@
      STICKY STACK — every section pins full-screen then is
      covered by the next one scrolling over it
   ========================================================= */
-  .stack-section{position:sticky;top:0;height:100vh;height:100dvh;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .stack-section .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:5;width:100%;max-height:100%;overflow-y:auto;padding-top:78px;padding-bottom:28px}
-  .stack-section .wrap::-webkit-scrollbar{display:none}
-  .stack-section .wrap{scrollbar-width:none}
+  .stack-section{position:relative;width:100%;padding:100px 0 80px}
+  .stack-section .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:5;width:100%}
 
   /* dark sections */
-  .sec-dark{background:var(--bg-top);color:#fff}
-  .sec-dark .kicker{color:#93c5fd}
-  .sec-dark .kicker::before,.sec-dark .kicker::after{color:rgba(255,255,255,.4)}
-  .sec-dark .lede{color:rgba(255,255,255,.7)}
-  .sec-dark .display{color:#fff}
-  .sec-dark h2,.sec-dark h3{color:#fff}
+  .sec-dark{background:var(--paper);color:var(--ink)}
+  .sec-dark .kicker{color:var(--primary)}
+  .sec-dark .kicker::before,.sec-dark .kicker::after{color:var(--muted)}
+  .sec-dark .lede{color:var(--ink2)}
+  .sec-dark .display{color:var(--ink)}
+  .sec-dark h2,.sec-dark h3{color:var(--ink)}
 
   .grid-fade{position:absolute;bottom:0;left:0;right:0;top:0;
     background-image:
-      linear-gradient(to right,rgba(255,255,255,.07) 1px,transparent 1px),
-      linear-gradient(to bottom,rgba(255,255,255,.07) 1px,transparent 1px);
+      linear-gradient(to right,rgba(30,58,138,.04) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(30,58,138,.04) 1px,transparent 1px);
     background-size:54px 54px;
     -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 0%,#000 70%,transparent 100%);
     mask-image:radial-gradient(ellipse 60% 50% at 50% 0%,#000 70%,transparent 100%);
     pointer-events:none;z-index:1}
 
   /* blue section — darker navy/slate, not bright blue */
-  .sec-blue{background:linear-gradient(150deg,#0f1b33 0%,#16213d 55%,#1b2945 100%);color:#fff}
-  .sec-blue .kicker{color:#7d96c4}
-  .sec-blue .kicker::before,.sec-blue .kicker::after{color:rgba(255,255,255,.4)}
-  .sec-blue .lede{color:rgba(255,255,255,.78)}
-  .sec-blue h2,.sec-blue h3{color:#fff}
+  .sec-blue{background:#f0f4fa;color:var(--ink)}
+  .sec-blue .kicker{color:var(--primary)}
+  .sec-blue .kicker::before,.sec-blue .kicker::after{color:var(--muted)}
+  .sec-blue .lede{color:var(--ink2)}
+  .sec-blue h2,.sec-blue h3{color:var(--ink)}
 
   /* light / white sections roll up over dark/blue ones */
-  .sec-light{background:var(--paper);color:var(--ink);border-top-left-radius:32px;border-top-right-radius:32px;box-shadow:0 -30px 60px rgba(0,0,0,.18)}
-  .sec-mist{background:var(--mist);color:var(--ink);border-top-left-radius:32px;border-top-right-radius:32px;box-shadow:0 -30px 60px rgba(0,0,0,.14)}
+  .sec-light{background:var(--paper);color:var(--ink);border-top:1px solid var(--line)}
+  .sec-mist{background:var(--mist);color:var(--ink);border-top:1px solid var(--line)}
   .sec-light .kicker,.sec-mist .kicker{color:var(--ink2)}
   .sec-light .lede,.sec-mist .lede{color:var(--ink2)}
 
   .end-of-stack{height:1px}
 
   /* ---- hero (canvas glowy waves) ---- */
-  .sec-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-  .glow{position:absolute;border-radius:999px;pointer-events:none;z-index:0}
-  .glow-1{left:50%;top:0;width:520px;height:520px;transform:translateX(-50%);background:rgba(255,255,255,.035);filter:blur(140px)}
-  .glow-2{right:0;bottom:0;width:360px;height:360px;background:rgba(255,255,255,.03);filter:blur(120px)}
-  .glow-3{left:25%;top:50%;width:400px;height:400px;background:rgba(59,130,246,.05);filter:blur(150px)}
-  .hero-content{position:relative;z-index:10;max-width:880px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
-  .hero-logo img{height:clamp(45px,6.3vw,67px);width:auto;filter:brightness(0) invert(1);margin-bottom:34px;
-    opacity:0;transform:translateY(24px);animation:fade-up-logo .8s ease forwards;animation-delay:.05s}
-  @keyframes fade-up-logo{to{opacity:.82;transform:none}}
-  .hero-headline{font-family:var(--disp);font-weight:800;letter-spacing:-.022em;line-height:1.12;
-    font-size:clamp(2.52rem,6.24vw,4.32rem);color:#fff;max-width:26ch;margin-bottom:22px;
-    background:linear-gradient(100deg,#1e3a8a 0%,#3b82f6 30%,#93c5fd 60%,#fff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-    opacity:0;transform:translateY(24px);animation:fade-up-logo .8s ease forwards;animation-delay:.05s}
-  .hero-headline .hero-blue{background:linear-gradient(100deg,#bcd4ff,#5b8def);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-  .hero-headline-2l{max-width:23ch;font-size:clamp(2.1rem,5.4vw,3.7rem)}
-  .hero-lede{opacity:0;transform:translateY(24px);animation:fade-up .8s ease forwards;animation-delay:.2s;
-    max-width:60ch;font-size:clamp(1.02rem,1.7vw,1.22rem);color:rgba(255,255,255,.85);line-height:1.65}
-  .hero-actions{opacity:0;transform:translateY(24px);animation:fade-up .8s ease forwards;animation-delay:.35s;
-    display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:38px}
+  /* ---- HERO — light minimalist with retro grid ---- */
+  .sec-hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+  .sec-hero{background:#fff!important;color:var(--ink)!important}
+
+  /* radial glow at top */
+  .hero-glow{position:absolute;top:0;left:0;right:0;height:100%;z-index:0;
+    background:radial-gradient(ellipse 50% 60% at 50% -10%,rgba(30,58,138,.08),transparent 70%)}
+
+  /* retro grid */
+  .retro-grid{pointer-events:none;position:absolute;inset:0;overflow:hidden;perspective:200px;opacity:.35}
+  .retro-grid-inner{position:absolute;inset:0;transform:rotateX(65deg)}
+  .retro-grid-lines{
+    background-image:linear-gradient(to right,rgba(30,58,138,.15) 1px,transparent 0),linear-gradient(to bottom,rgba(30,58,138,.15) 1px,transparent 0);
+    background-size:50px 50px;background-repeat:repeat;
+    height:300vh;width:600vw;margin-left:-200%;transform-origin:100% 0 0;
+    animation:grid-scroll 18s linear infinite}
+  @keyframes grid-scroll{to{transform:translateY(-50px)}}
+  .retro-grid-fade{position:absolute;inset:0;background:linear-gradient(to top,#fff 10%,transparent 90%)}
+  @media(prefers-reduced-motion:reduce){.retro-grid-lines{animation:none}}
+
+  /* hero content overrides for light theme */
+  .sec-hero .hero-content{position:relative;z-index:10}
+  .hero-line{display:block}
+  .sec-hero .hero-headline{
+    color:#0f172a;-webkit-text-fill-color:#0f172a}
+  .sec-hero .hero-headline .hero-blue{
+    background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+/* word-by-word stagger */
+  .hw{display:inline-block;opacity:0;transform:translateY(30px);animation:word-up .7s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(.18s + var(--i) * .1s)}
+  @keyframes word-up{0%{opacity:0;transform:translateY(30px) scale(.96);filter:blur(4px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+  .sec-hero .hero-lede{color:var(--ink2)!important;opacity:0;animation:lede-fade .9s ease forwards;animation-delay:.75s;transform:none!important}
+  @keyframes lede-fade{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink2);
+    padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:linear-gradient(135deg,rgba(30,58,138,.04),rgba(124,58,237,.04));
+    margin-bottom:24px;opacity:0;animation:fade-up .8s ease forwards;animation-delay:.05s}
+  .hero-badge svg{width:14px;height:14px}
+  .hero-badge:hover svg{transform:translateX(2px)}
+  .hero-badge svg{transition:transform .2s ease}
+
+  /* spinning border CTA */
+  .cta-glow{position:relative;display:inline-block;border-radius:999px;padding:1.5px;overflow:hidden}
+  .cta-glow-ring{position:absolute;inset:-1000%;animation:cta-spin 3s linear infinite;
+    background:conic-gradient(from 90deg at 50% 50%,#dbeafe 0%,#1e3a8a 50%,#dbeafe 100%)}
+  @keyframes cta-spin{to{transform:rotate(360deg)}}
+  .cta-glow .btn{position:relative;z-index:1;background:#fff}
+  .cta-glow .btn:hover{background:var(--primary-soft)}
+
+  /* stats on light bg */
+  .sec-hero .stats{border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+  .sec-hero .stat{border-left:1px solid var(--line)!important}
+  .sec-hero .stat b{color:var(--ink)}
+  .sec-hero .stat span{color:var(--muted)!important}
+  .hero-content{position:relative;z-index:10;max-width:1100px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero-logo img{height:clamp(45px,6.3vw,67px);width:auto;margin-bottom:34px}
+  .hero-headline{font-family:var(--disp);font-weight:700;letter-spacing:-.035em;line-height:1.05;
+    font-size:clamp(3.2rem,8.5vw,6.5rem);max-width:none;margin-bottom:32px;
+    opacity:1;animation:none}
+
+  
+  .hero-headline-2l{max-width:none;font-size:clamp(3.2rem,8.5vw,6.5rem)}
+  .hero-lede{max-width:60ch;font-size:clamp(1.02rem,1.7vw,1.22rem);color:var(--ink2);line-height:1.65}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:38px}
   .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:.92rem;padding:15px 28px;border-radius:999px;transition:transform .15s ease,background .15s ease,color .15s ease,border-color .15s ease}
   .btn:hover{transform:translateY(-2px)}
   .btn-dark{background:var(--ink);color:#fff}
@@ -201,15 +243,15 @@
   .btn-wa::before{content:"";display:inline-block;width:18px;height:18px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>");background-size:contain;background-repeat:no-repeat}
   .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
   .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
-  .btn-ghost-light{border:1.5px solid rgba(255,255,255,.7);color:#fff}
-  .btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+  .btn-ghost-light{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost-light:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-soft)}
   .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;
     opacity:0;animation:fade-up .8s ease forwards;animation-delay:.6s}
-  .scroll-cue span{font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-  .scroll-cue .chevron{width:14px;height:14px;border-right:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(255,255,255,.5);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+  .scroll-cue span{font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .scroll-cue .chevron{width:14px;height:14px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
   @keyframes fade-up{to{opacity:1;transform:none}}
-  @media(prefers-reduced-motion:reduce){.hero-logo img,.hero-lede,.hero-actions,.scroll-cue{animation:none;opacity:1;transform:none}.scroll-cue .chevron{animation:none}}
+  @media(prefers-reduced-motion:reduce){.scroll-cue .chevron{animation:none}}
 
   /* ---- sections content ---- */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
@@ -237,47 +279,47 @@
   .split40-img img{width:100%;height:260px;object-fit:cover}
   .split40-img figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:#fff;font-family:var(--mono);font-size:.66rem;padding:7px 12px;border-radius:0 12px 0 0}
   .tl-dark{display:flex;flex-direction:column;gap:0}
-  .tl-dark .tl-item{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:18px 0;border-top:1px solid rgba(255,255,255,.16)}
-  .tl-dark .tl-item:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
-  .tl-dark .yr{font-family:var(--disp);font-weight:900;font-size:1.5rem;color:#93c5fd}
-  .tl-dark .tl-item:last-child .yr{color:#f87171}
-  .tl-dark h3{font-size:.98rem;font-weight:800;margin-bottom:4px;color:#fff}
-  .tl-dark p{font-size:.84rem;color:rgba(255,255,255,.62)}
+  .tl-dark .tl-item{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+  .tl-dark .tl-item:last-child{border-bottom:1px solid var(--line)}
+  .tl-dark .yr{font-family:var(--disp);font-weight:900;font-size:1.5rem;color:var(--primary)}
+  .tl-dark .tl-item:last-child .yr{color:var(--signal)}
+  .tl-dark h3{font-size:.98rem;font-weight:800;margin-bottom:4px;color:var(--ink)}
+  .tl-dark p{font-size:.84rem;color:var(--ink2)}
 
   /* tentang — wide highlighted timeline (no image) */
-  .tl-dark-wide{margin-top:24px;text-align:left;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid rgba(255,255,255,.35)}
+  .tl-dark-wide{margin-top:24px;text-align:left;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--line)}
   @media(max-width:880px){.tl-dark-wide{grid-template-columns:1fr}}
-  .tl-dark-wide .tl-item{display:block;grid-template-columns:none;padding:18px 20px;border-top:none;border-left:1px solid rgba(255,255,255,.2);transition:background .25s ease}
+  .tl-dark-wide .tl-item{display:block;grid-template-columns:none;padding:18px 20px;border-top:none;border-left:1px solid var(--line);transition:background .25s ease}
   .tl-dark-wide .tl-item:first-child{border-left:none}
-  @media(max-width:880px){.tl-dark-wide .tl-item{border-left:none;border-top:1px solid rgba(255,255,255,.2)}.tl-dark-wide .tl-item:first-child{border-top:none}}
+  @media(max-width:880px){.tl-dark-wide .tl-item{border-left:none;border-top:1px solid var(--line)}.tl-dark-wide .tl-item:first-child{border-top:none}}
   .tl-dark-wide .tl-item:last-child{border-bottom:none}
-  .tl-dark-wide .tl-item:hover{background:rgba(255,255,255,.06)}
-  .tl-dark-wide .yr{font-family:var(--disp);font-weight:900;font-size:clamp(1.5rem,2.4vw,1.9rem);letter-spacing:-.03em;color:#93c5fd;display:block;margin-bottom:8px}
-  .tl-dark-wide .tl-item:last-child .yr{color:#f87171}
-  .tl-dark-wide h3{font-size:.92rem;font-weight:800;margin-bottom:5px;color:#fff}
-  .tl-dark-wide p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.45}
+  .tl-dark-wide .tl-item:hover{background:var(--primary-soft)}
+  .tl-dark-wide .yr{font-family:var(--disp);font-weight:900;font-size:clamp(1.5rem,2.4vw,1.9rem);letter-spacing:-.03em;color:var(--primary);display:block;margin-bottom:8px}
+  .tl-dark-wide .tl-item:last-child .yr{color:var(--signal)}
+  .tl-dark-wide h3{font-size:.92rem;font-weight:800;margin-bottom:5px;color:var(--ink)}
+  .tl-dark-wide p{font-size:.78rem;color:var(--ink2);line-height:1.45}
 
   /* pinjaman rows (dark/blue variant) */
-  .rows{margin-top:20px;border-top:1px solid rgba(255,255,255,.2);text-align:left}
-  .row{border-bottom:1px solid rgba(255,255,255,.2)}
+  .rows{margin-top:20px;border-top:1px solid var(--line);text-align:left}
+  .row{border-bottom:1px solid var(--line)}
   .row-head{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:14px;width:100%;
     padding:13px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:padding .25s ease}
   .row-head:hover{padding-left:14px}
-  .row-num{font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.55)}
-  .row-title{font-family:var(--disp);font-weight:800;font-size:clamp(.92rem,1.7vw,1.12rem);letter-spacing:-.015em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#fff}
-  .row-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600}
+  .row-num{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+  .row-title{font-family:var(--disp);font-weight:800;font-size:clamp(.92rem,1.7vw,1.12rem);letter-spacing:-.015em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--ink)}
+  .row-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--primary-soft);color:var(--primary);font-weight:600}
   .row.feature .row-tag{background:var(--signal);color:#fff}
-  .row-toggle{font-family:var(--mono);font-size:1.1rem;line-height:1;color:#fff;transition:transform .3s ease;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.4);border-radius:999px;flex:0 0 auto}
-  .row.open .row-toggle{transform:rotate(45deg);background:#fff;color:var(--ink)}
+  .row-toggle{font-family:var(--mono);font-size:1.1rem;line-height:1;color:var(--ink);transition:transform .3s ease;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:999px;flex:0 0 auto}
+  .row.open .row-toggle{transform:rotate(45deg);background:var(--ink);color:#fff}
   .row-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
   .row-body-in{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:2px 4px 16px 60px}
   @media(max-width:760px){.row-head{grid-template-columns:34px 1fr auto}.row-body-in{grid-template-columns:1fr;padding-left:4px}}
-  .row-body p.lead{color:rgba(255,255,255,.78);font-size:.8rem;margin-bottom:8px}
+  .row-body p.lead{color:var(--ink2);font-size:.8rem;margin-bottom:8px}
   .row-body ul{list-style:none;font-size:.74rem}
-  .row-body li{padding:5px 0 5px 18px;position:relative;border-bottom:1px dashed rgba(255,255,255,.18);color:rgba(255,255,255,.8);line-height:1.4}
+  .row-body li{padding:5px 0 5px 18px;position:relative;border-bottom:1px dashed var(--line);color:var(--ink2);line-height:1.4}
   .row-body li:last-child{border-bottom:none}
-  .row-body li::before{content:"";position:absolute;left:0;top:11px;width:.5em;height:.62em;background:#93c5fd;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
-  .row-body .cta{display:inline-block;margin-top:8px;font-weight:700;font-size:.78rem;color:#fff;text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:2px}
+  .row-body li::before{content:"";position:absolute;left:0;top:11px;width:.5em;height:.62em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
+  .row-body .cta{display:inline-block;margin-top:8px;font-weight:700;font-size:.78rem;color:var(--primary);text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:2px}
 
   /* loan carousel (replaces accordion rows) */
   .loan-carousel{margin-top:24px;text-align:left}
@@ -285,23 +327,23 @@
   .lc-track:active{cursor:grabbing}
   .lc-track::-webkit-scrollbar{display:none}
   .lc-track{scrollbar-width:none}
-  .lc-card{flex:0 0 min(82%,360px);scroll-snap-align:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column}
-  .lc-card.feature{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28)}
+  .lc-card{flex:0 0 min(82%,360px);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+  .lc-card.feature{background:var(--primary-soft);border-color:var(--primary)}
   .lc-card .row-title{margin-bottom:12px}
-  .lc-card .lead{color:rgba(255,255,255,.78);font-size:.86rem;margin-bottom:14px}
+  .lc-card .lead{color:var(--ink2);font-size:.86rem;margin-bottom:14px}
   .lc-card ul{list-style:none;font-size:.78rem;margin-bottom:6px}
-  .lc-card li{padding:7px 0 7px 18px;position:relative;border-bottom:1px dashed rgba(255,255,255,.18);color:rgba(255,255,255,.8);line-height:1.45}
+  .lc-card li{padding:7px 0 7px 18px;position:relative;border-bottom:1px dashed var(--line);color:var(--ink2);line-height:1.45}
   .lc-card li:last-child{border-bottom:none}
-  .lc-card li::before{content:"";position:absolute;left:0;top:13px;width:.5em;height:.62em;background:#93c5fd;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
-  .lc-card .cta{display:inline-block;margin-top:auto;padding-top:10px;font-weight:700;font-size:.8rem;color:#fff;text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:2px;align-self:flex-start}
+  .lc-card li::before{content:"";position:absolute;left:0;top:13px;width:.5em;height:.62em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
+  .lc-card .cta{display:inline-block;margin-top:auto;padding-top:10px;font-weight:700;font-size:.8rem;color:var(--primary);text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:2px;align-self:flex-start}
   .lc-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
-  .lc-arrow{width:42px;height:42px;border-radius:999px;border:1.5px solid rgba(255,255,255,.3);background:none;color:#fff;font-size:1.3rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s ease,border-color .15s ease}
-  .lc-arrow:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+  .lc-arrow{width:42px;height:42px;border-radius:999px;border:1.5px solid var(--line);background:none;color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s ease,border-color .15s ease}
+  .lc-arrow:hover{background:var(--primary-soft);border-color:var(--primary)}
   .lc-dots{display:flex;gap:10px}
-  .lc-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s ease,transform .2s ease;cursor:pointer}
-  .lc-dots span.on{background:#fff;transform:scale(1.3)}
-  .note{font-family:var(--mono);font-size:.68rem;color:rgba(255,255,255,.55);margin-top:14px;max-width:72ch;text-align:left}
-  .note b{color:#f87171}
+  .lc-dots span{width:9px;height:9px;border-radius:50%;background:var(--line);transition:background .2s ease,transform .2s ease;cursor:pointer}
+  .lc-dots span.on{background:var(--primary);transform:scale(1.3)}
+  .note{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:14px;max-width:72ch;text-align:left}
+  .note b{color:var(--signal)}
 
   /* takaful split (light, image ~40%) */
   .panel-cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
@@ -337,8 +379,8 @@
   .join-cta .mono-note a{color:var(--primary);font-weight:600}
 
   /* FAQ */
-  .faq-list{margin-top:18px;border-top:1px solid var(--ink);text-align:left}
-  details{border-bottom:1px solid var(--ink)}
+  .faq-list{margin-top:18px;border-top:1px solid var(--line);text-align:left}
+  details{border-bottom:1px solid var(--line)}
   summary{cursor:pointer;list-style:none;font-family:var(--disp);font-weight:700;font-size:clamp(.82rem,1.5vw,.94rem);padding:12px 40px 12px 0;position:relative;transition:padding .25s ease}
   summary:hover{padding-left:10px;color:var(--primary)}
   summary::-webkit-details-marker{display:none}
@@ -346,30 +388,32 @@
   details[open] summary::after{transform:translateY(-50%) rotate(45deg);color:var(--signal)}
   details p{padding:0 0 14px;color:var(--ink2);font-size:.76rem;max-width:74ch;line-height:1.5}
 
-  /* contact / social band (final, non-stacked, scrolls normally) */
-  .social-band{background:var(--bg);text-align:left;padding:120px 0 110px;position:relative;z-index:20}
-  .social-band h2{font-size:clamp(2.08rem,6.4vw,4.8rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.96}
-  .social-band h2 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
-  .social-lede{color:var(--ink2);font-size:1.06rem;max-width:60ch;margin-top:26px}
-  .social-links{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap}
-  .social-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;width:56px;height:56px;border-radius:50%;transition:transform .15s ease,opacity .15s ease}
-  .social-btn:hover{transform:translateY(-3px)}
-  .social-btn svg{width:24px;height:24px;flex:0 0 auto}
-  .social-btn.fb{background:#1877f2}
-  .social-btn.ig{background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)}
-  .social-btn.tt{background:#010101}
-  .social-btn.wa{background:#25D366}
 
   /* footer — simple style */
-  footer{background:var(--ink);color:#aab3bd;padding:48px 0;text-align:center;font-family:var(--mono);font-size:.78rem;position:relative;z-index:20}
-  footer a{color:#93c5fd;text-decoration:none}
+  footer{background:linear-gradient(135deg,#13203a 0%,#1e3a8a 60%,#5b21b6 100%);color:#aab3bd;padding:64px 0 40px;font-family:var(--body);font-size:.86rem;position:relative;z-index:20}
+  footer a{color:#93c5fd;text-decoration:none;transition:color .15s ease}
   footer a:hover{color:#fff}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;text-align:left}
+  @media(max-width:760px){.footer-grid{grid-template-columns:1fr;gap:32px}}
+  .footer-brand{display:flex;flex-direction:column;gap:16px}
+  .footer-brand img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.85}
+  .footer-brand p{color:rgba(255,255,255,.55);font-size:.82rem;line-height:1.6;max-width:36ch}
+  .footer-col h4{font-family:var(--disp);font-weight:700;font-size:.82rem;color:#fff;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase}
+  .footer-col p,.footer-col address{font-style:normal;color:rgba(255,255,255,.55);font-size:.82rem;line-height:1.7}
+  .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:.82rem;padding:3px 0;transition:color .15s ease}
+  .footer-col a:hover{color:#fff}
+  .footer-social{display:flex;gap:14px;margin-top:16px}
+  .footer-social a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .footer-social a:hover{border-color:rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.08)}
+  .footer-social svg{width:18px;height:18px}
+  .footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.4)}
+  @media(max-width:760px){.footer-bottom{justify-content:center;text-align:center}}
   :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
 
-<nav class="top on-dark">
+<nav class="top on-light">
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="KOMIDA - Koperasi MIDA Kuala Lumpur Berhad">
       <img class="logo-img" src="komida-logo-3.png" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
@@ -458,14 +502,18 @@
 <article class="stack-wrap">
 
   <!-- 1. HERO — black/dark, glowy waves canvas -->
-  <header id="top" class="stack-section sec-dark sec-hero">
-    <canvas id="wavesCanvas" aria-hidden="true"></canvas>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
+  <header id="top" class="stack-section sec-hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="retro-grid" aria-hidden="true">
+      <div class="retro-grid-inner"><div class="retro-grid-lines"></div></div>
+      <div class="retro-grid-fade"></div>
+    </div>
     <div class="wrap" style="display:flex;align-items:center;justify-content:center;min-height:100%">
       <div class="hero-content">
-        <h1 class="hero-headline hero-headline-2l">Membina <span class="hero-blue">kestabilan kewangan</span> bersama anda</h1>
+        <h1 class="hero-headline hero-headline-2l">
+          <span class="hero-line"><span class="hw" style="--i:0">Membina</span> <span class="hw" style="--i:1">kestabilan</span></span>
+          <span class="hero-line"><span class="hero-blue"><span class="hw" style="--i:2">kewangan</span></span> <span class="hw" style="--i:3">bersama</span> <span class="hw" style="--i:4">anda</span></span>
+        </h1>
         <p class="hero-lede">KOMIDA menyediakan pembiayaan patuh syariah, simpanan berdisiplin, takaful dan manfaat kebajikan untuk warga MIDA — direka untuk bergerak seiring keperluan anggota dari hari pertama menyertai hingga persaraan.</p>
         <div class="stats">
           <div class="stat"><b class="count" data-target="650" data-suffix="+">0</b><span>Anggota Aktif</span></div>
@@ -479,7 +527,7 @@
   </header>
 
   <!-- 2. TENTANG KAMI — blue -->
-  <section id="tentang" class="stack-section sec-blue" style="background:#436fa6">
+  <section id="tentang" class="stack-section sec-blue" style="background:#f0f4fa">
     <div class="grid-fade"></div>
     <div class="wrap">
       <div class="kicker reveal">Mengenai Kami</div>
@@ -504,7 +552,7 @@
   </section>
 
   <!-- 3. PINJAMAN — black/dark -->
-  <section id="pinjaman" class="stack-section sec-dark" style="background:#101830">
+  <section id="pinjaman" class="stack-section sec-dark" >
     <div class="grid-fade"></div>
     <div class="wrap">
       <div class="kicker reveal">Pinjaman</div>
@@ -523,7 +571,7 @@
               <li>Yuran pengajian, peralatan &amp; asrama</li>
               <li>Tempoh fleksibel mengikut pengajian</li>
               <li>Terbuka untuk anggota &amp; tanggungan</li>
-              <li>Kadar caj perkhidmatan adalah 2%</li>
+              <li>Kadar caj perkhidmatan 2% setahun</li>
             </ul>
           </div>
 
@@ -542,10 +590,11 @@
             <h3 class="row-title">Pinjaman Segera <span class="row-tag">Kelulusan Pantas</span></h3>
             <p class="lead">Untuk keperluan mendesak yang tidak boleh menunggu hari gaji.</p>
             <ul>
-              <li>Jumlah sehingga RM3,000 dengan tempoh pinjaman selama 12 bulan</li>
+              <li>Jumlah pinjaman sehingga RM5,000</li>
+              <li>Tempoh bayaran semula 36 bulan / 3 tahun</li>
               <li>Dokumen minimum</li>
               <li>Tiada penjamin untuk jumlah kecil</li>
-              <li>Kadar caj perkhidmatan sebanyak 4%</li>
+              <li>Caj perkhidmatan 4% setahun</li>
             </ul>
           </div>
 
@@ -600,18 +649,18 @@
       <div class="kicker reveal">Skim Jimat Cermat (SJC)</div>
       <div class="head-split reveal">
         <h2 class="display" style="font-size:clamp(1.9rem,4vw,3rem);margin-bottom:0;max-width:none">Langkah Kecil Setiap Bulan, Manfaat Besar Kemudian Hari</h2>
-        <p class="lede" style="margin-top:0;color:rgba(255,255,255,.85)">KOMIDA mewujudkan skim kredit sebagai satu kemudahan bagi para anggota mempraktikkan amalan jimat cermat. Sejumlah caruman dipotong terus daripada gaji bulanan dan disimpan ke dalam akaun simpanan anggota.</p>
+        <p class="lede" style="margin-top:0;color:var(--ink2)">KOMIDA mewujudkan skim kredit sebagai satu kemudahan bagi para anggota mempraktikkan amalan jimat cermat. Sejumlah caruman dipotong terus daripada gaji bulanan dan disimpan ke dalam akaun simpanan anggota.</p>
       </div>
       <div class="split40 reveal">
         <figure class="split40-img">
           <img src="sjc-3.jpg" alt="Skim Jimat Cermat KOMIDA">
           <figcaption>Menabung secara automatik, setiap bulan</figcaption>
         </figure>
-        <div style="color:rgba(255,255,255,.85)">
+        <div style="color:var(--ink2)">
           <ul style="list-style:none;margin-top:0">
-            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid rgba(255,255,255,.2);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Potongan automatik</strong> — caruman ditolak terus daripada gaji setiap bulan, tanpa perlu diingati.</li>
-            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid rgba(255,255,255,.2);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Simpanan berdisiplin</strong> — membina amalan jimat cermat secara konsisten dari semasa ke semasa.</li>
-            <li style="padding:11px 0 11px 26px;position:relative;font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:#fff;clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Jumlah fleksibel</strong> — anggota memilih kadar caruman bulanan mengikut kemampuan.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Potongan automatik</strong> — caruman ditolak terus daripada gaji setiap bulan, tanpa perlu diingati.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Simpanan berdisiplin</strong> — membina amalan jimat cermat secara konsisten dari semasa ke semasa.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:none;font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Jumlah fleksibel</strong> — anggota memilih kadar caruman bulanan mengikut kemampuan.</li>
           </ul>
           <div class="panel-cta">
             <a class="btn btn-light" href="sjc.html">Lebih Lanjut</a>
@@ -667,31 +716,31 @@
   </section>
 
   <!-- 8. FAQ — black/dark -->
-  <section id="faq" class="stack-section sec-dark" style="background:#0b1220">
+  <section id="faq" class="stack-section sec-dark" >
     <div class="grid-fade"></div>
     <div class="wrap">
       <div class="kicker reveal">Soalan Lazim</div>
       <h2 class="display reveal">Anda tanya. <span style="color:#93c5fd">Kami jawab.</span></h2>
-      <div class="faq-list reveal" style="border-top:1px solid rgba(255,255,255,.2)">
-        <details open style="border-bottom:1px solid rgba(255,255,255,.2)">
+      <div class="faq-list reveal" style="border-top:1px solid var(--line)">
+        <details open style="border-bottom:1px solid var(--line)">
           <summary style="color:#fff">Apakah KOMIDA dan siapa yang layak menyertai?</summary>
-          <p style="color:rgba(255,255,255,.7)">KOMIDA ialah Koperasi MIDA Kuala Lumpur Berhad, ditubuhkan pada 1997 dan berdaftar dengan Suruhanjaya Koperasi Malaysia (W-4-0280). Keanggotaan terbuka kepada kakitangan MIDA; pesara MIDA kekal sebagai anggota.</p>
+          <p style="color:var(--ink2)">KOMIDA ialah Koperasi MIDA Kuala Lumpur Berhad, ditubuhkan pada 1997 dan berdaftar dengan Suruhanjaya Koperasi Malaysia (W-4-0280). Keanggotaan terbuka kepada kakitangan MIDA; pesara MIDA kekal sebagai anggota.</p>
         </details>
-        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+        <details style="border-bottom:1px solid var(--line)">
           <summary style="color:#fff">Adakah wang saya selamat?</summary>
-          <p style="color:rgba(255,255,255,.7)">KOMIDA dikawal selia oleh SKM di bawah Akta Koperasi 1993, menggunakan perbankan patuh syariah (Bank Rakyat, Bank Islam, Maybank), sistem perakaunan berkomputer, dan diaudit setiap tahun oleh juruaudit luar (juruaudit bertauliah luaran) selaras dengan keperluan Akta Koperasi.</p>
+          <p style="color:var(--ink2)">KOMIDA dikawal selia oleh SKM di bawah Akta Koperasi 1993, menggunakan perbankan patuh syariah (Bank Rakyat, Bank Islam, Maybank), sistem perakaunan berkomputer, dan diaudit setiap tahun oleh juruaudit luar (juruaudit bertauliah luaran) selaras dengan keperluan Akta Koperasi.</p>
         </details>
-        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+        <details style="border-bottom:1px solid var(--line)">
           <summary style="color:#fff">Bagaimana saya boleh memohon pinjaman?</summary>
-          <p style="color:rgba(255,255,255,.7)">Anggota boleh memilih antara Pinjaman Berjamin, Segera atau Kecemasan mengikut keperluan, dan memuat turun borang permohonan berkaitan di bahagian Borang. Semua permohonan tertakluk kepada had kelayakan gaji bersih.</p>
+          <p style="color:var(--ink2)">Anggota boleh memilih antara Pinjaman Berjamin, Segera atau Kecemasan mengikut keperluan, dan memuat turun borang permohonan berkaitan di bahagian Borang. Semua permohonan tertakluk kepada had kelayakan gaji bersih.</p>
         </details>
-        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+        <details style="border-bottom:1px solid var(--line)">
           <summary style="color:#fff">Apakah perlindungan Takaful yang ditawarkan?</summary>
-          <p style="color:rgba(255,255,255,.7)">KOMIDA menawarkan perlindungan Takaful Kemalangan Diri dan Takaful Kebajikan Anggota, direka untuk melengkapkan manfaat kebajikan sedia ada tanpa menggantikan keperluan insurans peribadi anggota.</p>
+          <p style="color:var(--ink2)">KOMIDA menawarkan perlindungan Takaful Kemalangan Diri dan Takaful Kebajikan Anggota, direka untuk melengkapkan manfaat kebajikan sedia ada tanpa menggantikan keperluan insurans peribadi anggota.</p>
         </details>
-        <details style="border-bottom:1px solid rgba(255,255,255,.2)">
+        <details style="border-bottom:1px solid var(--line)">
           <summary style="color:#fff">Bagaimana saya mendapatkan borang KOMIDA?</summary>
-          <p style="color:rgba(255,255,255,.7)">Semua borang rasmi — keanggotaan, pinjaman, simpanan, takaful dan aktiviti — boleh dimuat turun terus di bahagian Borang pada laman ini, atau diperoleh di pejabat KOMIDA.</p>
+          <p style="color:var(--ink2)">Semua borang rasmi — keanggotaan, pinjaman, simpanan, takaful dan aktiviti — boleh dimuat turun terus di bahagian Borang pada laman ini, atau diperoleh di pejabat KOMIDA.</p>
         </details>
       </div>
     </div>
@@ -700,36 +749,38 @@
 </article>
 </main>
 
-<section class="social-band">
-  <div class="wrap">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
-      <h2 style="margin:0">Hubungi <span class="outline">Kami</span></h2>
-      <img src="komida-logo-3.png" alt="KOMIDA" style="height:64px;width:auto;margin-left:auto">
-    </div>
-    <p class="social-lede">Ada soalan tentang pinjaman, SJC atau takaful? Hubungi kami terus atau ikuti media sosial KOMIDA untuk kemas kini terkini.</p>
-    <div style="margin-top:18px">
-      <a href="mailto:komida@mida.gov.my" style="color:var(--ink2);text-decoration:none">komida@mida.gov.my</a>
-    </div>
-    <div class="social-links">
-      <a class="social-btn wa" href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener" aria-label="WhatsApp KOMIDA">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      </a>
-      <a class="social-btn tt" href="https://www.tiktok.com/@komida?_r=1&_t=ZS-97KViDwK5w1" target="_blank" rel="noopener" aria-label="TikTok KOMIDA">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48Z"/></svg>
-      </a>
-      <a class="social-btn ig" href="https://www.instagram.com/koperasimidakl?igsh=YmdkOXVsYm5wNnFj" target="_blank" rel="noopener" aria-label="Instagram KOMIDA">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465a4.902 4.902 0 0 1 1.772 1.153 4.902 4.902 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.902 4.902 0 0 1-1.153 1.772 4.902 4.902 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.902 4.902 0 0 1-1.772-1.153 4.902 4.902 0 0 1-1.153-1.772c-.247-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.218-1.79.465-2.428a4.902 4.902 0 0 1 1.153-1.772A4.902 4.902 0 0 1 5.45 2.525c.637-.247 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2Zm0 1.802c-2.67 0-2.987.01-4.04.058-.976.045-1.505.207-1.858.344-.467.182-.8.399-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.048 1.054-.058 1.37-.058 4.041 0 2.67.01 2.987.058 4.04.045.976.207 1.505.344 1.858.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058 2.67 0 2.987-.01 4.04-.058.976-.045 1.505-.207 1.858-.344.467-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.054.058-1.37.058-4.041 0-2.67-.01-2.987-.058-4.04-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 0 0-.748-1.15 3.097 3.097 0 0 0-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.054-.048-1.37-.058-4.041-.058Zm0 3.063a5.135 5.135 0 1 1 0 10.27 5.135 5.135 0 0 1 0-10.27Zm0 1.802a3.333 3.333 0 1 0 0 6.666 3.333 3.333 0 0 0 0-6.666Zm6.538-2.002a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>
-      </a>
-      <a class="social-btn fb" href="https://www.facebook.com/share/1GaZzHZ3Mi/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook KOMIDA">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.022 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.506 1.493-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.878h2.773l-.443 2.91h-2.33V22c4.78-.756 8.437-4.918 8.437-9.94Z"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
-    &copy; Koperasi MIDA Kuala Lumpur Berhad &middot; W-4-0280
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="komida-logo-3.png" alt="KOMIDA">
+        <p>Koperasi MIDA Kuala Lumpur Berhad (W-4-0280). Dari ahli, untuk ahli, demi kemajuan.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/komida.kl" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.instagram.com/koperasimidakl" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://www.tiktok.com/@komida" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Alamat</h4>
+        <address>
+          MIDA Sentral,<br>
+          No. 5, Jalan Stesen Sentral 5,<br>
+          Kuala Lumpur Sentral,<br>
+          50470 Kuala Lumpur
+        </address>
+      </div>
+      <div class="footer-col">
+        <h4>Hubungi</h4>
+        <p>Tel: 03-2267 3633</p>
+        <p>Faks: 03-2274 5605</p>
+        <a href="mailto:komida@mida.gov.my">komida@mida.gov.my</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Koperasi MIDA Kuala Lumpur Berhad (W-4-0280). Hak cipta terpelihara.</span>
+      <span><a href="borang.html">Borang</a> &middot; <a href="berita.html">Berita</a> &middot; <a href="alp.html">ALP</a></span>
+    </div>
   </div>
 </footer>
 
@@ -917,87 +968,6 @@
   }
 
   /* Glowing beams canvas background for hero */
-  var canvas=document.getElementById('wavesCanvas');
-  if(canvas && canvas.getContext){
-    var ctx=canvas.getContext('2d');
-    var heroEl=document.getElementById('top');
-    var w,h,beams=[];
-    var MINIMUM_BEAMS=20;
-    var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function createBeam(width,height){
-      var angle=-35+Math.random()*10;
-      return {
-        x:Math.random()*width*1.5-width*0.25,
-        y:Math.random()*height*1.5-height*0.25,
-        width:30+Math.random()*60,
-        length:height*2.5,
-        angle:angle,
-        speed:0.6+Math.random()*1.2,
-        opacity:0.12+Math.random()*0.16,
-        hue:190+Math.random()*70,
-        pulse:Math.random()*Math.PI*2,
-        pulseSpeed:0.02+Math.random()*0.03
-      };
-    }
-    function resetBeam(beam,index,totalBeams){
-      var column=index%3;
-      var spacing=w/3;
-      beam.y=h+100;
-      beam.x=column*spacing+spacing/2+(Math.random()-0.5)*spacing*0.5;
-      beam.width=100+Math.random()*100;
-      beam.speed=0.5+Math.random()*0.4;
-      beam.hue=190+(index*70)/totalBeams;
-      beam.opacity=0.2+Math.random()*0.1;
-      return beam;
-    }
-    function resize(){
-      var dpr=window.devicePixelRatio||1;
-      w=heroEl.offsetWidth;
-      h=heroEl.offsetHeight;
-      canvas.width=w*dpr;
-      canvas.height=h*dpr;
-      canvas.style.width=w+'px';
-      canvas.style.height=h+'px';
-      ctx.setTransform(1,0,0,1,0,0);
-      ctx.scale(dpr,dpr);
-      var totalBeams=Math.floor(MINIMUM_BEAMS*1.5);
-      beams=[];
-      for(var i=0;i<totalBeams;i++)beams.push(createBeam(w,h));
-    }
-    window.addEventListener('resize',resize);
-    resize();
-
-    function drawBeam(beam){
-      ctx.save();
-      ctx.translate(beam.x,beam.y);
-      ctx.rotate(beam.angle*Math.PI/180);
-      var pulsingOpacity=beam.opacity*(0.8+Math.sin(beam.pulse)*0.2);
-      var gradient=ctx.createLinearGradient(0,0,0,beam.length);
-      gradient.addColorStop(0,'hsla('+beam.hue+',85%,65%,0)');
-      gradient.addColorStop(0.1,'hsla('+beam.hue+',85%,65%,'+(pulsingOpacity*0.5)+')');
-      gradient.addColorStop(0.4,'hsla('+beam.hue+',85%,65%,'+pulsingOpacity+')');
-      gradient.addColorStop(0.6,'hsla('+beam.hue+',85%,65%,'+pulsingOpacity+')');
-      gradient.addColorStop(0.9,'hsla('+beam.hue+',85%,65%,'+(pulsingOpacity*0.5)+')');
-      gradient.addColorStop(1,'hsla('+beam.hue+',85%,65%,0)');
-      ctx.fillStyle=gradient;
-      ctx.fillRect(-beam.width/2,0,beam.width,beam.length);
-      ctx.restore();
-    }
-    function animate(){
-      ctx.clearRect(0,0,w,h);
-      ctx.filter='blur(35px)';
-      var totalBeams=beams.length;
-      beams.forEach(function(beam,index){
-        beam.y-=beam.speed;
-        beam.pulse+=beam.pulseSpeed;
-        if(beam.y+beam.length<-100)resetBeam(beam,index,totalBeams);
-        drawBeam(beam);
-      });
-      if(!reduceMotion)requestAnimationFrame(animate);
-    }
-    animate();
-  }
 })();
 </script>
 
