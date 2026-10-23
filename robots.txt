@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://komida.com.my/sitemap.xml

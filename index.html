@@ -2,6 +2,7 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5LB98DCKP"></script>
 <script>
@@ -14,6 +15,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KOMIDA — Koperasi MIDA Kuala Lumpur Berhad</title>
 <meta name="description" content="KOMIDA Milik Kita — pinjaman patuh syariah, takaful, khairat dan manfaat anggota untuk warga MIDA. Dari ahli, untuk ahli, demi kemajuan.">
+<link rel="canonical" href="https://komida.com.my/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KOMIDA">
+<meta property="og:locale" content="ms_MY">
+<meta property="og:title" content="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
+<meta property="og:description" content="KOMIDA Milik Kita — pinjaman patuh syariah, takaful, khairat dan manfaat anggota untuk warga MIDA. Dari ahli, untuk ahli, demi kemajuan.">
+<meta property="og:url" content="https://komida.com.my/">
+<meta property="og:image" content="https://komida.com.my/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231e3a8a'/><path d='M20 18 L20 46 M20 32 L36 18 M20 32 L36 46' stroke='white' stroke-width='6' fill='none' stroke-linecap='square'/><path d='M44 22 L52 32 L44 42 Z' fill='%23dc2626'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,8 +51,9 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px;overflow-x:hidden}
-  img{max-width:100%;display:block}
+  img{max-width:100%;height:auto;display:block}
   a{color:inherit}
   .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
   h1,h2,h3{font-family:var(--disp);line-height:1.04;letter-spacing:-.02em}
@@ -53,12 +66,12 @@
   .kicker::after{content:")";color:var(--muted)}
   .display{font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:800;letter-spacing:-.022em;max-width:19ch;line-height:1.12}
   .display .blue{color:var(--primary)}
-  .lede{color:var(--ink2);font-size:.94rem;max-width:62ch;margin-top:14px;line-height:1.55}
+  .lede{color:var(--ink2);font-size:1.02rem;max-width:62ch;margin-top:14px;line-height:1.55}
 
   /* ---- reveal on scroll ---- */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
 
   /* =========================================================
      NAV — expandable tabs (icon-only pill -> icon+label on select)
@@ -66,19 +79,20 @@
   nav.top{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
   nav.top.on-light{background:rgba(238,241,247,.4);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(205,213,228,.5)}
   nav.top.on-dark{background:rgba(11,18,32,.35);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.08)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:80px;gap:24px}
-  .brand{display:flex;align-items:center;text-decoration:none}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px}
+  .brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
   .logo-img{display:block;height:34px;width:auto;transition:filter .3s ease}
   nav.top.on-dark .logo-img{filter:brightness(0) invert(1)}
 
   .etabs{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:6px;backdrop-filter:blur(6px);transition:background .3s ease,border-color .3s ease}
-  .etab{display:flex;align-items:center;gap:7px;border:0;background:none;cursor:pointer;font-family:var(--disp);font-weight:700;font-size:.86rem;color:var(--ink2);
-    padding:10px 14px;border-radius:999px;white-space:nowrap;overflow:hidden;transition:background .25s cubic-bezier(.2,.7,.2,1),color .2s ease,padding .25s cubic-bezier(.2,.7,.2,1)}
-  .etab svg{width:18px;height:18px;flex:0 0 auto}
-  .etab .etab-label{max-width:0;opacity:0;overflow:hidden;transition:max-width .3s cubic-bezier(.2,.7,.2,1),opacity .2s ease;display:inline-block}
+  .etab{text-decoration:none;display:flex;align-items:center;gap:6px;border:0;background:none;cursor:pointer;font-family:var(--disp);font-weight:700;font-size:.86rem;color:var(--ink2);
+    padding:9px 10px;border-radius:999px;white-space:nowrap;overflow:hidden;transition:background .25s cubic-bezier(.2,.7,.2,1),color .2s ease,padding .25s cubic-bezier(.2,.7,.2,1)}
+  .etab svg{width:17px;height:17px;flex:0 0 auto}
+  .etabs .etab svg{display:none} /* labels instead of icons: icon-only tabs were unclear */
+  .etab .etab-label{display:inline-block}
   .etab:hover{color:var(--ink);background:rgba(19,32,58,.08)}
   .etab.active{background:var(--ink);color:#fff}
-  .etab.active .etab-label{max-width:140px;opacity:1;margin-left:1px}
+  
   .etab-sep{width:1px;height:22px;background:var(--line);margin:0 4px;flex:0 0 auto}
 
   /* etab with dropdown (Aktiviti: Bazar / Projek) */
@@ -87,7 +101,7 @@
     background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px rgba(16,20,24,.16);padding:8px;
     opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:50}
   .etab-dd:hover .etab-dd-menu,.etab-dd:focus-within .etab-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-  .etab-dd-item{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:11px 14px;border-radius:10px;border:0;background:none;
+  .etab-dd-item{text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:11px 14px;border-radius:10px;border:0;background:none;
     font-family:var(--disp);font-weight:700;font-size:.86rem;color:var(--ink2);text-align:left;cursor:pointer;white-space:nowrap}
   .etab-dd-item:hover{background:rgba(19,32,58,.08);color:var(--ink)}
   .etab-dd-item[disabled]{color:var(--muted);cursor:default;opacity:.6}
@@ -100,7 +114,7 @@
   nav.top.on-dark .etab-sep{background:rgba(255,255,255,.25)}
   nav.top.on-dark .nav-toggle span{background:#fff}
 
-  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-family:var(--disp);font-size:.69rem;font-weight:700;padding:11px 20px;border-radius:999px;transition:background .15s ease}
+  .nav-cta{flex:0 0 auto;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-family:var(--disp);font-size:.69rem;font-weight:700;padding:11px 20px;border-radius:999px;transition:background .15s ease}
   .nav-cta:hover{background:#1ebe5d}
   .nav-cta svg{width:16px;height:16px;flex:0 0 auto}
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;margin-right:-8px}
@@ -126,8 +140,8 @@
   .nav-drawer-cta a{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;padding:14px 18px;border-radius:999px;font-size:.94rem}
   .nav-drawer-cta a:hover{background:#1ebe5d}
   .nav-drawer-cta svg{width:18px;height:18px}
-  @media(max-width:880px){.etabs{display:none}.nav-cta{display:none}.nav-toggle{display:block}}
-  @media(min-width:881px){.nav-drawer,.nav-backdrop{display:none}}
+  @media(max-width:1140px){.etabs{display:none}.nav-cta{display:none}.nav-toggle{display:block}}
+  @media(min-width:1141px){.nav-drawer,.nav-backdrop{display:none}}
 
   /* =========================================================
      STICKY STACK — every section pins full-screen then is
@@ -253,14 +267,14 @@
   .scroll-cue .chevron{width:14px;height:14px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
   @keyframes fade-up{to{opacity:1;transform:none}}
-  @media(prefers-reduced-motion:reduce){.scroll-cue .chevron{animation:none}}
+  @media(prefers-reduced-motion:reduce){.scroll-cue .chevron{animation:none}.hw,.sec-hero .hero-lede,.hero-badge,.scroll-cue{animation:none;opacity:1;transform:none;filter:none}}
 
   /* ---- sections content ---- */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
   .stat{padding:20px 16px;border-left:1px solid rgba(255,255,255,.18);text-align:center}
   .stat:first-child{border-left:none}
   .stat b{display:block;font-family:var(--disp);font-weight:900;font-size:clamp(1.4rem,2.5vw,1.9rem);letter-spacing:-.03em;line-height:1}
-  .stat span{display:block;font-family:var(--mono);font-size:.66rem;color:rgba(255,255,255,.6);margin-top:8px}
+  .stat span{display:block;font-family:var(--mono);font-size:.74rem;color:rgba(255,255,255,.6);margin-top:8px}
   @media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:none}.stat:nth-child(3),.stat:nth-child(4){border-top:1px solid rgba(255,255,255,.18)}}
 
   .akt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:48px}
@@ -279,7 +293,7 @@
   @media(max-width:880px){.head-split{grid-template-columns:1fr;align-items:start}}
   .split40-img{position:relative;border-radius:14px;overflow:hidden}
   .split40-img img{width:100%;height:260px;object-fit:cover}
-  .split40-img figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:#fff;font-family:var(--mono);font-size:.66rem;padding:7px 12px;border-radius:0 12px 0 0}
+  .split40-img figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:#fff;font-family:var(--mono);font-size:.74rem;padding:7px 12px;border-radius:0 12px 0 0}
   .tl-dark{display:flex;flex-direction:column;gap:0}
   .tl-dark .tl-item{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
   .tl-dark .tl-item:last-child{border-bottom:1px solid var(--line)}
@@ -298,8 +312,8 @@
   .tl-dark-wide .tl-item:hover{background:var(--primary-soft)}
   .tl-dark-wide .yr{font-family:var(--disp);font-weight:900;font-size:clamp(1.5rem,2.4vw,1.9rem);letter-spacing:-.03em;color:var(--primary);display:block;margin-bottom:8px}
   .tl-dark-wide .tl-item:last-child .yr{color:var(--signal)}
-  .tl-dark-wide h3{font-size:.92rem;font-weight:800;margin-bottom:5px;color:var(--ink)}
-  .tl-dark-wide p{font-size:.78rem;color:var(--ink2);line-height:1.45}
+  .tl-dark-wide h3{font-size:1rem;font-weight:800;margin-bottom:5px;color:var(--ink)}
+  .tl-dark-wide p{font-size:.9rem;color:var(--ink2);line-height:1.45}
 
   /* pinjaman rows (dark/blue variant) */
   .rows{margin-top:20px;border-top:1px solid var(--line);text-align:left}
@@ -309,7 +323,7 @@
   .row-head:hover{padding-left:14px}
   .row-num{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
   .row-title{font-family:var(--disp);font-weight:800;font-size:clamp(.92rem,1.7vw,1.12rem);letter-spacing:-.015em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--ink)}
-  .row-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--primary-soft);color:var(--primary);font-weight:600}
+  .row-tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--primary-soft);color:var(--primary);font-weight:600}
   .row.feature .row-tag{background:var(--signal);color:#fff}
   .row-toggle{font-family:var(--mono);font-size:1.1rem;line-height:1;color:var(--ink);transition:transform .3s ease;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:999px;flex:0 0 auto}
   .row.open .row-toggle{transform:rotate(45deg);background:var(--ink);color:#fff}
@@ -325,15 +339,20 @@
 
   /* loan carousel (replaces accordion rows) */
   .loan-carousel{margin-top:24px;text-align:left}
-  .lc-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:4px;cursor:grab}
-  .lc-track:active{cursor:grabbing}
+  .lc-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .lc-track::-webkit-scrollbar{display:none}
+  /* tablet & desktop: show all four loans at once — no hidden cards */
+  @media(min-width:761px){
+    .lc-track{display:grid;grid-template-columns:repeat(2,1fr);overflow:visible}
+    .lc-card{flex:none}
+    .lc-controls{display:none}
+  }
   .lc-track{scrollbar-width:none}
   .lc-card{flex:0 0 min(82%,360px);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;box-shadow:0 4px 24px rgba(0,0,0,.06)}
   .lc-card.feature{background:var(--primary-soft);border-color:var(--primary)}
   .lc-card .row-title{margin-bottom:12px}
-  .lc-card .lead{color:var(--ink2);font-size:.86rem;margin-bottom:14px}
-  .lc-card ul{list-style:none;font-size:.78rem;margin-bottom:6px}
+  .lc-card .lead{color:var(--ink2);font-size:.95rem;margin-bottom:14px}
+  .lc-card ul{list-style:none;font-size:.92rem;margin-bottom:6px}
   .lc-card li{padding:7px 0 7px 18px;position:relative;border-bottom:1px dashed var(--line);color:var(--ink2);line-height:1.45}
   .lc-card li:last-child{border-bottom:none}
   .lc-card li::before{content:"";position:absolute;left:0;top:13px;width:.5em;height:.62em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
@@ -344,26 +363,26 @@
   .lc-dots{display:flex;gap:10px}
   .lc-dots span{width:9px;height:9px;border-radius:50%;background:var(--line);transition:background .2s ease,transform .2s ease;cursor:pointer}
   .lc-dots span.on{background:var(--primary);transform:scale(1.3)}
-  .note{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:14px;max-width:72ch;text-align:left}
+  .note{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:14px;max-width:72ch;text-align:left}
   .note b{color:var(--signal)}
 
   /* takaful split (light, image ~40%) */
   .panel-cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-  .panel-cta .mono-note{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+  .panel-cta .mono-note{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
   .split40 ul{list-style:none;margin-top:10px}
-  .split40 li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--line);font-size:.78rem;line-height:1.4}
+  .split40 li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--line);font-size:.94rem;line-height:1.4}
   .split40 li::before{content:"";position:absolute;left:0;top:12px;width:.5em;height:.62em;background:var(--signal);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)}
 
   /* manfaat grid */
   .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:22px;text-align:left}
   @media(max-width:880px){.ben-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.ben-grid{grid-template-columns:1fr}}
-  .ben{background:var(--paper);padding:16px 16px;transition:background .25s ease}
+  .ben{background:var(--paper);padding:20px 20px;transition:background .25s ease}
   .ben:hover{background:var(--primary-soft)}
-  .ben .num{font-family:var(--mono);font-size:.64rem;color:var(--muted);display:block;margin-bottom:8px}
-  .ben h3{font-size:.86rem;font-weight:800;margin-bottom:4px}
-  .ben p{font-size:.72rem;color:var(--muted);line-height:1.4}
-  .ben .amt{display:inline-block;margin-top:6px;font-family:var(--disp);font-weight:900;color:var(--primary);font-size:.82rem}
+  .ben .num{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:block;margin-bottom:8px}
+  .ben h3{font-size:1rem;font-weight:800;margin-bottom:4px}
+  .ben p{font-size:.88rem;color:var(--muted);line-height:1.4}
+  .ben .amt{display:inline-block;margin-top:6px;font-family:var(--disp);font-weight:900;color:var(--primary);font-size:.95rem}
   .ben:hover .amt{color:var(--signal)}
 
   /* sertai steps */
@@ -383,12 +402,12 @@
   /* FAQ */
   .faq-list{margin-top:18px;border-top:1px solid var(--line);text-align:left}
   details{border-bottom:1px solid var(--line)}
-  summary{cursor:pointer;list-style:none;font-family:var(--disp);font-weight:700;font-size:clamp(.82rem,1.5vw,.94rem);padding:12px 40px 12px 0;position:relative;transition:padding .25s ease}
+  summary{cursor:pointer;list-style:none;font-family:var(--disp);font-weight:700;font-size:clamp(.98rem,1.6vw,1.08rem);padding:14px 40px 14px 0;position:relative;transition:padding .25s ease}
   summary:hover{padding-left:10px;color:var(--primary)}
   summary::-webkit-details-marker{display:none}
   summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:1.1rem;font-weight:400;color:var(--ink);transition:transform .25s ease}
   details[open] summary::after{transform:translateY(-50%) rotate(45deg);color:var(--signal)}
-  details p{padding:0 0 14px;color:var(--ink2);font-size:.76rem;max-width:74ch;line-height:1.5}
+  details p{padding:0 0 16px;color:var(--ink2);font-size:.94rem;max-width:74ch;line-height:1.5}
 
 
   /* footer — simple style */
@@ -418,52 +437,52 @@
 <nav class="top on-light">
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="KOMIDA - Koperasi MIDA Kuala Lumpur Berhad">
-      <img class="logo-img" src="komida-logo-3.png" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
+      <img class="logo-img" src="komida-logo-3.png" width="600" height="145" alt="KOMIDA — Koperasi MIDA Kuala Lumpur Berhad">
     </a>
-    <div class="etabs" role="tablist" aria-label="Navigasi utama">
-      <button class="etab active" data-href="#top" role="tab" aria-selected="true">
+    <div class="etabs" aria-label="Navigasi utama">
+      <a class="etab active" href="#top" aria-current="page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>
         <span class="etab-label">Utama</span>
-      </button>
-      <button class="etab" data-href="#tentang" role="tab" aria-selected="false">
+      </a>
+      <a class="etab" href="#tentang">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         <span class="etab-label">Mengenai Kami</span>
-      </button>
-      <button class="etab" data-href="#pinjaman" role="tab" aria-selected="false">
+      </a>
+      <a class="etab" href="#pinjaman">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 14h4"/></svg>
         <span class="etab-label">Pinjaman</span>
-      </button>
-      <button class="etab" data-href="#takaful" role="tab" aria-selected="false">
+      </a>
+      <a class="etab" href="#takaful">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z"/></svg>
         <span class="etab-label">Takaful</span>
-      </button>
-      <button class="etab" data-href="#sjc" role="tab" aria-selected="false">
+      </a>
+      <a class="etab" href="#sjc">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 7l9-4 9 4M8 12v4M12 12v4M16 12v4"/></svg>
         <span class="etab-label">SJC</span>
-      </button>
+      </a>
       <div class="etab-dd">
-        <button class="etab" data-href="#bazar" role="tab" aria-selected="false" aria-haspopup="true">
+        <a class="etab" href="#bazar" aria-haspopup="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 10.5a2 2 0 0 1-2 1.5H6.5a2 2 0 0 1-2-1.5L3 9Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
           <span class="etab-label">Aktiviti</span>
-        </button>
+        </a>
         <div class="etab-dd-menu" role="menu" aria-label="Aktiviti">
-          <button class="etab-dd-item" type="button" data-href="#bazar" role="menuitem">Bazar</button>
+          <a class="etab-dd-item" href="#bazar" role="menuitem">Bazar</a>
           <button class="etab-dd-item" type="button" disabled aria-disabled="true">Projek <span class="soon">Akan Datang</span></button>
         </div>
       </div>
-      <button class="etab" data-href="#manfaat" role="tab" aria-selected="false">
+      <a class="etab" href="#manfaat">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg>
         <span class="etab-label">Manfaat</span>
-      </button>
-      <button class="etab" data-href="borang.html" role="tab" aria-selected="false">
+      </a>
+      <a class="etab" href="borang.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
         <span class="etab-label">Borang</span>
-      </button>
+      </a>
       <span class="etab-sep" aria-hidden="true"></span>
-      <button class="etab" data-href="#faq" role="tab" aria-selected="false">
+      <a class="etab" href="#faq">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.6 2.4c-.9.5-1.1.9-1.1 1.9M12 17h.01"/></svg>
         <span class="etab-label">Soalan Lazim</span>
-      </button>
+      </a>
     </div>
     <a class="nav-cta" href="https://wa.me/60193798434?text=Salam%20KOMIDA%2C%20saya%20berminat%20untuk%20menjadi%20anggota%20baharu." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Hubungi Kami</a>
     <button class="nav-toggle" aria-label="Buka menu" aria-controls="mobile-drawer" aria-expanded="false">
@@ -475,7 +494,7 @@
 <div class="nav-backdrop" aria-hidden="true"></div>
 <aside class="nav-drawer" id="mobile-drawer" aria-hidden="true" aria-label="Menu navigasi">
   <div class="nav-drawer-head">
-    <img src="komida-logo-3.png" alt="KOMIDA">
+    <img src="komida-logo-3.png" width="600" height="145" loading="lazy" alt="KOMIDA">
     <button class="nav-drawer-close" aria-label="Tutup menu">&times;</button>
   </div>
   <nav class="nav-drawer-links" aria-label="Menu utama">
@@ -518,9 +537,9 @@
         </h1>
         <p class="hero-lede">KOMIDA menyediakan pembiayaan patuh syariah, simpanan berdisiplin, takaful dan manfaat kebajikan untuk warga MIDA — direka untuk bergerak seiring keperluan anggota dari hari pertama menyertai hingga persaraan.</p>
         <div class="stats">
-          <div class="stat"><b class="count" data-target="650" data-suffix="+">0</b><span>Anggota Aktif</span></div>
-          <div class="stat"><b class="count" data-target="1997" data-suffix="">0</b><span>Tahun Ditubuhkan</span></div>
-          <div class="stat"><b class="count" data-target="100" data-suffix="%">0</b><span>Patuh Syariah</span></div>
+          <div class="stat"><b class="count" data-target="650" data-suffix="+">650+</b><span>Anggota Aktif</span></div>
+          <div class="stat"><b>1997</b><span>Tahun Ditubuhkan</span></div>
+          <div class="stat"><b class="count" data-target="100" data-suffix="%">100%</b><span>Patuh Syariah</span></div>
           <div class="stat"><b class="stat-text" style="font-size:clamp(.74rem,1.15vw,.92rem);line-height:1.2">Suruhanjaya Koperasi Malaysia</b><span>Berdaftar &amp; Diaudit</span></div>
         </div>
       </div>
@@ -539,7 +558,7 @@
           <p class="lede" style="margin-top:14px">KOMIDA didaftarkan di bawah Suruhanjaya Koperasi Malaysia (No. W-4-0280) dan diaudit oleh juruaudit luar bebas. Visi kami: menjadi koperasi pelaburan yang menjana kekayaan mampan dan kesejahteraan kewangan kepada anggota.</p>
         </div>
         <figure class="split40-img">
-          <img src="photo-2.jpg" alt="Anggota KOMIDA">
+          <img src="photo-2.jpg" width="1400" height="829" loading="lazy" decoding="async" alt="Anggota KOMIDA">
         </figure>
       </div>
       <div class="tl-dark tl-dark-wide reveal">
@@ -571,7 +590,6 @@
             <ul>
               <li>Jumlah sehingga RM3,000 dengan tempoh pinjaman selama 12 bulan</li>
               <li>Yuran pengajian, peralatan &amp; asrama</li>
-              <li>Tempoh fleksibel mengikut pengajian</li>
               <li>Terbuka untuk anggota &amp; tanggungan</li>
               <li>Kadar caj perkhidmatan 2% setahun</li>
             </ul>
@@ -611,6 +629,11 @@
           </div>
         </div>
 
+        <div class="lc-controls">
+          <button class="lc-arrow" type="button" data-dir="-1" aria-label="Pinjaman sebelumnya">&lsaquo;</button>
+          <div class="lc-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+          <button class="lc-arrow" type="button" data-dir="1" aria-label="Pinjaman seterusnya">&rsaquo;</button>
+        </div>
       </div>
 
       <div class="panel-cta reveal" style="margin-top:24px">
@@ -626,13 +649,13 @@
       <h2 class="display reveal" style="font-size:clamp(1.9rem,4vw,3rem)">Perlindungan yang <span class="blue">kekal bersama anda.</span></h2>
       <div class="split40 reveal">
         <figure class="split40-img">
-          <img src="photo-1.jpg" alt="Anggota KOMIDA berbincang di meja">
+          <img src="photo-1.jpg" width="1400" height="930" loading="lazy" decoding="async" alt="Anggota KOMIDA berbincang di meja">
           <figcaption>Perlindungan untuk anda &amp; keluarga</figcaption>
         </figure>
         <div>
           <p class="lede" style="margin-top:0">Perlindungan majikan tamat apabila anda bersara atau bertukar. Perlindungan persendirian melalui KOMIDA kekal bersama anda.</p>
           <ul>
-            <li><strong>Takaful / insurans persendirian</strong> — perlindungan nyawa &amp; kesihatan untuk anda dan keluarga.</li>
+            <li><strong>Takaful Kemalangan Diri &amp; Takaful Kebajikan Anggota</strong> — melengkapkan manfaat kebajikan sedia ada untuk anda dan keluarga.</li>
             <li><strong>Skim berkelompok warga MIDA</strong> — kadar lebih kompetitif hasil kuasa beli kolektif anggota.</li>
             <li><strong>Bayaran mudah</strong> — premium melalui kemudahan potongan ansuran KOMIDA.</li>
           </ul>
@@ -655,14 +678,14 @@
       </div>
       <div class="split40 reveal">
         <figure class="split40-img">
-          <img src="sjc-3.jpg" alt="Skim Jimat Cermat KOMIDA">
+          <img src="sjc-3.jpg" width="1400" height="934" loading="lazy" decoding="async" alt="Skim Jimat Cermat KOMIDA">
           <figcaption>Menabung secara automatik, setiap bulan</figcaption>
         </figure>
         <div style="color:var(--ink2)">
           <ul style="list-style:none;margin-top:0">
-            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Potongan automatik</strong> — caruman ditolak terus daripada gaji setiap bulan, tanpa perlu diingati.</li>
-            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Simpanan berdisiplin</strong> — membina amalan jimat cermat secara konsisten dari semasa ke semasa.</li>
-            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:none;font-size:.78rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Jumlah fleksibel</strong> — anggota memilih kadar caruman bulanan mengikut kemampuan.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.94rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Potongan automatik</strong> — caruman ditolak terus daripada gaji setiap bulan, tanpa perlu diingati.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.94rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Simpanan berdisiplin</strong> — membina amalan jimat cermat secara konsisten dari semasa ke semasa.</li>
+            <li style="padding:11px 0 11px 26px;position:relative;border-bottom:none;font-size:.94rem"><span style="position:absolute;left:0;top:14px;width:.55em;height:.68em;background:var(--primary);clip-path:polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span><strong>Jumlah fleksibel</strong> — anggota memilih kadar caruman bulanan mengikut kemampuan.</li>
           </ul>
           <div class="panel-cta">
             <a class="btn btn-light" href="sjc.html">Lebih Lanjut</a>
@@ -679,7 +702,7 @@
       <h2 class="display reveal" style="font-size:clamp(1.9rem,4vw,3rem)">Platform perniagaan <span class="blue">anggota.</span></h2>
       <div class="split40 reveal">
         <figure class="split40-img">
-          <img src="bazar-2.jpeg" alt="Bazar KOMIDA">
+          <img src="bazar-2.jpeg" width="1080" height="810" loading="lazy" decoding="async" alt="Bazar KOMIDA">
           <figcaption>Bazar mingguan &amp; bazar bertema sepanjang tahun</figcaption>
         </figure>
         <div>
@@ -711,7 +734,7 @@
         <div class="ben"><span class="num">/ 02</span><h3>Insentif Pelajar Cemerlang</h3><p>Pengiktirafan kecemerlangan akademik anak anggota.</p><span class="amt">sehingga RM200 / A</span></div>
         <div class="ben"><span class="num">/ 03</span><h3>Insentif Sakit Kritikal</h3><p>Bantuan kewangan bagi anggota yang disahkan sakit kritikal.</p><span class="amt">sehingga RM2,000</span></div>
         <div class="ben"><span class="num">/ 04</span><h3>Insentif Kemasukan Wad</h3><p>Sumbangan bagi anggota yang menerima rawatan di hospital.</p><span class="amt">RM100</span></div>
-        <div class="ben"><span class="num">/ 05</span><h3>Kemudahan Pembiayaan</h3><p>Akses kepada pinjaman pelajaran, segera dan jangka panjang.</p></div>
+        <div class="ben"><span class="num">/ 05</span><h3>Kemudahan Pembiayaan</h3><p>Akses kepada Pinjaman Pelajaran, Berjamin, Segera dan Kecemasan.</p></div>
         <div class="ben"><span class="num">/ 06</span><h3>Potongan Ansuran Gaji</h3><p>Semua bayaran balik diurus automatik melalui potongan gaji bulanan.</p><span class="amt">Automatik</span></div>
       </div>
     </div>
@@ -734,7 +757,7 @@
         </details>
         <details style="border-bottom:1px solid var(--line)">
           <summary style="color:var(--ink)">Bagaimana saya boleh memohon pinjaman?</summary>
-          <p style="color:var(--ink2)">Anggota boleh memilih antara Pinjaman Berjamin, Segera atau Kecemasan mengikut keperluan, dan memuat turun borang permohonan berkaitan di bahagian Borang. Semua permohonan tertakluk kepada had kelayakan gaji bersih.</p>
+          <p style="color:var(--ink2)">Anggota boleh memilih antara Pinjaman Pelajaran, Berjamin, Segera atau Kecemasan mengikut keperluan, dan memuat turun borang permohonan berkaitan di bahagian Borang. Semua permohonan tertakluk kepada had kelayakan gaji bersih.</p>
         </details>
         <details style="border-bottom:1px solid var(--line)">
           <summary style="color:var(--ink)">Apakah perlindungan Takaful yang ditawarkan?</summary>
@@ -755,7 +778,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="komida-logo-3.png" alt="KOMIDA">
+        <img src="komida-logo-3.png" width="600" height="145" loading="lazy" alt="KOMIDA">
         <p>Koperasi MIDA Kuala Lumpur Berhad (W-4-0280). Dari ahli, untuk ahli, demi kemajuan.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/komida.kl" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
@@ -780,7 +803,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2025 Koperasi MIDA Kuala Lumpur Berhad (W-4-0280). Hak cipta terpelihara.</span>
+      <span>&copy; 2026 Koperasi MIDA Kuala Lumpur Berhad (W-4-0280). Hak cipta terpelihara.</span>
       <span><a href="borang.html">Borang</a> &middot; <a href="berita.html">Berita</a> &middot; <a href="alp.html">ALP</a></span>
     </div>
   </div>
@@ -807,87 +830,18 @@
   document.querySelectorAll('.nav-drawer-links a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
 
-  /* Etab navigation: in-page anchors vs external pages */
-  var allEtabs=document.querySelectorAll('.etab[data-href]');
+  /* Etab navigation: plain <a href="#section"> links, so the browser does the
+     scrolling (smooth via CSS). This only keeps the highlighted tab in sync. */
+  var allEtabs=document.querySelectorAll('.etabs a.etab');
   function setActiveEtab(href){
     allEtabs.forEach(function(b){
-      var isMatch=b.getAttribute('data-href')===href;
+      var isMatch=b.getAttribute('href')===href;
       b.classList.toggle('active',isMatch);
-      b.setAttribute('aria-selected',isMatch?'true':'false');
+      if(isMatch)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');
     });
   }
   /* Scroll-spy: keep active tab synced with section in view while scrolling */
   var spySections=Array.prototype.slice.call(document.querySelectorAll('main .stack-section[id]'));
-
-  /* Reliable scroll for sticky-stack sections: every .stack-section is
-     position:sticky + height:100vh, stacked as equal-height siblings in
-     flow. Once a sticky section has been scrolled past (or is the current
-     "stuck" one), its getBoundingClientRect().top always reads ~0 -- it
-     never reflects true document position -- so scrollIntoView/rect-based
-     math silently no-ops or lands on the wrong spot. Since every section is
-     exactly one viewport tall, the true scroll target is simply its index
-     in the stack times the viewport height. This is the only measurement
-     that stays correct regardless of current scroll position. */
-  /* Native window.scrollTo({behavior:'smooth'}) can silently fail to animate
-     at all when called while sticky-positioned ancestors are mid-layout
-     (observed: 0px movement after 1.7s from several scroll depths on this
-     page). Two timer-driven tweens were tried next: requestAnimationFrame,
-     then setTimeout. BOTH were confirmed (via direct live testing) to be
-     throttled/suspended by the browser whenever the tab/window is not the
-     active, focused compositor surface (document.visibilityState turns
-     'hidden') -- rAF never fired at all, and setTimeout fired at roughly
-     once per second instead of every 16ms. Any animation driven by either
-     mechanism can silently stall for seconds or never complete in that
-     state, which is exactly the symptom being chased here. The only call
-     that is NOT deferred to a callback queue -- and therefore can't be
-     throttled this way -- is a single synchronous window.scrollTo with no
-     animation. So: jump directly, no tween, no timers. Less smooth, but it
-     cannot get stuck. */
-  function animateScrollTo(destY){
-    window.scrollTo(0,destY);
-  }
-  function scrollToSection(target){
-    if(!target)return;
-    var idx=spySections.indexOf(target);
-    var destY;
-    if(idx!==-1){
-      destY=idx*window.innerHeight;
-    }else{
-      var rect=target.getBoundingClientRect();
-      destY=rect.top+window.pageYOffset;
-    }
-    animateScrollTo(destY);
-  }
-  allEtabs.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var href=btn.getAttribute('data-href');
-      if(!href)return;
-      if(href.charAt(0)==='#'){
-        var target=document.querySelector(href);
-        if(target){
-          setActiveEtab(href);
-          scrollToSection(target);
-        }
-      }else{
-        window.location.href=href;
-      }
-    });
-  });
-  document.querySelectorAll('.etab-dd-item[data-href]').forEach(function(item){
-    item.addEventListener('click',function(){
-      var href=item.getAttribute('data-href');
-      if(!href)return;
-      if(href.charAt(0)==='#'){
-        var target=document.querySelector(href);
-        if(target){
-          setActiveEtab(href);
-          scrollToSection(target);
-        }
-      }else{
-        window.location.href=href;
-      }
-    });
-  });
 
   var spyMap={'top':'#top','tentang':'#tentang','pinjaman':'#pinjaman','takaful':'#takaful','sjc':'#sjc','bazar':'#bazar','manfaat':'#manfaat','faq':'#faq'};
   function updateActiveFromScroll(){
@@ -901,22 +855,6 @@
   }
   window.addEventListener('scroll',updateActiveFromScroll,{passive:true});
   updateActiveFromScroll();
-
-  /* Logo click -> scroll to top hero */
-  var brand=document.querySelector('.brand');
-  if(brand){
-    brand.addEventListener('click',function(e){
-      var href=brand.getAttribute('href');
-      if(href==='#top'){
-        e.preventDefault();
-        var hero=document.getElementById('top');
-        if(hero){
-          setActiveEtab('#top');
-          scrollToSection(hero);
-        }
-      }
-    });
-  }
 
   /* Nav background swap on scroll (light vs dark sections) */
   var darkSections=document.querySelectorAll('.sec-dark');
@@ -969,7 +907,25 @@
     }
   }
 
-  /* Glowing beams canvas background for hero */
+  /* Loan carousel (phones only; tablet/desktop shows a grid) */
+  var track=document.querySelector('[data-track]');
+  if(track){
+    var cards=track.querySelectorAll('.lc-card');
+    var dots=document.querySelectorAll('.lc-dots span');
+    function cardStep(){return cards.length>1?cards[1].offsetLeft-cards[0].offsetLeft:track.clientWidth;}
+    document.querySelectorAll('.lc-arrow').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        track.scrollBy({left:cardStep()*parseInt(btn.getAttribute('data-dir'),10),behavior:'smooth'});
+      });
+    });
+    dots.forEach(function(d,i){
+      d.addEventListener('click',function(){track.scrollTo({left:cardStep()*i,behavior:'smooth'});});
+    });
+    track.addEventListener('scroll',function(){
+      var i=Math.round(track.scrollLeft/cardStep());
+      dots.forEach(function(d,j){d.classList.toggle('on',j===i);});
+    },{passive:true});
+  }
 })();
 </script>
 
